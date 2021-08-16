@@ -1,4 +1,4 @@
 class Product < ApplicationRecord
-  has_many :cart_item, dependent: :destroy
-  has_many :cart, :through :cart_item
+  has_many :cart_items, dependent: :destroy
+  has_many :carts, :through :cart_items
 end
