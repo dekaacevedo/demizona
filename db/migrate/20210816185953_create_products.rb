@@ -4,15 +4,15 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :price
       t.integer :old_price
-      t.boolean :active
-      t.boolean :featured
+      t.boolean :active, default: false
+      t.boolean :featured, default: false
       t.integer :quantity
       t.integer :sku
       t.integer :size
       t.string :color
-      t.integer :unit_weigth
+      t.integer :unit_weight
       t.integer :quantity_stock
-      t.boolean :discount
+      t.boolean :discount, default: false
 
       t.timestamps
     end

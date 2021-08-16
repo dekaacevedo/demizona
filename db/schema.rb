@@ -19,15 +19,15 @@ ActiveRecord::Schema.define(version: 2021_08_16_185953) do
     t.string "name"
     t.integer "price"
     t.integer "old_price"
-    t.boolean "active"
-    t.boolean "featured"
+    t.boolean "active", default: false
+    t.boolean "featured", default: false
     t.integer "quantity"
     t.integer "sku"
     t.integer "size"
     t.string "color"
-    t.integer "unit_weigth"
+    t.integer "unit_weight"
     t.integer "quantity_stock"
-    t.boolean "discount"
+    t.boolean "discount", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
