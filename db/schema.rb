@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_08_16_212511) do
+ActiveRecord::Schema.define(version: 2021_08_16_223909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_08_16_212511) do
     t.integer "old_price"
     t.boolean "active", default: false
     t.boolean "featured", default: false
-    t.integer "quantity"
     t.integer "sku"
     t.integer "size"
     t.string "color"
@@ -90,7 +88,6 @@ ActiveRecord::Schema.define(version: 2021_08_16_212511) do
 
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
-
   add_foreign_key "carts", "users"
   add_foreign_key "stores", "users"
 end
