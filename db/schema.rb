@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-products_table
 ActiveRecord::Schema.define(version: 2021_08_16_185953) do
-
-
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
