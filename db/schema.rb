@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_223909) do
+ActiveRecord::Schema.define(version: 2021_08_16_212511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,13 +48,14 @@ ActiveRecord::Schema.define(version: 2021_08_16_223909) do
     t.boolean "active", default: false
     t.boolean "featured", default: false
     t.integer "sku"
-    t.integer "size"
-    t.string "color"
-    t.integer "unit_weight"
+    t.string "unit_type"
     t.integer "quantity_stock"
     t.boolean "discount", default: false
+    t.text "description"
+    t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_products_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -89,5 +90,6 @@ ActiveRecord::Schema.define(version: 2021_08_16_223909) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "products", "stores"
   add_foreign_key "stores", "users"
 end
