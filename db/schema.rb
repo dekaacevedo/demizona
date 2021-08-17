@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_190453) do
+ActiveRecord::Schema.define(version: 2021_08_17_194106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_190453) do
     t.integer "old_price"
     t.boolean "active", default: false
     t.boolean "featured", default: false
-    t.integer "sku"
     t.string "unit_type"
     t.integer "quantity_stock"
     t.boolean "discount", default: false
@@ -74,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_190453) do
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sku"
     t.index ["store_id"], name: "index_products_on_store_id"
   end
 
