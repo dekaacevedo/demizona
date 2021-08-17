@@ -6,13 +6,12 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.integer :old_price
       t.boolean :active, default: false
       t.boolean :featured, default: false
-      t.integer :quantity
       t.integer :sku
-      t.integer :size
-      t.string :color
-      t.integer :unit_weight
+      t.string :unit_type
       t.integer :quantity_stock
       t.boolean :discount, default: false
+      t.text :description
+      t.references :store, null: false, foreign_key: true
 
       t.timestamps
     end
