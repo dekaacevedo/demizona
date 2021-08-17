@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(version: 2021_08_17_190453) do
     t.index ["store_id"], name: "index_products_on_store_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.float "rating"
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "store_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_reviews_on_store_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -114,5 +125,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_190453) do
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
   add_foreign_key "products", "stores"
+  add_foreign_key "reviews", "stores"
+  add_foreign_key "reviews", "users"
   add_foreign_key "stores", "users"
 end
