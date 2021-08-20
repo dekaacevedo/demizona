@@ -5,12 +5,18 @@
 
 i {
   color: #A5A5A5;
+
 }
+
+
 
 .link-home {
   font-size: 12px;
   font-weight: 400;
   color: #A5A5A5;
+  &:hover {
+    color: #6E6E6E;
+  }
 }
 
 .store-card-image-home {
