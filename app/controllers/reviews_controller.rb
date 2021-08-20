@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :find_store
   before_action :find_review, only: [:edit, :update, :destroy]
-  
+
   def new
     @review = Review.new
   end
@@ -24,12 +24,16 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to store_path(@book)
+      redirect_to store_path(@store)
     else
       render 'edit'
     end
-  end 
+  end
 
+  def destroy
+    @review.destroy
+    redirect_to store_path(@store)
+  end
 
   private
 

@@ -1,2 +1,11 @@
 <p><%= review.rating %></p>
 <p><%= review.comment %></p>
+
+<% if Review.first.user_id %>
+<!-- add user_signed_in? -->
+  <% if review.user_id == Review.first.user_id %>
+  <!-- add current_user.id -->
+    <%= link_to "Edit", edit_store_review_path(review.store, review) %>
+    <%= link_to "Delete", store_reviews_path(review.store, review), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+<% end %>
