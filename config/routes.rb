@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :stores do
     resources :products, only: %i[new create]
-    resources :reviews, only: %i[new create]
+    resources :reviews, only: %i[new create edit index]
   end
 
   resources :products, only: %i[index show edit update destroy]
@@ -15,6 +15,5 @@ Rails.application.routes.draw do
   resources :product_categories, only: %i[create destroy]
   resources :reviews, only: :destroy
   resources :orders, only: %i[show index create update]
-
 
 end
