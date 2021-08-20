@@ -1,8 +1,19 @@
 <div class="container mt-5">
-<h1>Nombre de tienda: <%= @store.name %> </h1>
-<h1>Dirección: <%= @store.address %> </h1>
-<h1>Ciudad: <%= @store.city %> </h1>
-<h1>Email: <%= @store.email %> </h1>
-<h1>Teléfono: <%= @store.phone%> </h1>
+  <div>
+    <h1>Nombre de tienda: <%= @store.name %> </h1>
+    <h1>Dirección: <%= @store.address %> </h1>
+    <h1>Ciudad: <%= @store.city %> </h1>
+    <h1>Email: <%= @store.email %> </h1>
+    <h1>Teléfono: <%= @store.phone%> </h1>  
+  </div>
 
+
+  <dir class="row">
+    <div class="col-md-4">
+      <%= render @store.reviews %>
+      <div>
+        <%= link_to "Add Review", new_store_review_path(@store) %> 
+      </div>
+    </div>
+  </dir>
 </div>
