@@ -9,12 +9,13 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.store_id = @store.id
-    @review.user_id = 1
+    @review.user_id = User.first.id
     # Change for current user
 
     if @review.save!
       redirect_to store_path(@store)
     else
+      flash[:alert] = "Something went wrong."
       render 'new'
     end      
   end
