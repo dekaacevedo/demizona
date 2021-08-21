@@ -1,12 +1,16 @@
-<div class="review-rating" data-score="<%= review.rating %>"></div>
-<p><%= review.rating %></p>
-<p><%= review.comment %></p>
+<div class="container">
+  <div class="review-rating" data-score="<%= review.rating %>"></div>
+  <p><%= review.rating %></p>
+  <p><%= review.comment %></p>
 
-<% if User.first.id %>
-<!-- add user_signed_in? -->
-  <% if review.user_id == User.first.id %>
-  <!-- add current_user.id -->
-    <%= link_to "Edit", edit_store_review_path(review.store, review) %>
-    <%= link_to "Delete", store_reviews_path(review.store, review), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% if review.user_id == 68 %>
+  <!-- add if user_signed_in? -->
+    <% if review.user_id == 68 %>
+    <!-- add current_user.id -->
+      <%= link_to "Edit", edit_store_review_path(review.store, review) %>
+      <%= link_to "Delete", store_reviews_path(review.store, review), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
   <% end %>
-<% end %>
+
+</div>
+

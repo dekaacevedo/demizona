@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :find_store
   before_action :find_review, only: [:edit, :update, :destroy]
+  # before_action :authenticate_user!, only: [:new, :edit]
 
   def new
     @review = Review.new
@@ -12,7 +13,7 @@ class ReviewsController < ApplicationController
     @review.user_id = User.first.id
     # Change for current user
 
-    if @review.save!
+    if @review.save
       redirect_to store_path(@store)
     else
       flash[:alert] = "Something went wrong."

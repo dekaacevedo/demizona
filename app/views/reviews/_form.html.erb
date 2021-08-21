@@ -1,7 +1,16 @@
 <%= simple_form_for([@store, @store.reviews.build]) do |f| %>
-  <%= f.input :rating %>
+  <div id="rating-form">
+    <label>Rating</label>
+    <%= f.input :rating %> 
+  </div>
+  <%= f.input :rating %> 
   <%= f.input :comment %>
   <%= f.button :submit %>
 <% end %>
 
-
+<script>
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
+</script>

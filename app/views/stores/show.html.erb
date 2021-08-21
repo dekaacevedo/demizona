@@ -1,22 +1,27 @@
 <div class="container mt-5">
   <div>
     <h1>Nombre de tienda: <%= @store.name %> </h1>
+    <h2>Average rating</h2>
     <h1>Dirección: <%= @store.address %> </h1>
     <h1>Ciudad: <%= @store.city %> </h1>
     <h1>Email: <%= @store.email %> </h1>
-    <h1>Teléfono: <%= @store.phone%> </h1>  
+    <h1>Teléfono: <%= @store.phone%> </h1>
+    <div class="average-review-rating" data-score=<%= @average_review %>></div>
+    <span>Based on <%= @store.reviews.count %> reviews</span>
   </div>
-
 
   <dir class="row">
     <div class="col-md-4">
       <%= render @store.reviews %>
       <div>
-        <%= link_to "Add Review", new_store_review_path(@store) %> 
+        <%= link_to "Add Review", new_store_review_path(@store) %>
       </div>
     </div>
   </dir>
 </div>
+
+
+<%= link_to "Volver", root_path %>
 
 <script>
   $('.review-rating').raty({
@@ -25,5 +30,16 @@
       return $(this).attr('data-score');
     },
     path: '/assets/'
+  });
+</script>
+
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
   });
 </script>
