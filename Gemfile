@@ -70,5 +70,6 @@ gem 'faker'
 # Gema para localizar tiendas en el mapa
 gem 'geocoder'
 
-# Gema para ocultar token
-gem 'dotenv-rails', groups: [:development, :test]
+# Gema para cargar nuestras imagenes
+gem 'cloudinary', '~> 1.16.0'
+
