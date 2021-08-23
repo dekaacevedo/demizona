@@ -73,6 +73,6 @@ private
   end
 
   def store_params
-    params.require(:store).permit(:name, :address, :city, :email, :phone)
+    params.require(:store).permit(:name, :address, :city, :email, :phone, photos: [])
   end
 end
