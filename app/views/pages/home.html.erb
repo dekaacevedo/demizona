@@ -1,2 +1,102 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner-home d-flex align-items-center mt-5">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="banner-card first-banner-card d-flex flex-column align-items-center justify-content-center">
+      <p class="title-first-banner">Encuentra negocios y productos locales con responsabilidad social</p>
+      <p class="subtitle-first-banner mt-3 mb-4">Orgánicos, frescos, veganos y muchos más</p>
+      <%= link_to "Comprar", "#", class: "btn boton-primario "%>
+    </div>
+    <div class="banner-card second-banner-card">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="my-5">
+    <div class="d-flex align-items-center">
+      <h2 class="mr-3 store-title">Busca por categoria</h2>
+      <%= link_to "#", class: "d-flex align-items-center" do %>
+        <p class="link-home"><%= "Todas las categorias" %></p>
+        <i class="fas fa-chevron-right fa-xs ml-2"></i>
+      <% end %>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between mt-3">
+      <%= link_to "#" do %>
+        <div class="category-card d-flex flex-column align-items-center justify-content-center">
+          <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
+          <!-- Llamar esto con category.name -->
+          <p class="category-card-title">Frutas y Verduras</p>
+        </div>
+      <% end %>
+
+      <div class="category-card d-flex flex-column align-items-center justify-content-center">
+        <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
+        <!-- Llamar esto con category.name -->
+        <p class="category-card-title">Frutas y Verduras</p>
+      </div>
+
+      <div class="category-card d-flex flex-column align-items-center justify-content-center">
+        <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
+        <!-- Llamar esto con category.name -->
+        <p class="category-card-title">Frutas y Verduras</p>
+      </div>
+
+      <div class="category-card d-flex flex-column align-items-center justify-content-center">
+        <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
+        <!-- Llamar esto con category.name -->
+        <p class="category-card-title">Frutas y Verduras</p>
+      </div>
+
+      <div class="category-card d-flex flex-column align-items-center justify-content-center">
+        <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
+        <!-- Llamar esto con category.name -->
+        <p class="category-card-title">Frutas y Verduras</p>
+      </div>
+
+      <div class="category-card d-flex flex-column align-items-center justify-content-center">
+        <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
+        <!-- Llamar esto con category.name -->
+        <p class="category-card-title">Frutas y Verduras</p>
+      </div>
+
+      <div class="category-card d-flex flex-column align-items-center justify-content-center">
+        <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
+        <!-- Llamar esto con category.name -->
+        <p class="category-card-title">Frutas y Verduras</p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="d-flex align-items-center">
+    <h2 class="mr-3 store-title">Nuestras Tiendas</h2>
+    <%= link_to stores_path, class: "d-flex align-items-center" do %>
+      <p class="link-home"><%= "Todas las tiendas" %></p>
+      <i class="fas fa-chevron-right fa-xs ml-2"></i>
+    <% end %>
+  </div>
+
+
+  <div class="d-flex flex-wrap justify-content-between">
+    <% @stores.take(3).each do |store| %>
+    <div class="d-flex flex-column mt-3">
+      <%= image_tag "tienda1.jpg", alt: "Tienda 1", class: "store-card-image-home" %>
+      <p class="store-name-home"><%= store.name %></p>
+      <p class="store-content-home">Alguna oferta que tenga la tienda</p>
+    </div>
+    <% end %>
+  </div>
+
+</div>
+<!-- ESTRUCTURA BOTON TERCIARIO CON ICONO
+
+<%= link_to "#", class: "d-flex align-items-center boton-terciario-icon" do %>
+        <i class="fas fa-chevron-right fa-xs ml-2"></i>
+        <p class="boton-title"><%= "Comprar" %></p>
+      <% end %>
+
+      -->
