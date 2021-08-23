@@ -1,0 +1,44 @@
+.banner-home {
+  background-image: asset-url('veggies.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 450px;
+  margin: 0 auto;
+}
+
+.banner-card {
+  background-size: cover;
+  background-position: center;
+  height: 340px;
+  border-radius: 5px;
+}
+
+.first-banner-card {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), asset-url('banner1.jpg');
+  width: 60%;
+
+}
+
+.title-first-banner {
+  font-size: 30px;
+  font-weight: 700;
+  color: #FFF;
+  text-align: center;
+  width: 80%;
+  line-height: 110%;
+}
+
+.subtitle-first-banner {
+  font-size: 15px;
+  font-weight: 400;
+  color: #FFF;
+  text-align: center;
+}
+
+.second-banner-card {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), asset-url('banner2.jpg');
+  width: 38%;
+}
+
