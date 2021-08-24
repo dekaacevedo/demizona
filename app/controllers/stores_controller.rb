@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
 
-  before_action :set_user, only: [:new, :create]
+  # before_action :set_user, only: [:new, :create]
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -36,7 +36,7 @@ class StoresController < ApplicationController
 
   def create
     @store = Store.new(store_params)
-    @store.user = @user # current_user
+    @store.user = current_user
 
     # Si la tienda se crea con éxito será redireccionado a su show,
     #   en caso contrario será redireccionado a las tiendas.
