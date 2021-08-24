@@ -1,4 +1,4 @@
-<%= simple_form_for([@store, @store.reviews.build]) do |f| %>
+<%= simple_form_for([@store, @review]) do |f| %>
   <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
   <%= f.input :comment %>
   <%= f.button :submit %>

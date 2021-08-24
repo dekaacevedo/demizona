@@ -10,25 +10,23 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.store = @store
-    @review.user_id = 68
-    # Change for current user en user_id and
+    @review.user_id = current_user
 
     if @review.save
-      redirect_to store_path(@store)
+      redirect_to store_path(@review.store)
     else
       flash[:alert] = "Something went wrong."
-      render 'new'
-    end      
+      render :new
+    end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @review.update(review_params)
       redirect_to store_path(@store)
     else
-      render 'edit'
+      render :edit
     end
   end
 

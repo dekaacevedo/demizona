@@ -1,5 +1,4 @@
 class StoresController < ApplicationController
-
   before_action :set_store, only: [:show]
 
   def show
@@ -10,9 +9,9 @@ class StoresController < ApplicationController
     end
   end
 
-private
+  private
 
-  def set_store
-    @store = Store.find(params[:id])
-  end
+    def set_store
+      @store = Store.find(params[:id])
+    end
 end
