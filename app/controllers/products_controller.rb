@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    products = policy_scope(Product)
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
+    # @products = Product.all
+
   end
 
   def show
