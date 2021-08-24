@@ -70,6 +70,8 @@ gem 'faker'
 # Gema para localizar tiendas en el mapa
 gem 'geocoder'
 
-# Gema para cargar nuestras imagenes
+# Gema para cargar nuestras imágenes
 gem 'cloudinary', '~> 1.16.0'
 
+# Gema para autorizaciones
+gem 'pundit'
