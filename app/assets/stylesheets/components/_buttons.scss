@@ -1,0 +1,75 @@
+.btn-primary {
+  color: #FFF;
+}
+
+
+.boton-primario {
+  color: #FFF;
+  background-color: #FF7B54;
+  padding: 7px 25px;
+  border-radius: 5px;
+  transition-property: transform 0.2s ease-in-out;
+  transition-duration: 200ms;
+  &:hover {
+    background-color: #ff5338;
+    color: #FFF;
+  }
+}
+
+.boton-secundario {
+  color: #FFF;
+  background-color: #FFB26B;
+  padding: 7px 25px;
+  border-radius: 5px;
+  transition-property: transform 0.2s ease-in-out;
+  transition-duration: 200ms;
+  &:hover {
+    background-color: #FF9430;
+    color: #FFF;
+  }
+}
+
+.boton-secundario-pequeño {
+  color: #FFF;
+  font-size: 0.9em;
+  background-color: #FFB26B;
+  padding: 5px 25px;
+  border-radius: 5px;
+  transition-property: transform 0.2s ease-in-out;
+  transition-duration: 200ms;
+  &:hover {
+    background-color: #FF9430;
+    color: #FFF;
+  }
+}
+
+.boton-terciario {
+  color: #000;
+  background-color: #F5F5F5;
+  border: 1px solid #E7E7E7;
+  padding: 7px 25px;
+  border-radius: 5px;
+  transition-property: transform 0.2s ease-in-out;
+  transition-duration: 200ms;
+  &:hover {
+    background-color: #E7E7E7;
+  }
+}
+
+.boton-terciario-icon {
+  color: #000;
+  font-size: 1em;
+  background-color: #F5F5F5;
+  border: 1px solid #E7E7E7;
+  padding: 7px 20px;
+  border-radius: 5px;
+  &:hover {
+    background-color: #E7E7E7;
+  }
+}
+
+.boton-title {
+  color: #000;
+  font-size: 1em;
+  padding: 0 0 0 15px;
+}

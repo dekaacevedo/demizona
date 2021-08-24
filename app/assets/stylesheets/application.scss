@@ -12,8 +12,23 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import 'mapbox-gl/dist/mapbox-gl';
 
 p {
   margin: 0;
   padding: 0;
 }
+
+
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+// .errors {
+//   color:  red;
+//   padding: 5px 0px;
+// }
+

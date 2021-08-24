@@ -6,6 +6,9 @@
     <h1>Ciudad: <%= @store.city %> </h1>
     <h1>Email: <%= @store.email %> </h1>
     <h1>Teléfono: <%= @store.phone%> </h1>
+    <%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>
+    <%= link_to  "Editar tienda", edit_store_path(@store), class: "btn btn-warning" %>
+    <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger", method: :delete %
     <div class="average-review-rating" data-score=<%= @average_review %>></div>
     <span>Based on <%= @store.reviews.count %> reviews</span>
   </div>
@@ -22,3 +25,10 @@
 
 
 <%= link_to "Volver", root_path %>
+
+<div id="map"
+    style="width: 100%; height: 400px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+

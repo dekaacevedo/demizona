@@ -63,6 +63,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Gema para crear log_in
 gem 'devise'
 
+# Gema para insertar datos falsos
 gem 'faker'
+
+# Gema para localizar tiendas en el mapa
+gem 'geocoder'
+
+# Gema para cargar nuestras imágenes
+gem 'cloudinary', '~> 1.16.0'
+
+# Gema para autorizaciones
+gem 'pundit'
