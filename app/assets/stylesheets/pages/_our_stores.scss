@@ -1,0 +1,41 @@
+.store-title {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+i {
+  color: #A5A5A5;
+
+}
+
+
+
+.link-home {
+  font-size: 12px;
+  font-weight: 400;
+  color: #A5A5A5;
+  &:hover {
+    color: #6E6E6E;
+  }
+}
+
+.store-card-image-home {
+  width: 300px;
+  height: 188px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.store-name-home {
+  margin: 10px 0 0 0;
+  text-transform: uppercase;
+  color: #979797;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.store-content-home {
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+}

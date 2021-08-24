@@ -1,0 +1,13 @@
+<div class="container mt-5 p-5">
+  <%= simple_form_for @store do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address%>
+    <%= f.input :city%>
+    <%= f.input :email%>
+    <%= f.input :phone%>
+<!--<%= f.input :photo, as: :file %> -->
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit, "Crea tu tienda", class: "btn btn-primary" %>
+    <%= link_to  "Volver", root_path, class: "btn btn-warning" %>
+  <% end %>
+</div>

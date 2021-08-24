@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
@@ -37,7 +37,7 @@
               <p class="dropdown-title pl-4 py-3">Mi cuenta</p>
             <%= link_to "Mis pedidos", "#", class: "dropdown-item" %>
             <%= link_to "Editar mi perfil", "#", class: "dropdown-item" %>
-            <%= link_to "Quiero ser vendedor", "#", class: "dropdown-item" %>
+            <%= link_to "Quiero ser vendedor", new_store_path(@store), class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
