@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_store
+  before_action :find_store, except: [:destroy]
   before_action :find_review, only: [:edit, :update, :destroy]
   # before_action :authenticate_user!, only: [:new, :edit]
 
@@ -9,9 +9,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.store_id = @store.id
-    @review.user_id = User.first.id
-    # Change for current user
+    @review.store = @store
+    @review.user_id = 68
+    # Change for current user en user_id and
 
     if @review.save
       redirect_to store_path(@store)
