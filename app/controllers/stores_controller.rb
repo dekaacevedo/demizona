@@ -1,5 +1,4 @@
 class StoresController < ApplicationController
-
   # before_action :set_user, only: [:new, :create]
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
@@ -20,6 +19,12 @@ class StoresController < ApplicationController
 
   def show
 
+    if @store.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @store.reviews.average(:rating).round(2)
+    end
+    
     @markers = [
       {
         id: @store.id,
@@ -63,11 +68,11 @@ class StoresController < ApplicationController
     redirect_to stores_path
   end
 
-private
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
+  private
+  
+  # def set_user
+   #  @user = User.find(params[:user_id])
+  # end
 
   def set_store
     @store = Store.find(params[:id])
@@ -76,4 +81,5 @@ private
   def store_params
     params.require(:store).permit(:name, :address, :city, :email, :phone, photos: [])
   end
+
 end
