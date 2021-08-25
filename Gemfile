@@ -77,3 +77,6 @@ gem 'cloudinary', '~> 1.16.0'
 
 # Gema para autorizaciones
 gem 'pundit'
+
+# Gema para search bar
+gem 'ransack'
