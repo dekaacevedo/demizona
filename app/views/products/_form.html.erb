@@ -1,0 +1,17 @@
+<div class="container mt-5 p-5">
+  <%= simple_form_for [@store, @product] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :sku %>
+    <%= f.input :price %>
+    <%= f.input :old_price %>
+    <%= f.input :discount %>
+    <%= f.input :unit_type %>
+    <%= f.input :quantity_stock %>
+    <%= f.input :featured %>
+    <%= f.input :active %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit, "Guardar", class: "btn btn-primary" %>
+    <%= link_to  "Volver", request.referrer, class: "btn btn-warning" %>
+  <% end %>
+</div>

@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  include ApplicationHelper
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   # agregar solo donde sea necesario (carrito)
   before_action :authenticate_user!
@@ -14,6 +17,14 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
+  def user_not_authorized
+    flash[:alert] = "No estás autorizado para realizar esta acción."
+    redirect_to(root_path)
+  end
+
   def resource_name
     :user
   end
