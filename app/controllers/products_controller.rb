@@ -1,12 +1,13 @@
 class ProductsController < ApplicationController
   
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_store, only: [:new, :create, :index]
 
   def index
-    @products = Product.all
   end
 
   def show
+    @store = Store.where(id:@product.store_id)
   end
 
   def new
@@ -14,15 +15,27 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = Product.new(products_params)
     @product.save
+  end
+
+  def create
+    @product = Product.new(products_params)
+    @product.store = @store
+
+    if @product.save
+      redirect_to store_path(@product.store)
+    else
+      flash[:alert] = "Something went wrong."
+      render :new
+    end
   end
 
   def edit    
   end
 
   def update
-    @product.update(product_params)
+    @product.update(products_params)
   end
 
   def destroy
@@ -36,6 +49,10 @@ private
   end
 
   def products_params
-    params.require(:params).permit(:name, :description, :price, :active, photos: [])
+    params.require(:product).permit(:name, :description, :sku, :price, :old_price, :active, :featured, :unit_type, :quantity_stock, :discount, :description, photos: [])
+  end
+
+  def find_store
+    @store = Store.find(params[:store_id])
   end
 end
