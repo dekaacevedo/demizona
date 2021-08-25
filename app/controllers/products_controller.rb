@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :find_store, only: [:new, :create, :index]
+  before_action :find_store, only: [:new, :create]
 
   def index
   end
@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
     @product.store = @store
 
     if @product.save
-      redirect_to store_path(@product.store)
+      redirect_to admin_store_path(@product.store)
     else
       flash[:alert] = "Something went wrong."
       render :new
@@ -39,7 +39,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
+    if @product.destroy
+      flash[:alert] = "Product deleted"
+    else
+      flash[:alert] = "Something went wrong"
+    end
   end
 
 private
