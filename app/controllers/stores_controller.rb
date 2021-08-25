@@ -1,6 +1,8 @@
 class StoresController < ApplicationController
+
   # before_action :set_user, only: [:new, :create]
   before_action :set_store, only: [:show, :edit, :update, :destroy]
+
 
   def index
     stores = policy_scope(Store)
@@ -69,6 +71,9 @@ class StoresController < ApplicationController
     redirect_to stores_path
   end
 
+  def admin
+    products = @store.products
+  end
 
   private
   

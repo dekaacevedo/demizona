@@ -1,0 +1,17 @@
+<div class="d-flex bd-highlight mt-3">
+  <div class="p-2 col-12 bd-highlight">
+  <div class="titulo">
+    <h1>Productos</h1>
+    <% @store.products.each do |product| %>
+      <%= link_to(product_path(product)) do%>
+        <h3> <%= product.name %> </h3>
+        <%= link_to "Update", edit_product_path(product.id) %> | 
+        <%= link_to "Delete #{product.name}",
+            product_path(product.id),
+            method: :delete,
+            data: { confirm: "Esta seguro?" } %>
+        <% end %>
+    <% end %>
+    <p><%= link_to "Add product", new_store_product_path(@store.id) %></p>
+  </div>
+</div>
