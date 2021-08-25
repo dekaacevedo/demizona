@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
 
   # before_action :set_user, only: [:new, :create]
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_store, only: [:show, :edit, :update, :destroy, :admin]
 
 
   def index
