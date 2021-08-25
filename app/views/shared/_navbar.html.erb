@@ -47,7 +47,7 @@
             <%= link_to "Editar mi perfil", "#", class: "dropdown-item" %>
             <%= link_to "Quiero ser vendedor", new_store_path(@store), class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
-            <%= link_to "Log out", destroy_user_session_path(current_user.id), method: :delete, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
 
         </li>
