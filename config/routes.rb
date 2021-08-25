@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:destroy, :edit]
   resources :products, only: %i[index show edit update destroy]
-  resources :carts, only: %i[show create edit update destroy]
+  resources :carts, only: %i[create edit update destroy]
+    get 'cart', to: 'carts#show'
   resources :cart_items, only: %i[create destroy update]
   resources :product_categories, only: %i[create destroy]
   resources :orders, only: %i[show index create update]

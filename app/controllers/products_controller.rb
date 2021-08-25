@@ -5,8 +5,7 @@ class ProductsController < ApplicationController
     products = policy_scope(Product)
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
-    # @products = Product.all
-
+    @cart_item = current_cart.cart_items.new
   end
 
   def show; end
@@ -20,7 +19,8 @@ class ProductsController < ApplicationController
     @product.save
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     @product.update(product_params)
