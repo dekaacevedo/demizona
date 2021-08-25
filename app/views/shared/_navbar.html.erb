@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
@@ -7,11 +7,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <%= search_form_for @q do |f| %>
-    <%= f.search_field :name_cont %>
-    <%= f.submit "Buscar"%>
-  <% end -%>
-
+  <% if @q.present? %>
+    <%= search_form_for @q do |f| %>
+      <%= f.search_field :name_cont %>
+      <%= f.submit "Buscar"%>
+    <% end -%>
+  <% end %>
 
 
   <!-- <form class="d-flex">
@@ -46,7 +47,7 @@
             <%= link_to "Editar mi perfil", "#", class: "dropdown-item" %>
             <%= link_to "Quiero ser vendedor", new_store_path(@store), class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path(current_user.id), method: :delete, class: "dropdown-item" %>
           </div>
 
         </li>

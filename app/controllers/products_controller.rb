@@ -4,8 +4,12 @@ class ProductsController < ApplicationController
 
   def index
     products = policy_scope(Product)
-    @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true)
+    if params[:q]
+      @q = Product.ransack(params[:q])
+      @products = @q.result(distinct: true)
+    else
+      @products = products
+    end
     @cart_item = current_cart.cart_items.new
   end
 

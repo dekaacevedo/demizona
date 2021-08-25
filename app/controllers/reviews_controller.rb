@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    authorize @review
   end
 
   def create
@@ -18,6 +19,8 @@ class ReviewsController < ApplicationController
       flash[:alert] = "Something went wrong."
       render :new
     end
+
+    authorize @review
   end
 
   def edit; end
