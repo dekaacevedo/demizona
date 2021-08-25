@@ -1,11 +1,12 @@
 class StoresController < ApplicationController
 
-  before_action :set_user, only: [:new, :create]
-  before_action :set_store, only: [:show, :edit, :update, :destroy, :admin]
+  # before_action :set_user, only: [:new, :create]
+  before_action :set_store, only: [:show, :edit, :update, :destroy]
+
 
   def index
-
-    @stores = Store.geocoded # trae stores´s que tengan latitude y longitude obtenidas con la gema
+    stores = policy_scope(Store)
+    @stores = stores.geocoded # trae stores´s que tengan latitude y longitude obtenidas con la gema
     @markers = @stores.geocoded.map do |store|
       {
         lat: store.latitude,
@@ -19,6 +20,12 @@ class StoresController < ApplicationController
 
   def show
 
+    if @store.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @store.reviews.average(:rating).round(2)
+    end
+    
     @markers = [
       {
         id: @store.id,
@@ -32,12 +39,14 @@ class StoresController < ApplicationController
 
   def new
     @store = Store.new
+    authorize @store
   end
 
   def create
     @store = Store.new(store_params)
-    @store.user = @user # current_user
+    @store.user = current_user
 
+    authorize @store
     # Si la tienda se crea con éxito será redireccionado a su show,
     #   en caso contrario será redireccionado a las tiendas.
     if @store.save
@@ -66,17 +75,19 @@ class StoresController < ApplicationController
     products = @store.products
   end
 
-private
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
+  private
+  
+  # def set_user
+   #  @user = User.find(params[:user_id])
+  # end
 
   def set_store
     @store = Store.find(params[:id])
+    authorize @store
   end
 
   def store_params
     params.require(:store).permit(:name, :address, :city, :email, :phone, photos: [])
   end
+
 end

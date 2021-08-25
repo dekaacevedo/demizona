@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
-  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :find_store, only: [:new, :create]
 
   def index
+    products = policy_scope(Product)
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
+    @cart_item = current_cart.cart_items.new
   end
 
   def show
@@ -26,7 +29,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit    
+  def edit
   end
 
   def update

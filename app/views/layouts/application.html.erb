@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
@@ -16,8 +17,10 @@
     <%= render 'shared/flashes' %>
 <!--     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
+  <div class="mt-5">
+    <%= yield %>
+  </div>
 
-      <%= yield %>
 
 
   </body>
