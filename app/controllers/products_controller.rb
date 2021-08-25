@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,8 +9,7 @@ class ProductsController < ApplicationController
 
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @product = Product.new
@@ -22,8 +20,7 @@ class ProductsController < ApplicationController
     @product.save
   end
 
-  def edit    
-  end
+  def edit; end
 
   def update
     @product.update(product_params)

@@ -22,10 +22,16 @@ puts 'Creating 10 fake User y Store...'
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number
   )
-
   store.user = user
   store.save!
-  puts 'Finished!'
 
+  5.times do
+    review = Review.new(rating: rand(1..5), comment: Faker::Company.catch_phrase, user_id: Store.last.user_id, store_id: rand(Store.first.id..Store.last.id))
+    review.save!
+  end
 end
 
+
+
+
+puts 'Finished!'
