@@ -3,8 +3,6 @@ require_relative "../models/store"
 
 class PagesController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:home]
-
   def home
     @stores = Store.all
     # @categories = Category.all

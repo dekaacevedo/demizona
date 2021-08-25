@@ -3,7 +3,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
+    products = policy_scope(Product)
     @products = Product.all
+    @cart_item = current_cart.cart_items.new
   end
 
   def show
@@ -18,7 +20,7 @@ class ProductsController < ApplicationController
     @product.save
   end
 
-  def edit    
+  def edit
   end
 
   def update
