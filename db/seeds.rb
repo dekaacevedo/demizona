@@ -10,22 +10,56 @@ require 'faker'
 
 User.destroy_all
 Store.destroy_all
+Product.destroy_all
 
-puts 'Creating 10 fake User y Store...'
+puts 'Creating 2 fake Users, 1 fake Store and 10 fake Products each'
 
-10.times do
-  user = User.create(name: Faker::Name.name, email: Faker::Internet.email, password: Faker::IDNumber.valid)
-  store = Store.new(
-    name: Faker::Restaurant.name ,
+user1 = User.create(name: "Andrea", last_name: "Acevedo", email: "andrea@correo.cl", password: "123456", seller: true)
+store1 = Store.create(name: "Tiendita de Andrea",
     address: Faker::Address.street_address,
     city: Faker::Address.city,
     email: Faker::Internet.email,
-    phone: Faker::PhoneNumber.phone_number
+    phone: Faker::PhoneNumber.phone_number,
+    user: user1
   )
 
-  store.user = user
-  store.save!
+user2 = User.create(name: "Pablo", last_name: "Martinez", email: "pablo@correo.cl", password: "123456", seller: true)
+store2 = Store.create(name: "Tiendita de Pablo",
+    address: Faker::Address.street_address,
+    city: Faker::Address.city,
+    email: Faker::Internet.email,
+    phone: Faker::PhoneNumber.phone_number,
+    user: user2
+  )
+
+fruit_category = Category.create(name: "Frutas")
+vegetables_category = Category.create(name: "Vegetales")
+
+10.times do
+  fruits = Product.create(
+    name: Faker::Food.fruits,
+    old_price: Faker::Number.number(digits: 4),
+    description: "Esto es una descripción de prueba",
+    sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4),
+    store: store1
+  )
+
+  product_category = ProductCategory.create(category: fruit_category, product: fruits)
+
   puts 'Finished!'
 
 end
 
+10.times do
+  vegetables = Product.create(
+    name: Faker::Food.vegetables,
+    old_price: Faker::Number.number(digits: 4),
+    description: "Esto es una descripción de prueba",
+    sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4),
+    store: store2
+  )
+
+  product_category = ProductCategory.create(category: vegetables_category, product: vegetables)
+
+  puts 'Finished!'
+end
