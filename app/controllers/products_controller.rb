@@ -1,15 +1,14 @@
 class ProductsController < ApplicationController
-  
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     products = policy_scope(Product)
-    @products = Product.all
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
     @cart_item = current_cart.cart_items.new
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @product = Product.new

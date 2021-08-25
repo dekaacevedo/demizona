@@ -1,6 +1,19 @@
 class StorePolicy < ApplicationPolicy
-  def index?
-    return true
+
+  def show?
+    true
+  end
+
+  def create?
+    true
+  end
+
+  def destroy?
+    user_owner
+  end
+
+  def update?
+    user_owner
   end
 
   class Scope < Scope
@@ -8,4 +21,11 @@ class StorePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def user_owner
+    user == record.user
+  end
+
 end
