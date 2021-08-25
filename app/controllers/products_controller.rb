@@ -35,13 +35,21 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update(products_params)
+    if @product.update(products_params)
+      redirect_to admin_store_path(@product.store)
+      flash[:alert] = "Product updated succesfully"
+    else
+      flash[:alert] = "Something went wrong"
+      render :edit
+    end
   end
 
   def destroy
     if @product.destroy
+      redirect_to admin_store_path(@product.store)
       flash[:alert] = "Product deleted"
     else
+      redirect_to admin_store_path(@product.store)
       flash[:alert] = "Something went wrong"
     end
   end
