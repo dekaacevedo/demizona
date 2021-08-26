@@ -51,9 +51,10 @@ class StoresController < ApplicationController
     # Si la tienda se crea con éxito será redireccionado a su show,
     #   en caso contrario será redireccionado a las tiendas.
     if @store.save
+      @store.user.update!(seller: true)
       redirect_to store_path(@store), notice: "Su tienda fue creada con éxito."
     else
-      redirect_to store_path
+      render :new
     end
   end
 
@@ -81,6 +82,7 @@ private
   #def set_user
     # @user = User.find(params[:user_id])
   # end
+
 
   def set_store
     @store = Store.find(params[:id])

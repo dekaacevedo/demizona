@@ -52,14 +52,14 @@
 
         </li>
         <li class="nav-item d-flex mx-4">
-          <%= link_to "#" do %>
+          <%= link_to "/cart" do %>
               <div class="d-flex align-items-center">
                 <div class="mr-2">
                   <i class="fas fa-shopping-cart fa-lg"></i>
                 </div>
                 <div class="d-flex flex-column over-title">
                   <p>Tu carrito</p>
-                  <p class="price">$25.356</p>
+                  <p class="price"> <%= "$#{current_cart.total_price}" %></p>
                 </div>
               </div>
             <% end %>
