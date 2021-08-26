@@ -80,3 +80,6 @@ gem 'pundit'
 
 # Gema para search bar
 gem 'ransack'
+
+# Gema para mostrar errores con turbolink (remote: true)
+gem 'turbolinks_render'

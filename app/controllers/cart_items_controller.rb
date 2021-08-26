@@ -7,6 +7,10 @@ class CartItemsController < ApplicationController
     @cart.save
     session[:cart_id] = @cart.id
     authorize @cart_items
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.js
+    end
   end
 
   def update

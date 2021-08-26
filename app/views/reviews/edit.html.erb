@@ -1,7 +1,7 @@
 <h1>Edit Review</h1>
 
 <%= simple_form_for([@store, @review]) do |f| %>
-  <%= f.input :rating %>
+  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
   <%= f.input :comment %>
   <%= f.button :submit %>
 <% end %>
