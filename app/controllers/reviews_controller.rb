@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_store, except: [:destroy]
+  before_action :find_store
   before_action :find_review, only: [:edit, :update, :destroy]
   # before_action :authenticate_user!, only: [:new, :edit]
 
@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.store = @store
-    @review.user_id = current_user
+    @review.user = current_user
 
     if @review.save
       redirect_to store_path(@review.store)
@@ -19,11 +19,12 @@ class ReviewsController < ApplicationController
       flash[:alert] = "Something went wrong."
       render :new
     end
-
     authorize @review
   end
 
-  def edit; end
+  def edit
+    authorize @review
+  end
 
   def update
     if @review.update(review_params)
@@ -31,11 +32,17 @@ class ReviewsController < ApplicationController
     else
       render :edit
     end
+    authorize @review
   end
 
   def destroy
     @review.destroy
+<<<<<<< HEAD
     render :action => :same_as_the_view
+=======
+    redirect_to store_path(@store) # SOLUCIONAR = Queremos redireccionar a la tienda
+    authorize @review
+>>>>>>> 48e4ae6085738feec25146f298388d2c61989100
   end
 
   private

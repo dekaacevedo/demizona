@@ -16,6 +16,10 @@ class StorePolicy < ApplicationPolicy
     user_owner
   end
 
+  def admin?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.all
