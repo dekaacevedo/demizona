@@ -1,3 +1,4 @@
+require_relative "../models/cart"
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
