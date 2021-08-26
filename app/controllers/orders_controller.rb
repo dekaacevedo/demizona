@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-
-  #before_action :orders_params, only: [:show,:create]
   before_action :set_order, only: [:show]
 
   def index
@@ -23,15 +21,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
-    #status es order
-  end
-
   private
-
-  #def orders_params
-   # params.require(:order).permit(:status)
-  #end
 
   def set_order
     @order = Order.find(params[:id])
