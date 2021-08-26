@@ -19,18 +19,20 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
     @product = Product.new(products_params)
     @product.store = @store
-
+    
     if @product.save
       redirect_to admin_store_path(@product.store)
     else
       flash[:alert] = "Something went wrong."
       render :new
     end
+    authorize @product
   end
 
   def edit
@@ -60,6 +62,7 @@ private
 
   def set_product
     @product = Product.find(params[:id])
+    authorize @product
   end
 
   def products_params

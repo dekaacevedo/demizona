@@ -3,13 +3,12 @@
   <p><%= review.rating %></p>
   <p><%= review.comment %></p>
 
-  <% if review.user_id == 68 %>
+ <% if user_signed_in? %>
   <!-- add if user_signed_in? -->
-    <% if review.user_id == 68 %>
+  <% if @store.user_id == current_user.id %>
     <!-- add current_user.id -->
       <%= link_to "Edit", edit_store_review_path(review.store, review) %>
-      <%= link_to "Delete", store_path(@store), method: :delete, data: { confirm: "Are you sure?" } %>
-    <% end %>
+      <%= link_to "Delete", store_review_path(review.store, review), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
   <% end %>
 </div>
-

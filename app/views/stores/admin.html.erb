@@ -9,7 +9,7 @@
         <%= link_to "Delete #{product.name}",
             product_path(product.id),
             method: :delete,
-            data: { confirm: "Esta seguro?" } %>
+            data: { confirm: "Estás seguro?" } %>
         <% end %>
     <% end %>
     <p><%= link_to "Add product", new_store_product_path(@store.id) %></p>
