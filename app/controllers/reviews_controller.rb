@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to store_path(@store)
+    render :action => :same_as_the_view
   end
 
   private

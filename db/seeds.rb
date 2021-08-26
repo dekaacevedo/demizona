@@ -30,7 +30,12 @@ store2 = Store.create(name: "Tiendita de Pablo",
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number,
     user: user2
-  )
+    )
+    5.times do
+      review = Review.new(rating: rand(1..5), comment: Faker::Company.catch_phrase, user_id: Store.last.user_id, store_id: rand(Store.first.id..Store.last.id))
+      review.save!
+    end
+  
 
 fruit_category = Category.create(name: "Frutas")
 vegetables_category = Category.create(name: "Vegetales")
