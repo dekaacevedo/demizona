@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_store,  except: %i[destroy]
+  before_action :find_store
   before_action :find_review, only: [:edit, :update, :destroy]
   # before_action :authenticate_user!, only: [:new, :edit]
 
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to stores_path # SOLUCIONAR = Queremos redireccionar a la tienda
+    redirect_to store_path(@store) # SOLUCIONAR = Queremos redireccionar a la tienda
     authorize @review
   end
 
