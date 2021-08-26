@@ -20,7 +20,7 @@ require("channels");
 
 // External imports
 import "bootstrap";
-global.$ = jQuery;
+
 import { initRating } from "./plugins/init_star_rating";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

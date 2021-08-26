@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
 
   # before_action :set_user, only: [:new, :create]
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_store, only: [:show, :edit, :update, :destroy, :admin]
 
   def index
 
@@ -70,6 +70,10 @@ class StoresController < ApplicationController
     @store.destroy
     # LA RUTA ESTABLECIDA ES PROVISORIA,SE RECOMIENDA redirect_to user_path(@user).
     redirect_to stores_path
+  end
+
+  def admin
+    products = @store.products
   end
 
 private
