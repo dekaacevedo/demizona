@@ -53,7 +53,7 @@ class StoresController < ApplicationController
     if @store.save
       redirect_to store_path(@store), notice: "Su tienda fue creada con éxito."
     else
-      redirect_to store_path
+      render :new
     end
   end
 
