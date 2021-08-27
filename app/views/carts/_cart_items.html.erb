@@ -11,3 +11,6 @@
 <% end %>
 
 <h3>Your current order has a total of: <%= current_cart.total_price %></h3>
+<% if @cart_items.size > 0 %>
+  <%= link_to  "Pagar", orders_path, method: :post %>
+<% end -%>
