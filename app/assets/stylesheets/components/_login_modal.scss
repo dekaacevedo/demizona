@@ -1,0 +1,90 @@
+.login-img {
+  height: 550px;
+  width: 350px;
+  object-fit: cover;
+}
+
+.login-formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2em;
+  align-content: flex-start;
+  margin-top: 1em;
+}
+
+.login-close {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.login-modal {
+  position: relative;
+  display: flex;
+  pointer-events: auto;
+  background-color: #FFF;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  outline: 0;
+}
+
+.border-bottom {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.inputs {
+  padding: 0.3em 0.4em;
+  font-weight: 400;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8em;
+  background-color: #F0F0F0;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  transition: none;
+}
+.login-inputs{
+  width: 405px;
+}
+.signup-inputs {
+  width: 200px;
+}
+
+.email-inputs {
+  width: 405px;
+}
+
+.login-title {
+  font-size: 1em;
+  padding-bottom: 1em;
+}
+
+.login-margin-bottom {
+  margin-bottom: 9.65em;
+}
+
+.signup-margin-bottom {
+  margin-bottom: 1em;
+}
+
+.boton-login {
+  width: 405px;
+  height: 40px;
+}
+
+.modal-title {
+  color: #6c757d;
+}
+
+.modal-title.active {
+  color: #000;
+  font-weight: 700;
+}
+
