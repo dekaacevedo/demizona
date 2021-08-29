@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: relative;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -19,9 +20,13 @@ p {
 .user-name,
 .price,
 .dropdown-title {
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 0.85em;
+  font-weight: 700;
   color: #212121;
+}
+
+.sign-up {
+  color: #FF7B54;
 }
 
 
@@ -37,6 +42,46 @@ ul li i{
   text-decoration: none;
 }
 
-.navbar-right-container {
-  // width: 33%;
+.search {
+  position: absolute;
+  left: 40%;
+  top: 25%;
+
+}
+.search-bar {
+  width: 360px;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.7em;
+  background-color: #F0F0F0;
+  border-radius: 5px 0 0 5px;
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+
+.search-button {
+  padding: 6px 15px;
+  color: #FFF;
+  background-color: #FF7B54;
+  border-radius: 0 5px 5px 0;
+  font-size: 0.7em;
+  &:hover {
+    background-color: #ff5338;
+    color: #FFF;
+  }
+}
+
+.logo {
+  height: 100%;
+  width: 20px;
+  transform: rotate(325deg)
+}
+
+.logo-title{
+  font-size: 1em;
+  font-weight: 700;
+  color: #212121;
+  &:hover {
+    color:#212121;
+  }
 }

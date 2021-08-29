@@ -1,9 +1,9 @@
-<div class="banner-home d-flex align-items-center mt-5">
+<div class="banner-home d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
     <div class="banner-card first-banner-card d-flex flex-column align-items-center justify-content-center">
       <p class="title-first-banner">Encuentra negocios y productos locales con responsabilidad social</p>
       <p class="subtitle-first-banner mt-3 mb-4">Orgánicos, frescos, veganos y muchos más</p>
-      <%= link_to "Comprar", "#", class: "btn boton-primario "%>
+      <%= link_to "Comprar", products_path, class: "btn boton-primario "%>
     </div>
     <div class="banner-card second-banner-card">
     </div>
@@ -17,10 +17,6 @@
   <div class="my-5">
     <div class="d-flex align-items-center">
       <h2 class="mr-3 store-title">Busca por categoria</h2>
-      <%= link_to "#", class: "d-flex align-items-center" do %>
-        <p class="link-home"><%= "Todas las categorias" %></p>
-        <i class="fas fa-chevron-right fa-xs ml-2"></i>
-      <% end %>
     </div>
 
     <div class="d-flex align-items-center justify-content-between mt-3">
@@ -28,45 +24,57 @@
         <div class="category-card d-flex flex-column align-items-center justify-content-center">
           <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
           <!-- Llamar esto con category.name -->
-          <p class="category-card-title">Frutas y Verduras</p>
+          <p class="category-card-title">Frutas</p>
         </div>
       <% end %>
 
+      <%= link_to "#" do %>
       <div class="category-card d-flex flex-column align-items-center justify-content-center">
         <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
         <!-- Llamar esto con category.name -->
-        <p class="category-card-title">Frutas y Verduras</p>
+        <p class="category-card-title">Verduras</p>
       </div>
+      <% end %>
 
+      <%= link_to "#" do %>
       <div class="category-card d-flex flex-column align-items-center justify-content-center">
         <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
         <!-- Llamar esto con category.name -->
-        <p class="category-card-title">Frutas y Verduras</p>
+        <p class="category-card-title">Infusiones</p>
       </div>
+      <% end %>
 
+      <%= link_to "#" do %>
       <div class="category-card d-flex flex-column align-items-center justify-content-center">
         <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
         <!-- Llamar esto con category.name -->
-        <p class="category-card-title">Frutas y Verduras</p>
+        <p class="category-card-title">Productos de Mar</p>
       </div>
+      <% end %>
 
+      <%= link_to "#" do %>
       <div class="category-card d-flex flex-column align-items-center justify-content-center">
         <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
         <!-- Llamar esto con category.name -->
-        <p class="category-card-title">Frutas y Verduras</p>
+        <p class="category-card-title">Congelados</p>
       </div>
+      <% end %>
 
+      <%= link_to "#" do %>
       <div class="category-card d-flex flex-column align-items-center justify-content-center">
         <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
         <!-- Llamar esto con category.name -->
-        <p class="category-card-title">Frutas y Verduras</p>
+        <p class="category-card-title">Productos Orgánicos</p>
       </div>
+      <% end %>
 
+      <%= link_to "#" do %>
       <div class="category-card d-flex flex-column align-items-center justify-content-center">
         <%= image_tag "frutas-y-verduras.png", alt: "Categoria Frutas y Verduras", class: "category-card-image mb-2" %>
         <!-- Llamar esto con category.name -->
-        <p class="category-card-title">Frutas y Verduras</p>
+        <p class="category-card-title">Bebidas Alcohólicas</p>
       </div>
+      <% end %>
 
     </div>
 

@@ -1,78 +1,88 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <% if @q.present? %>
-    <%= search_form_for @q do |f| %>
-      <%= f.search_field :name_cont %>
-      <%= f.submit "Buscar"%>
-    <% end -%>
-  <% end %>
-
-
-  <!-- <form class="d-flex">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form> -->
-
-  <div class="collapse navbar-collapse d-flex navbar-right-container" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto d-flex align-items-center">
-      <% if user_signed_in? %>
-        <li class="nav-item active mx-4">
-          <%= link_to "#", class: "d-flex align-items-center" do %>
-            <i class="fas fa-map-marker-alt"></i>
-            <p class="user-name ml-1"><%= "Los Ángeles" %></p>
-          <% end %>
-        </li>
-        <li class="nav-item active d-flex mx-4 dropdown no-decoration">
-            <%= link_to "#", class: "no-decoration", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
-              <div class="d-flex align-items-center">
-                <div class="mr-2">
-                  <i class="fas fa-user fa-lg"></i>
-                </div>
-                <div class="d-flex flex-column over-title">
-                  <p>Hola!</p>
-                  <p class="user-name"><%= current_user.name %></p>
-                </div>
-              </div>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <p class="dropdown-title pl-4 py-3">Mi cuenta</p>
-            <%= link_to "Mis pedidos", "#", class: "dropdown-item" %>
-            <%= link_to "Editar mi perfil", "#", class: "dropdown-item" %>
-            <%= link_to "Quiero ser vendedor", new_store_path(@store), class: "dropdown-item" %>
-            <div class="dropdown-divider"></div>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-
-        </li>
-        <li class="nav-item d-flex mx-4">
-          <%= link_to "/cart" do %>
-              <div class="d-flex align-items-center">
-                <div class="mr-2">
-                  <i class="fas fa-shopping-cart fa-lg"></i>
-                </div>
-                <div class="d-flex flex-column over-title">
-                  <p>Tu carrito</p>
-                  <p class="price"> <%= "$#{current_cart.total_price}" %></p>
-                </div>
-              </div>
-            <% end %>
-        </li>
-
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <%= link_to 'Click Here', "", data: {toggle: "modal", target: ".bd-example-modal-lg"} %>
-        </li>
+<div class="fixed-top">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+      <%= link_to root_path, class: "d-flex align-items-center" do %>
+      <%= image_tag "Zana.png" , class: "logo mx-2" %>
+      <p class="logo-title">Demizona</p>
       <% end %>
-    </ul>
-  </div>
-</div>
 
-<%= render 'shared/login_form' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+      <% if @q.present? %>
+
+          <%= search_form_for @q do |f| %>
+            <div class="d-flex search">
+              <%= f.search_field :name_cont, placeholder: "Estoy buscando...", class: " search-bar" %>
+              <%= f.submit "Buscar", class: "btn search-button"%>
+            </div>
+          <% end -%>
+      <% end %>
+
+
+
+
+    <!-- <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form> -->
+
+    <div class="collapse navbar-collapse d-flex navbar-right-container" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto d-flex align-items-center">
+        <% if user_signed_in? %>
+          <li class="nav-item active mx-4">
+            <%= link_to "#", class: "d-flex align-items-center" do %>
+              <i class="fas fa-map-marker-alt"></i>
+              <p class="user-name ml-1"><%= "Los Ángeles" %></p>
+            <% end %>
+          </li>
+          <li class="nav-item active d-flex mx-4 dropdown no-decoration">
+              <%= link_to "#", class: "no-decoration", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
+                <div class="d-flex align-items-center">
+                  <div class="mr-2">
+                    <i class="fas fa-user fa-lg"></i>
+                  </div>
+                  <div class="d-flex flex-column over-title">
+                    <p>Hola!</p>
+                    <p class="user-name"><%= current_user.name %></p>
+                  </div>
+                </div>
+              <% end %>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <p class="dropdown-title pl-4 py-3">Mi cuenta</p>
+              <%= link_to "Mis pedidos", "#", class: "dropdown-item" %>
+              <%= link_to "Editar mi perfil", "#", class: "dropdown-item" %>
+              <%= link_to "Quiero ser vendedor", new_store_path(@store), class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+
+          </li>
+          <li class="nav-item d-flex mx-4">
+            <%= link_to "/cart" do %>
+                <div class="d-flex align-items-center">
+                  <div class="mr-2">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                  </div>
+                  <div class="d-flex flex-column over-title">
+                    <p>Tu carrito</p>
+                    <div id="cart">
+                      <%= render 'carts/cart' %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+          </li>
+
+        <% else %>
+          <li class="nav-item d-flex align-items-center">
+            <%= link_to 'Inicia Sesión o Regístrate', "", data: {toggle: "modal", target: ".bd-example-modal-lg"}, class: "mx-3 user-name" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>
+  <%= render 'shared/login_form' %>
