@@ -11,22 +11,12 @@ const fitMapToMarkers = (map, markers) => {
 
 const addMarkersToMapIndex = (map, markers) => {
   markers.forEach((marker) => {
-
-    const popup = new mapboxgl.Popup().setHTML(marker.info_index);
-
-    //Create a HTML element for your custom marker
-    const element = document.createElement('div');
-    /*element.className = 'marker';
-   element.style.backgroundImage = `url('${marker.image_url}')`;
-   element.style.width = '25px';
-   element.style.height = '25px';*/
-
     // crea el popup con información html desde info_index
-    new mapboxgl.Marker(element)
+    const popup = new mapboxgl.Popup().setHTML(marker.info_index);
+    new mapboxgl.Marker()
       .setLngLat([marker.lng, marker.lat])
       .setPopup(popup) // add this
       .addTo(map);
-
   })
 }
 
