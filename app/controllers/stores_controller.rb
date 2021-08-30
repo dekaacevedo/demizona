@@ -5,7 +5,7 @@ class StoresController < ApplicationController
 
   def index
     stores = policy_scope(Store)
-    @stores = Store.geocoded # trae stores´s que tengan latitude y longitude obtenidas con la gema
+    @stores = stores.geocoded # trae stores´s que tengan latitude y longitude obtenidas con la gema
     @markers = @stores.geocoded.map do |store|
       {
         lat: store.latitude,
