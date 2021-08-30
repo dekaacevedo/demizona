@@ -1,6 +1,6 @@
 <div class="fixed-top">
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-      <%= link_to root_path, class: "d-flex align-items-center" do %>
+  <div class="navbar navbar-expand-md navbar-light navbar-lewagon">
+      <%= link_to root_path, class: "d-flex align-items-center flex-fill" do %>
         <%= image_tag "Zana.png" , class: "logo mx-2" %>
         <p class="logo-title">Demizona</p>
       <% end %>
@@ -9,16 +9,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+      <div class="search-center">
+        <% if @q.present? %>
 
-      <% if @q.present? %>
-
-          <%= search_form_for @q do |f| %>
-            <div class="d-flex search">
-              <%= f.search_field :name_cont, placeholder: "Estoy buscando...", class: " search-bar" %>
-              <%= f.submit "Buscar", class: "btn search-button"%>
-            </div>
-          <% end -%>
-      <% end %>
+            <%= search_form_for @q do |f| %>
+              <div class="d-flex search">
+                <%= f.search_field :name_cont, placeholder: "Estoy buscando...", class: " search-bar" %>
+                <%= f.submit "Buscar", class: "btn search-button"%>
+              </div>
+            <% end -%>
+        <% end %>
+      </div>
 
 
 
@@ -28,8 +29,8 @@
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form> -->
 
-    <div class="collapse navbar-collapse d-flex navbar-right-container" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto d-flex align-items-center">
+    <div class="collapse navbar-collapse justify-content-sm-between" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto align-items-center">
         <% if user_signed_in? %>
           <li class="nav-item active mx-4">
             <%= link_to "#", class: "d-flex align-items-center" do %>
