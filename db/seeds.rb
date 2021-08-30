@@ -19,32 +19,32 @@ users[6] = User.create(name: "Juana", last_name: "Soto", email: "juana@correo.cl
 puts 'Creating fake stores'
 
 stores[1] = Store.create(name: "Tiendita de Andrea",
-    address: "Libertad 878, Chillán",
-    city: Faker::Address.city,
+    address: "Libertad 878",
+    city: "Chillán",
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number,
     user: users[1]
   )
 
 stores[2] = Store.create(name: "Tiendita de Pablo",
-    address: "Rosas 530, Chillán",
-    city: Faker::Address.city,
+    address: "Rosas 530",
+    city: "Chillán",
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number,
     user: users[2]
   )
 
 stores[3] = Store.create(name: "Tiendita de Marco",
-  address: "Constitución 444, Chillán",
-  city: Faker::Address.city,
+  address: "Constitución 444",
+  city: "Chillán",
   email: Faker::Internet.email,
   phone: Faker::PhoneNumber.phone_number,
   user: users[3]
   )
 
 stores[4] = Store.create(name: "Tiendita de Jorge",
-    address: "Bulnes 739, Chillán",
-    city: Faker::Address.city,
+    address: "Bulnes 739",
+    city: "Chillán",
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number,
     user: users[4]
