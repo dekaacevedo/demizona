@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="review-rating" data-score="<%= review.rating %>"></div>
+  <input id="input-1" name="input-1" class="rating rating-loading" value=<%= review.rating %> data-min="0" data-max="5" data-step="1" data-readonly="true" data-size="sl">
   <p><%= review.rating %></p>
   <p><%= review.comment %></p>
 
  <% if user_signed_in? %>
   <!-- add if user_signed_in? -->
-  <% if @store.user_id == current_user.id %>
+  <% if current_user.id? %>
     <!-- add current_user.id -->
       <%= link_to "Edit", edit_store_review_path(review.store, review) %>
       <%= link_to "Delete", store_review_path(review.store, review), method: :delete, data: { confirm: "Are you sure?" } %>
