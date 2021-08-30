@@ -49,7 +49,10 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/pablo120/cksy627uq02gi17o2gadvnhif'
+      // en caso de fallar el diseño establecido,
+      // utilizar el siguiente
+      //'mapbox://styles/mapbox/streets-v10'
     });
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
