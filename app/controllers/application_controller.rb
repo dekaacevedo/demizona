@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
 
+  before_action :set_q
   before_action :configure_permitted_parameters, if: :devise_controller?
   # agregar solo donde sea necesario (carrito)
   before_action :authenticate_user!
@@ -50,5 +51,9 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     # raise
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def set_q
+    @q = Product.ransack(params[:q])
   end
 end
