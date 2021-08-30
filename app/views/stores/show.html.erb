@@ -2,7 +2,6 @@
 
   <div>
     <h1>Nombre de tienda: <%= @store.name %> </h1>
-    <h2>Average rating</h2>
     <h1>Dirección: <%= @store.address %> </h1>
     <h1>Ciudad: <%= @store.city %> </h1>
     <h1>Email: <%= @store.email %> </h1>
@@ -15,6 +14,7 @@
       <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger", method: :delete %>
     <% end %>
     <div class="average-review-rating" data-score=<%= @average_review %>></div>
+    <h2>Average rating</h2>
     <span>Based on <%= @store.reviews.count %> reviews</span>
   </div>
 

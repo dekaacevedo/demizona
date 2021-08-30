@@ -1,4 +1,4 @@
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from '!mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
@@ -11,22 +11,12 @@ const fitMapToMarkers = (map, markers) => {
 
 const addMarkersToMapIndex = (map, markers) => {
   markers.forEach((marker) => {
-
-    const popup = new mapboxgl.Popup().setHTML(marker.info_index);
-
-    //Create a HTML element for your custom marker
-    const element = document.createElement('div');
-    /*element.className = 'marker';
-   element.style.backgroundImage = `url('${marker.image_url}')`;
-   element.style.width = '25px';
-   element.style.height = '25px';*/
-
     // crea el popup con información html desde info_index
-    new mapboxgl.Marker(element)
+    const popup = new mapboxgl.Popup().setHTML(marker.info_index);
+    new mapboxgl.Marker()
       .setLngLat([marker.lng, marker.lat])
       .setPopup(popup) // add this
       .addTo(map);
-
   })
 }
 
@@ -49,7 +39,10 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/pablo120/cksmazi3220ej17lkda2igb9f'
+      style: 'mapbox://styles/pablo120/cksy627uq02gi17o2gadvnhif'
+      // en caso de fallar el diseño establecido,
+      // utilizar el siguiente
+      //'mapbox://styles/mapbox/streets-v10'
     });
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
