@@ -29,3 +29,30 @@
 
 
 }
+
+.index-stores{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  .store{
+    align-items: center;
+    background-color: cornsilk;
+    width: 100%;
+    height: 200px;
+
+
+  }
+}
+
+/*MEDIA-QUERY*/
+@media(max-width: 992px) {
+  .index-stores {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .index-stores {
+    grid-template-columns: 1fr;
+  }
+}
