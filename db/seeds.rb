@@ -31,18 +31,12 @@ stores[2] = Store.create(name: "Tiendita de Pablo",
     city: Faker::Address.city,
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number,
-<<<<<<< HEAD
-    user: user2
+    user: users[2]
     )
     5.times do
       review = Review.new(rating: rand(1..5), comment: Faker::Company.catch_phrase, user_id: Store.last.user_id, store_id: rand(Store.first.id..Store.last.id))
       review.save!
     end
-  
-=======
-    user: users[2]
-  )
->>>>>>> 07d5b4cc4e39776c6574b030e1e577297e07291e
 
 stores[3] = Store.create(name: "Tiendita de Marco",
   address: "Constitución 444, Chillán",
