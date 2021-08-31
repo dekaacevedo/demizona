@@ -31,18 +31,8 @@ stores[2] = Store.create(name: "Tiendita de Pablo",
     city: "Chillán",
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number,
-<<<<<<< HEAD
-    user: user2
-    )
-    5.times do
-      review = Review.new(rating: rand(1..5), comment: Faker::Company.catch_phrase, user_id: Store.last.user_id, store_id: rand(Store.first.id..Store.last.id))
-      review.save!
-    end
-  
-=======
     user: users[2]
   )
->>>>>>> 07d5b4cc4e39776c6574b030e1e577297e07291e
 
 stores[3] = Store.create(name: "Tiendita de Marco",
   address: "Constitución 444",
@@ -94,4 +84,20 @@ puts "Populating store #{i} products databases with fruits and vegetables"
 
 end
 
+
+puts "Generation of Review"
+
+i = 1
+while i <= 20
+
+  5.times do
+    review = Review.new(rating: rand(1..5), comment: Faker::Company.catch_phrase, user_id: users[rand(1..6)].id, store_id: stores[rand(1..4)].id)
+    review.save!
+  end
+
+  i += 1
+
+end
+
+  
 puts 'Finished'

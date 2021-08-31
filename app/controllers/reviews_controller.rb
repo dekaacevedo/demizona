@@ -37,8 +37,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    render :action => :same_as_the_view
-    # redirect_to store_path(@store) # SOLUCIONAR = Queremos redireccionar a la tienda
+    redirect_to store_path(@store) # SOLUCIONAR = Queremos redireccionar a la tienda
     authorize @review
   end
 
