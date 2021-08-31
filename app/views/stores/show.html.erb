@@ -2,10 +2,7 @@
   <div class="row m-5">
 
     <div class="col-md-8">
-      <div class="card-store d-flex">
-        <div class="image-store">
-          <%= cl_image_path("tienda 4.jpg") %>
-        </div>
+      <div class="card-store d-flex; weight: vw100;">
         <div class="content-store">
           <h1>Nombre de tienda: <%= @store.name %> </h1>
           <div class="average-review-rating mt-2" data-score=<%= @average_review %>></div>
@@ -17,15 +14,20 @@
           <h3>Teléfono: <%= @store.phone%> </h3>
           <%= link_to  "Contactar al Productor", store_path(@store) , class: "btn btn-primary"%>
         </div>
-
       </div>
-      <div class="products-store mt-5 d-grid">
+
+      <div class="products-store mt-5 ">
         <% @store.products.each do |product| %>
           <%= link_to(product_path(product)) do %>
             <div class="product-card">
-              <h5><strong><%= product.name %></strong></h5>
-              <p><%= product.description %></p>
-              <span>$<%= product.old_price %></span>
+              <div class="image-card">
+                  <h1>Foto del producto</h1>
+              </div>
+              <div class="card-content">
+                <h5><strong><%= product.name %></strong></h5>
+                <p><%= product.description %></p>
+                <span>$<%= product.old_price %></span>
+              </div>
             </div>
           <% end %>
         <% end %>
