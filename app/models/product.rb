@@ -8,7 +8,7 @@ class Product < ApplicationRecord
 
   validates :name, presence: true, length: { in: 2..30 }
   validates :description, length: { maximum: 1000 }
-  validates :old_price, presence: true
+  validates :price, presence: true
   validates :sku, presence: true, uniqueness: true
 
 end
