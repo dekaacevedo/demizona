@@ -84,4 +84,20 @@ puts "Populating store #{i} products databases with fruits and vegetables"
 
 end
 
+
+puts "Generation of Review"
+
+i = 1
+while i <= 20
+
+  5.times do
+    review = Review.new(rating: rand(1..5), comment: Faker::Company.catch_phrase, user_id: users[rand(1..6)].id, store_id: stores[rand(1..4)].id)
+    review.save!
+  end
+
+  i += 1
+
+end
+
+  
 puts 'Finished'

@@ -36,6 +36,16 @@
       <div class="reviews-average">
         <%= render @store.reviews %>
       </div>
+
+      <div>
+        <div class="average-review-rating" data-score=<%= @average_review %>></div>
+        <h2>Average rating</h2>
+      <div class="container mt-5">
+        <input id="input-1" name="input-1" class="rating rating-loading" value=<%= (@store.reviews.sum(:rating) / @store.reviews.count).round(2) %> data-min="0" data-max="5" data-step="1" data-readonly="true" data-size="ml">
+        <h2>Average rating: <%= (@store.reviews.sum(:rating) / @store.reviews.count).round(2) %> </h2>
+        <span>Based on <%= @store.reviews.count %> reviews</span>
+      </div>
+
       <div class="action-stores">
         <%= link_to "Añadir Reseña", new_store_review_path(@store) %>
         <%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>
