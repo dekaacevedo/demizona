@@ -8,7 +8,13 @@ class Cart < ApplicationRecord
   before_save :set_total_price
 
   def total_price
-    cart_items.collect {|cart_item| cart_item.valid? ? cart_item.item_price * cart_item.quantity : 0}.sum
+    cart_items.collect do |cart_item|
+      if cart_item.valid?
+        cart_item.item_price * cart_item.quantity
+      else
+        0
+      end
+    end.sum
   end
 
   private
