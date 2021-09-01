@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :cart
   belongs_to :user
+  belongs_to :cart
 
   STATUSES = {
     in_process: "En proceso",
@@ -13,7 +13,7 @@ class Order < ApplicationRecord
   before_create :set_status
 
   private
-  
+
   def set_status
     self.status = STATUSES[:payed]
   end

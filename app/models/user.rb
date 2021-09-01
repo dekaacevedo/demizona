@@ -9,9 +9,7 @@ class User < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :orders, dependent: :destroy
 
-  def seller_update
-    if self.store.present?
-      self.seller = true
-    end
+  def make_it_a_seller!
+    self.seller = true
   end
 end

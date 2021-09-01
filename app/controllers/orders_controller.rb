@@ -1,7 +1,8 @@
 require_relative "../models/cart"
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
+  include PaymentHelper
 
+  before_action :set_order, only: [:show]
   def index
   end
 
@@ -15,9 +16,18 @@ class OrdersController < ApplicationController
     @order.cart = current_cart
     authorize @order
     if @order.save
+      payment_information = create_new_payment(@order.cart.total_price)
+      if payment_information.payment_id
+        session[:cart_id] = nil
+        @order.payment_id = payment_information.payment_id
+        @order.paid = true
+        @order.save
+      else
+        # Rechazar pago, redirigir a algún lado
+      end
       redirect_to @order
     else
-      # Rechazar pago, redirigir a algún lado
+      # Rechazar pago, redirigir a pagina de pago rechazado
       redirect_to root_path
     end
   end
@@ -27,5 +37,4 @@ class OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
   end
-
 end

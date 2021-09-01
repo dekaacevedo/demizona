@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @store = Store.where(id:@product.store_id)
   end
 
   def new
@@ -23,9 +22,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(products_params)
+    @product = Product.new(product_params)
     @product.store = @store
-    
+
     if @product.save
       redirect_to admin_store_path(@product.store)
     else
@@ -39,7 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(products_params)
+    if @product.update(product_params)
       redirect_to admin_store_path(@product.store)
       flash[:alert] = "Product updated succesfully"
     else
@@ -58,14 +57,14 @@ class ProductsController < ApplicationController
     end
   end
 
-private
+  private
 
   def set_product
     @product = Product.find(params[:id])
     authorize @product
   end
 
-  def products_params
+  def product_params
     params.require(:product).permit(:name, :description, :sku, :price, :old_price, :active, :featured, :unit_type, :quantity_stock, :discount, :description, photos: [])
   end
 
