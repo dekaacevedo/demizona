@@ -1,3 +1,4 @@
+require_relative "../models/user"
 class StoresController < ApplicationController
 
   # before_action :set_user, only: [:new, :create]
@@ -49,7 +50,11 @@ class StoresController < ApplicationController
     # Si la tienda se crea con éxito será redireccionado a su show,
     #   en caso contrario será redireccionado a las tiendas.
     if @store.save
-      @store.user.update!(seller: true)
+      if !current_user.seller
+        current_user.make_it_a_seller!
+        current_user.save
+      end
+      @store.save
       redirect_to store_path(@store), notice: "Su tienda fue creada con éxito."
     else
       render :new
