@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.store = @store
-    
+
     if @product.save
       redirect_to admin_store_path(@product.store)
     else
@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
     end
   end
 
-private
+  private
 
   def set_product
     @product = Product.find(params[:id])
