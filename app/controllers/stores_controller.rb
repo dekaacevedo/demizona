@@ -34,7 +34,6 @@ class StoresController < ApplicationController
         locals: { store: @store })
       }
     ]
-
   end
 
   def new
