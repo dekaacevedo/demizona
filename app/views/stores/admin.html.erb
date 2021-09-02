@@ -9,7 +9,7 @@
           <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
         <% end %>
         <%= link_to(product_path(product)) do%>
-          <h3> <%= product.id %> <%= product.name %> </h3>
+          <h3><%= product.name %></h3>
         <% end %>
         <p><%= product.description%></p>
         <p>Precio normal <%= "(Activo)" unless product.discount %></p>

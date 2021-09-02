@@ -9,7 +9,7 @@ Review.destroy_all
 users = []
 stores = []
 
-puts 'Creating fake Users'
+puts 'Creating fake users'
 users[1] = User.create(name: "Andrea", last_name: "Acevedo", email: "andrea@correo.cl", password: "123456", seller: true)
 users[2] = User.create(name: "Pablo", last_name: "Martinez", email: "pablo@correo.cl", password: "123456", seller: true)
 users[3] = User.create(name: "Marco", last_name: "Acevedo", email: "marco@correo.cl", password: "123456", seller: true)
@@ -22,28 +22,28 @@ stores[1] = Store.create(name: "Tiendita de Andrea",
     address: "Libertad 878",
     city: "Chillán",
     email: Faker::Internet.email,
-    phone: Faker::PhoneNumber.phone_number,
+    phone: rand(912345678..992345678),
     user: users[1]
   )
 stores[2] = Store.create(name: "Tiendita de Pablo",
     address: "Rosas 530",
     city: "Chillán",
     email: Faker::Internet.email,
-    phone: Faker::PhoneNumber.phone_number,
+    phone: rand(912345678..992345678),
     user: users[2]
   )
 stores[3] = Store.create(name: "Tiendita de Marco",
   address: "Constitución 444",
   city: "Chillán",
   email: Faker::Internet.email,
-  phone: Faker::PhoneNumber.phone_number,
+  phone: rand(912345678..992345678),
   user: users[3]
   )
 stores[4] = Store.create(name: "Tiendita de Jorge",
     address: "Bulnes 739",
     city: "Chillán",
     email: Faker::Internet.email,
-    phone: Faker::PhoneNumber.phone_number,
+    phone: rand(912345678..992345678),
     user: users[4]
   )
 
@@ -57,10 +57,10 @@ while i <= 4
   10.times do
     fruits = Product.create(
       name: Faker::Food.fruits,
-      price: Faker::Number.number(digits: 4),
-      description: "Esto es una descripción de prueba",
+      price: rand(50..250) * 10,
+      description: Faker::Lorem.sentence(word_count: 4, supplemental: true, random_words_to_add: 10),
       active: true,
-      sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4),
+      sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
       store: stores[i]
     )
   product_category = ProductCategory.create(category: fruit_category, product: fruits)
@@ -68,10 +68,10 @@ while i <= 4
   10.times do
     vegetables = Product.create(
       name: Faker::Food.vegetables,
-      price: Faker::Number.number(digits: 4),
-      description: "Esto es una descripción de prueba",
+      price: rand(50..250) * 10,
+      description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
       active: true,
-      sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4),
+      sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
       store: stores[i]
     )
   product_category = ProductCategory.create(category: vegetables_category, product: vegetables)
@@ -79,7 +79,7 @@ while i <= 4
   i += 1
 end
 
-puts "Generation of Review"
+puts "Creating fake reviews"
 i = 1
 while i <= 20
   5.times do

@@ -10,6 +10,7 @@
     <%= f.input :quantity_stock %>
     <%= f.input :featured %>
     <%= f.input :active %>
+    <%= f.association :categories, as: :check_boxes %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit, "Guardar", class: "btn btn-primary" %>
     <%= link_to  "Volver", admin_store_path(@product.store_id), class: "btn btn-warning" %>
