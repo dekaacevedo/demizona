@@ -3,7 +3,7 @@
 <p><%= @product.description %></p> 
 <p>SKU: <%= @product.sku %></p>
 <p>$<%= @product.price %> / <%= @product.unit_type %></p>
-<p>$<%= @product.old_price %></p>
+<p>$<%= @product.discount_price %></p>
 <% @product.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
 <% end %>
