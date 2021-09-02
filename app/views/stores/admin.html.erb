@@ -15,7 +15,7 @@
         <p>Precio normal <%= "(Activo)" unless product.discount %></p>
         <p>$<%= product.price%></p>
         <p>Precio oferta <%= "(Activo)" if product.discount %></p>
-        <p>$<%= product.old_price%></p>
+        <p>$<%= product.discount_price%></p>
         <% unless product.active %>
           <p><%= "Producto no disponible" %></p>
         <% end %>
