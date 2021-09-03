@@ -1,0 +1,33 @@
+.reviews {
+	margin-top: 40px;
+	h1 {
+		margin-top: 0;
+		margin-bottom: 15px;
+		font-size: 2em;
+	}
+	.review {
+		border-bottom: 1px solid gainsboro;
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+
+		.review-comment {
+			font-size: 2.05em;
+			line-height: 1.5;
+		}
+	}
+	.new-review {
+		padding-top: 8px;
+	}
+}
+
+.new-review-form, .edit-review-form {
+	h1 {
+		margin-top: 0;
+	}
+	#rating-form {
+		margin-bottom: 15px;
+		label {
+			display: block;
+		}
+	}
+}
