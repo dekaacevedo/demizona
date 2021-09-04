@@ -1,16 +1,21 @@
 
 
 <div class="reviews">
+  <%= review.rating %>
   <div class="d-flex">
-    <p><%= (@store.reviews.sum(:rating) / @store.reviews.count).ceil.times do %>
-      <i class="fas fa-star" style="color: orange" aria-hidden="false" ></i>
-    <% end %>
-    </p>
-    <p><%= (5-(@store.reviews.sum(:rating) / @store.reviews.count).ceil).times do %>
-      <i class="fas fa-star" style="color: lead" ></i>
-    <% end %>
-    </p>
+    <input
+        class="rating"
+        max="5"
+        readonly
+        step="0.01"
+        style="--fill:orange;--value:<%= review.rating %>"
+        type="range"
+        value=<%= review.rating %>>
+    </label>
   </div>
+
+
+
 
   <p class="review review-comment"><%= review.comment %></p>
 
@@ -18,6 +23,7 @@
   <!-- add if user_signed_in? -->
   <% if review.user_id == current_user.id %>
     <!-- add current_user.id -->
+
       <%= link_to "Edit", edit_store_review_path(review.store, review), class: "boton-secundario-pequeño" %>
       <%= link_to "Delete", store_review_path(review.store, review), method: :delete, data: { confirm: "Are you sure?" }, class: "boton-secundario-pequeño" %>
   <% end %>
