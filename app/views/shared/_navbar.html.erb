@@ -50,15 +50,28 @@
                   </div>
                 </div>
               <% end %>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <p class="dropdown-title pl-4 py-3">Mi cuenta</p>
-              <%= link_to "Mis pedidos", "#", class: "dropdown-item" %>
-              <%= link_to "Editar mi perfil", "#", class: "dropdown-item" %>
-              <%= link_to "Quiero ser vendedor", new_store_path(@store), class: "dropdown-item" %>
-              <div class="dropdown-divider"></div>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-
+              <% if current_user.seller %>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <p class="dropdown-title pl-4 py-3">Mi cuenta</p>
+                  <%= link_to "Mis pedidos", orders_path, class: "dropdown-item" %>
+                  <%= link_to "Editar mi perfil", edit_user_registration_path, class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <p class="dropdown-title pl-4 py-3">Vendedor</p>
+                  <%= link_to "Mis tiendas", "#", class: "dropdown-item" %>
+                  <%= link_to "Pedidos recibidos", "#", class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
+              <% else %>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <p class="dropdown-title pl-4 py-3">Mi cuenta</p>
+                  <%= link_to "Mis pedidos", orders_path, class: "dropdown-item" %>
+                  <%= link_to "Editar mi perfil", edit_user_registration_path, class: "dropdown-item" %>
+                  <%= link_to "Quiero ser vendedor", new_store_path(@store), class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
+              <% end -%>
           </li>
           <li class="nav-item d-flex mx-4">
             <%= link_to "/cart" do %>
