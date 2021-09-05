@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   before_action :set_order, only: [:show]
   def index
+    orders = policy_scope(Order)
   end
 
   def show

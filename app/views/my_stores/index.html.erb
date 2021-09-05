@@ -1,0 +1,13 @@
+<h1>Mis tiendas</h1>
+
+
+<div class="index-stores">
+        <% @stores.each do |store| %>
+          <%= link_to(store_path(store)) do %>
+            <div class="store">
+              <h3> <%= store.name %> </h3>
+              <p><%= store.address %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
