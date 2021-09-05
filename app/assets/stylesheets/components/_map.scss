@@ -1,6 +1,12 @@
 #map{
-  position: sticky!important;
+  //position: sticky!important;
   top: 0!important;
+  height: 50vh!important;
+  width: 25vw!important;
+}
+
+.map-review{
+  position: sticky!important;
 }
 .mapboxgl-popup {
   max-width: 10rem!important;

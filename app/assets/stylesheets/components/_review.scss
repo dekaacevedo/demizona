@@ -20,6 +20,10 @@
 	}
 }
 
+#base-comment{
+  margin-top: 25px;
+}
+
 .new-review-form, .edit-review-form {
 	h1 {
 		margin-top: 0;
@@ -30,6 +34,11 @@
 			display: block;
 		}
 	}
+}
+
+.create-review{
+  height: 50vh!important;
+  width: 25vw!important;
 }
 
 
