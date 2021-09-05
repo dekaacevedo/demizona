@@ -59,6 +59,7 @@
   position: relative;
   touch-action: manipulation;
   -webkit-appearance: none;
+  background-color: transparent;
 }
 [dir="rtl"] .rating {
   --dir: left;
