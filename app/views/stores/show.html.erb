@@ -6,7 +6,7 @@
       <div class="card-store d-flex weight: vw100;">
         <div class="image-store">
           <% @store.photos.each do |photo| %>
-             <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+             <%= cl_image_tag photo.key, height: 400, width: 400, crop: :fill %>
           <% end %>
         </div>
         <div class="content-store">
@@ -69,6 +69,7 @@
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
         <div class="create-review mt-3">
+          <h3>Reseña</h3>
           <%= render "reviews/form" %>
         </div>
       </div>
