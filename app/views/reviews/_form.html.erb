@@ -1,8 +1,8 @@
 
-<%= simple_form_for([@store, @review]) do |f| %>
+<%=simple_form_for([@store, @review], remote: true)do |f| %>
     <div id="rating-form">
-      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+      <%= f.input :rating, collection: (1..5).to_a, label: false %>
     </div>
-    <%= f.input :comment %>
-    <%= f.button :submit, class:"btn btn-primary" %>
+    <%= f.input :comment, label: "Comentario" %>
+    <%= f.button :submit,"Crear reseña", class:"boton-primario" %>
 <% end %>

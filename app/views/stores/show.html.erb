@@ -2,12 +2,19 @@
   <div class="row m-5">
 
     <div class="col-md-8">
-      <div class="card-store d-flex; weight: vw100;">
+
+      <div class="card-store d-flex weight: vw100;">
+        <div class="image-store">
+          <% @store.photos.each do |photo| %>
+             <%= cl_image_tag photo.key, height: 400, width: 400, crop: :fill %>
+          <% end %>
+        </div>
         <div class="content-store">
           <h1>Nombre de tienda: <%= @store.name %> </h1>
           <h3>Dirección: <%= @store.address %> </h3>
           <h3>Ciudad: <%= @store.city %> </h3>
           <label class="rating-label"><strong>El rating promedio de la tienda es <%= (@store.reviews.sum(:rating) / @store.reviews.count).round(2) %>
+          <div class="stars-content d-flex">
             <input
               class="rating_avg"
               max="5"
@@ -17,13 +24,14 @@
               type="range"
               value=<%= (@store.reviews.sum(:rating) / @store.reviews.count).round(2) %>>
            </label>
-          <span><strong>(Basado en </strong><%= @store.reviews.count %> reseñas)</span>
+          <span id="base-comment">(Basado en <%= @store.reviews.count %> comentarios)</span>
          </div>
+          
           <h3>Email: <%= @store.email %> </h3>
           <h3>Teléfono: <%= @store.phone%> </h3>
           <%= link_to  "Contactar al Productor", store_path(@store) , class: "btn btn-primary"%>
+          </div>
         </div>
-      </div>
 
       <div class="products-store mt-5">
         <% @store.products.each do |product| %>
@@ -41,34 +49,29 @@
           <% end %>
         <% end %>
       </div>
-
-
-
-
-
       <div class="reviews-average">
+      <h1 class = "mt-4">Comentarios</h1>
         <%= render @store.reviews %>
       </div>
-
-
       <div class="action-stores">
         <%= link_to "Añadir Reseña", new_store_review_path(@store) %>
         <%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>
         <% if policy(@store).edit? %>
-          <%= link_to  "Editar tienda", edit_store_path(@store), class: "btn btn-warning" %>
-        <% end %>
-        <% if policy(@store).destroy? %>
-          <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger", method: :delete %>
+          <%= link_to  "Administrar tienda", admin_store_path, class: "boton-primario" %>
         <% end %>
       </div>
     </div>
 
     <div class="col-md-4">
-    <h5>Descubre dónde estamos</h5>
-       <div id="map"
-      style="width: 100%; height: 100vh;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div class="map-review d-grid">
+        <div id="map"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+        <div class="create-review mt-3">
+          <h3>Reseña</h3>
+          <%= render "reviews/form" %>
+        </div>
       </div>
     </div>
 

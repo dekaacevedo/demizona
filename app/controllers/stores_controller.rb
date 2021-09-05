@@ -20,12 +20,13 @@ class StoresController < ApplicationController
 
   def show
 
+    @review = Review.new
+
     if @store.reviews.blank?
       @average_review = 0
     else
       @average_review = @store.reviews.average(:rating).round(2)
     end
-
     @markers = [
       {
         id: @store.id,

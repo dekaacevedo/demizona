@@ -1,31 +1,36 @@
-<div class="d-flex bd-highlight mt-3">
-  <div class="p-2 col-12 bd-highlight">
-  <div class="titulo">
-    <h1>Mis productos</h1>
-    <%= link_to  "Agregar producto", new_store_product_path(@store.id), class: "btn btn-warning" %>
-    <% @store.products.order(id: :asc).each do |product| %>
-      <div>
-        <% product.photos.first(1).each do |photo| %>
-          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
-        <% end %>
-        <%= link_to(product_path(product)) do%>
-          <h3><%= product.name %></h3>
-        <% end %>
-        <p><%= product.description%></p>
-        <p>Precio normal <%= "(Activo)" unless product.discount %></p>
-        <p>$<%= product.price%></p>
-        <p>Precio oferta <%= "(Activo)" if product.discount %></p>
-        <p>$<%= product.discount_price%></p>
-        <% unless product.active %>
-          <p><%= "Producto no disponible" %></p>
-        <% end %>
-        <%= link_to edit_product_path(product.id), class: "" do %>
-          <i class="fas fa-pen danger"></i>
-        <% end %>
-        <%= link_to product_path(product.id), method: :delete, data: { confirm: "Estás seguro?" } do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>  
-      </div>
-    <% end %>
+<div class="container">
+  <div class="d-flex bd-highlight mt-3">
+    <div class="p-2 col-12 bd-highlight">
+    <div class="titulo mt-5">
+      <h1>Mis productos</h1>
+      <%= link_to  "Agregar producto", new_store_product_path(@store.id), class: "btn btn-warning" %>
+      <% @store.products.order(id: :asc).each do |product| %>
+        <div>
+          <% product.photos.first(1).each do |photo| %>
+            <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+          <% end %>
+          <%= link_to(product_path(product)) do%>
+            <h3><%= product.name %></h3>
+          <% end %>
+          <p><%= product.description%></p>
+          <p>Precio normal <%= "(Activo)" unless product.discount %></p>
+          <p>$<%= product.price%></p>
+          <p>Precio oferta <%= "(Activo)" if product.discount %></p>
+          <p>$<%= product.discount_price%></p>
+          <% unless product.active %>
+            <p><%= "Producto no disponible" %></p>
+          <% end %>
+          <%= link_to edit_product_path(product.id), class: "" do %>
+            <i class="fas fa-pen danger"></i>
+          <% end %>
+          <%= link_to product_path(product.id), method: :delete, data: { confirm: "Estás seguro?" } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
+      <% end %>
+          <% if policy(@store).destroy? %>
+            <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger", method: :delete %>
+          <% end %>
+    </div>
   </div>
 </div>
