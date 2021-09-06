@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :product_categories, only: %i[create destroy]
   # resources :reviews, only: :destroy
   resources :orders, only: %i[show index create update]
+  resources :categories, only: :show
 
 
 end
