@@ -1,0 +1,85 @@
+.empty-cart {
+  background-image: asset-url('veggies.png');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+}
+
+.continuar-compra {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.table-header {
+  background-color: #F5F5F5;
+}
+
+.title-header {
+  font-size: 0.7em;
+  font-weight: 400;
+}
+
+.input-quantity {
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 0.5px solid #E8E8E8;
+  border-radius: 2px;
+  width: 5em;
+}
+
+tbody tr.table-divider{
+  border: 1px solid #F5F5F5;
+}
+table.cart-item-table {
+  border: 1px solid #F5F5F5;
+}
+
+.detail-item {
+  color: #AAA;
+  font-size: 0.6em;
+}
+
+.detail-item span{
+  color: #75B82B;
+  font-weight: 700;
+}
+
+.item-name {
+  font-size: 0.8em;
+  font-weight: 700;
+}
+
+.item-img{
+  width: 50px;
+  height: 100%;
+}
+
+.btn-icon-size {
+  width: 37%;
+}
+
+table.subtotal-table {
+  background-color: #F5F5F5;
+}
+
+.total-cart-title{
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.price-cart{
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #75B82B;
+
+}
+
+table {
+  border-radius: 5px;
+}
+
+.title-cart {
+  padding: 1em 0 2.3em 0;
+}
