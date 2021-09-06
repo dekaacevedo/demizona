@@ -51,7 +51,8 @@ puts "Creating categories"
 fruit_category = Category.create(name: "Frutas")
 vegetables_category = Category.create(name: "Vegetales")
 infusiones = Category.create(name: "Infusiones")
-mar = Category.create(name: "Congelados")
+mar = Category.create(name: "Productos de Mar")
+congelados = Category.create(name: "Congelados")
 organicos = Category.create(name: "Productos Orgánicos")
 alcohol = Category.create(name: "Bebidas Alcohólicas")
 
