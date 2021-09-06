@@ -77,7 +77,7 @@ class StoresController < ApplicationController
   end
 
   def admin
-    @pagy, @products = pagy(@store.products,items: 6)
+    @pagy, @products = pagy(@store.products,items: 12)
   end
 
 private
