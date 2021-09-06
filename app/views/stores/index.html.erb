@@ -23,7 +23,9 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
-
+    <div class="pagination m-2 p-2">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
   </div>
 </div>
 

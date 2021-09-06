@@ -34,7 +34,7 @@
         </div>
 
       <div class="products-store mt-5">
-        <% @store.products.each do |product| %>
+        <% @products.each do |product| %>
           <%= link_to(product_path(product)) do %>
             <div class="product-card">
               <div class="image-card">
@@ -48,6 +48,9 @@
             </div>
           <% end %>
         <% end %>
+          <div class="pagination m-2 p-2">
+            <%== pagy_bootstrap_nav(@pagy) %>
+          </div>
       </div>
       <div class="reviews-average">
       <h1 class = "mt-4">Comentarios</h1>
@@ -74,6 +77,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

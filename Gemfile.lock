@@ -143,7 +143,12 @@ GEM
     nokogiri (1.12.3)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    nokogiri (1.12.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.3-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (4.11.0)
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -295,6 +300,7 @@ DEPENDENCIES
   jquery-rails
   khipu-api-client (~> 2.9, >= 2.9.1)
   listen (~> 3.2)
+  pagy (~> 4.11)
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails

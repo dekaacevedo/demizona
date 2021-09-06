@@ -5,7 +5,7 @@ class StoresController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy, :admin]
 
   def index
-    stores = policy_scope(Store)
+    @pagy, stores = pagy(policy_scope(Store), items: 6)
     @stores = stores.geocoded # trae stores´s que tengan latitude y longitude obtenidas con la gema
     @markers = @stores.geocoded.map do |store|
       {
@@ -20,8 +20,8 @@ class StoresController < ApplicationController
 
   def show
 
+    admin
     @review = Review.new
-
     if @store.reviews.blank?
       @average_review = 0
     else
@@ -78,7 +78,7 @@ class StoresController < ApplicationController
   end
 
   def admin
-    products = @store.products
+    @pagy, @products = pagy(@store.products,items: 6)
   end
 
 private
