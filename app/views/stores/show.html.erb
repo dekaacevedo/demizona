@@ -26,17 +26,16 @@
            </label>
           <span id="base-comment">(Basado en <%= @store.reviews.count %> comentarios)</span>
          </div>
-          
           <h3>Email: <%= @store.email %> </h3>
           <h3>Teléfono: <%= @store.phone%> </h3>
           <%= link_to  "Contactar al Productor", store_path(@store) , class: "btn btn-primary"%>
           </div>
         </div>
 
-      <div class="products-store mt-5">
+      <div class="products-store mt-5 justify-content-around">
         <% @products.each do |product| %>
           <%= link_to(product_path(product)) do %>
-            <div class="product-card">
+            <div class="product-card mx-2 my-2">
               <div class="image-card">
                   <h1>Foto del producto</h1>
               </div>
@@ -48,9 +47,9 @@
             </div>
           <% end %>
         <% end %>
-          <div class="pagination m-2 p-2">
-            <%== pagy_bootstrap_nav(@pagy) %>
-          </div>
+      </div>
+      <div class="pagination m-2 p-2">
+        <%== pagy_bootstrap_nav(@pagy) %>
       </div>
       <div class="reviews-average">
       <h1 class = "mt-4">Comentarios</h1>
