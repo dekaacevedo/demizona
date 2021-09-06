@@ -1,16 +1,84 @@
-<% @cart_items.each do |item| %>
-  <h3><%= item.product.name %></h3>
-  <h3><%= item.product.price %></h3>
-  <%= simple_form_for item, url: cart_item_path(item.id), remote: true do |f| %>
-    <%= f.hidden_field :product_id, value: item.product.id %>
-    <%= f.number_field :quantity, value: item.quantity.to_i %>
-    <%= f.submit "Update Cart" %>
-    <%= link_to  "Remove Items", item, method: :delete, remote: true %>
-  <% end %>
-  <h2>Subtotal: <%= item.total %></h2>
-<% end %>
-
-<h3>Your current order has a total of: <%= current_cart.total_price %></h3>
 <% if @cart_items.size > 0 %>
-  <%= link_to  "Pagar", orders_path, method: :post %>
+<div class="container">
+  <h1 class="text-center title-cart">Carrito de Compras</h1>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="mx-4">
+      <div class="carrito-table">
+        <table class="cart-item-table">
+          <tr class="table-header">
+            <th class="text-center py-2 title-header">Productos</th>
+            <th class="px-5 py-2 title-header">Precio</th>
+            <th class="px-5 py-2 title-header">Cantidad</th>
+            <th class="px-4 py-2 title-header"></th>
+            <th class="px-5 py-2 title-header">Total</th>
+            <th class="px-4 py-2 title-header"></th>
+          </tr>
+        <% @cart_items.each do |item| %>
+          <tr class="table-divider">
+            <td class="py-5">
+              <div class="d-flex align-items-center px-3">
+                <%= image_tag "pear.jpg", alt: "Pera", class: "item-img" %>
+                <div class="d-flex flex-column">
+                  <p class="item-name"><%= item.product.name %></p>
+                  <p class="detail-item">Vendido por <span><%= item.product.store.name %></span></p>
+                </div>
+              </div>
+            </td>
+            <td class="text-center">$<%= item.product.price %></td>
+            <td class="text-center">
+              <%= simple_form_for item, url: cart_item_path(item.id), remote: true do |f| %>
+                <%= f.hidden_field :product_id, value: item.product.id %>
+                <%= f.number_field :quantity, value: item.quantity.to_i, class: "input-quantity" %>
+            </td>
+            <td>
+                <%= button_tag type: 'submit', class: "btn" do %>
+                  <i class="fas fa-sync-alt"></i>
+                <% end -%>
+              <% end %>
+            </td>
+            <td class="text-center">$<%= item.total %></td>
+            <td>
+              <%= link_to item, method: :delete, remote: true, class: "" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end -%>
+            </td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+      <%= link_to root_path, class: "d-flex align-items-center btn boton-terciario-icon btn-icon-size my-5" do %>
+        <i class="fas fa-arrow-left fa-xs ml-2"></i>
+        <p class="boton-title"><%= "Continuar comprando" %></p>
+      <% end -%>
+    </div>
+    <div class="align-self-start">
+      <div class="mb-3">
+        <table class="subtotal-table">
+          <tr>
+            <th class="px-4 py-4">Subtotal</th>
+            <th class="px-4 py-4">$<%= current_cart.total_price %></th>
+          </tr>
+          <tr>
+            <td class="px-4">Envío Gratis a</td>
+          </tr>
+          <tr>
+            <td class="px-4 pb-3"><%= current_user.address %></td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 total-cart-title">TOTAL</td>
+            <td class="px-4 py-3 price-cart">$<%= current_cart.total_price %></td>
+          </tr>
+        </table>
+      </div>
+      <%= link_to "Pagar", orders_path, method: :post, class: "d-flex align-items-center justify-content-center btn boton-primario"%>
+    </div>
+  </div>
+</div>
+<% else %>
+  <div class="empty-cart d-flex flex-column align-items-center justify-content-center">
+    <%= image_tag "carrito.png", alt: "Carrito de compras", class: "img-carrito" %>
+    <h2>Tu Carrito está vacío</h2>
+    <p class="continuar-compra">¿Quieres continuar con tu compra?</p>
+    <%= link_to "Volver a Inicio", root_path, class: "btn boton-primario"  %>
+  </div>
 <% end -%>

@@ -1,18 +1,24 @@
-<div class="container">
-  <h1><%= @category.name %></h1>
-  <% if @products.count > 0 %>
-    <% @products.each do |product|%>
-      <%= product.name %>
-      <%= product.description %>
-      <%= product.price %>
-      <%= simple_form_for(@cart_item, remote: true) do |f| %>
-        <%= f.hidden_field :product_id, value: product.id %>
-        <%= f.input :quantity, input_html: { value: 0, min: 0 } %>
-        <%= f.submit "Add To Cart" %>
+<% if @products.count > 0 %>
+  <div class="container">
+    <h1><%= @category.name %></h1>
+      <% @products.each do |product|%>
+        <%= product.name %>
+        <%= product.description %>
+        <%= product.price %>
+        <%= simple_form_for(@cart_item, remote: true) do |f| %>
+          <%= f.hidden_field :product_id, value: product.id %>
+          <%= f.input :quantity, input_html: { value: 0, min: 0 } %>
+          <%= f.submit "Add To Cart" %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% else %>
-  <h3>Esta categoría no tiene productos</h3>
-  <% end -%>
-</div>
+  </div>
+<% else %>
+  <div class="empty-cart d-flex flex-column align-items-center justify-content-center">
+    <%= image_tag "carrito.png", alt: "Carrito de compras", class: "img-carrito" %>
+    <h2>Esta categoría no tiene productos</h2>
+    <p class="continuar-compra">¿Quieres continuar con tu compra?</p>
+    <%= link_to "Volver a Inicio", root_path, class: "btn boton-primario"  %>
+  </div>
+<% end -%>
+
 
