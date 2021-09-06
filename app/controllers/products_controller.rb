@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :find_store, only: [:new, :create]
 
   def index
-    products = policy_scope(Product)
+     @pagy,products = pagy(policy_scope(Product),items: 9)
     if params[:q]
       @q = Product.ransack(params[:q])
       @products = @q.result(distinct: true)

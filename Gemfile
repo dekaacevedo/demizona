@@ -84,3 +84,6 @@ gem 'ransack'
 
 # Gema para mostrar errores con turbolink (remote: true)
 gem 'turbolinks_render'
+
+# Gema para crear paginación
+gem 'pagy', '~> 4.11'
