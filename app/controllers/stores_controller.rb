@@ -12,8 +12,7 @@ class StoresController < ApplicationController
         lat: store.latitude,
         lng: store.longitude,
         info_window: render_to_string(partial: "info_index",
-        locals: { store: store }),
-        # image_url: helpers.asset_url("marker.png")
+        locals: { store: store })
       }
     end
   end
