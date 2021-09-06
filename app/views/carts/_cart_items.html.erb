@@ -76,6 +76,7 @@
 </div>
 <% else %>
   <div class="empty-cart d-flex flex-column align-items-center justify-content-center">
+    <%= image_tag "carrito.png", alt: "Carrito de compras", class: "img-carrito" %>
     <h2>Tu Carrito está vacío</h2>
     <p class="continuar-compra">¿Quieres continuar con tu compra?</p>
     <%= link_to "Volver a Inicio", root_path, class: "btn boton-primario"  %>
