@@ -79,7 +79,7 @@
       </div>
       <div class="action-stores">
         <!--<%= link_to "Añadir Reseña", new_store_review_path(@store) %> -->
-        <%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>
+        <!--<%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %> -->
         <% if policy(@store).edit? %>
           <%= link_to  "Administrar tienda", admin_store_path, class: "boton-primario" %>
         <% end %>

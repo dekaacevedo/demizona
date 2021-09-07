@@ -1,16 +1,46 @@
 <div class="container my-5">
   <h1>Productos</h1>
-  <% @products.each do |product| %>
-    <%= product.name %>
-    <%= product.description %>
-    <%= product.price %>
-    <%= simple_form_for(@cart_item, remote: true) do |f| %>
-      <%= f.hidden_field :product_id, value: product.id %>
-      <%= f.input :quantity, input_html: { value: 0, min: 0 } %>
-      <%= f.submit "Add To Cart" %>
-    <% end %>
-  <% end %>
-  <div class="pagination m-2 p-2">
+  <div class="d-flex flex-column align-items-center">
+
+    <div class="products-store mt-5 justify-content-start mx-4">
+      <% @products.each do |product| %>
+        <% if product.active %>
+        <div class="">
+          <div class="product-card">
+            <%= link_to(product_path(product)) do %>
+              <%= image_tag "pear.jpg", alt: "alttext", class: "image-card" %>
+              <p class="product-store-name pl-2 pt-2 pb-1"><%= product.store.name %></p>
+              <p class="product-name pl-2 pb-1"><%= product.name %></p>
+
+            <% if product.discount %>
+            <div class="discount-tag">
+              <p><%= ((product.price - product.discount_price) * 100) / product.price %>% Ahorro</p>
+            </div>
+            <div class="d-flex align-items-center">
+              <p class="product-price discount pl-2">$<%= product.discount_price %></p>
+              <p class="product-price-discount pl-2">$<%= product.price %></p>
+            </div>
+
+            <% else %>
+              <p class="product-price pl-2">$<%= product.price %></p>
+              <% end %>
+            <% end %>
+            <div class="form-quantity-product pl-2">
+              <%= simple_form_for(@cart_item, remote: true) do |f| %>
+                <%= f.hidden_field :product_id, value: product.id %>
+                <%= f.number_field :quantity, value: 1, label: false, class: "quantity-product my-2 text-center" %>
+                <%= f.submit "Añadir al carrito", class: "btn boton-primario my-2" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="pagination m-2 p-2">
       <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+
   </div>
 </div>
