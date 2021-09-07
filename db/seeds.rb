@@ -60,9 +60,14 @@ puts "Populating stores with fruits and vegetables"
 i = 1
 while i <= 4
   10.times do
+    price = rand(50..250) * 10
+    discount_price = rand(1..100) > 80 ? price * rand(70..95) / 100 : price
+    discount = discount_price < price ? true : false
     fruits = Product.create(
       name: Faker::Food.fruits,
-      price: rand(50..250) * 10,
+      price: price,
+      discount_price: discount_price,
+      discount: discount,
       description: Faker::Lorem.sentence(word_count: 4, supplemental: true, random_words_to_add: 10),
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
@@ -71,9 +76,14 @@ while i <= 4
   product_category = ProductCategory.create(category: fruit_category, product: fruits)
   end
   10.times do
+    price = rand(50..250) * 10
+    discount_price = rand(1..100) > 80 ? price * rand(70..95) / 100 : price
+    discount = discount_price < price ? true : false
     vegetables = Product.create(
       name: Faker::Food.vegetables,
-      price: rand(50..250) * 10,
+      price: price,
+      discount_price: discount_price,
+      discount: discount,
       description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
