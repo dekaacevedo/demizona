@@ -39,7 +39,7 @@
         <div class="">
             <div class="product-card">
           <%= link_to(product_path(product)) do %>
-                <%= image_tag "pear.jpg", alt: "alttext", class: "image-card" %>
+                <%= image_tag "no_image.png", alt: "alttext", class: "image-card" %>
                 <p class="product-store-name pl-2 pt-2 pb-1"><%= product.store.name %></p>
                 <p class="product-name pl-2 pb-1"><%= product.name %></p>
                 <% if product.discount %>
