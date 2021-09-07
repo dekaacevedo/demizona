@@ -49,6 +49,7 @@
   border: none;
   outline: none;
   transition: none;
+  width: 300px;
 }
 .login-inputs{
   width: 405px;
@@ -88,3 +89,14 @@
   font-weight: 700;
 }
 
+.edit-user-title{
+  padding: 1em 0 2.3em 0;
+}
+
+.form-actions{
+   margin: 0;
+
+  top: 50%;
+  left: 50%;
+
+}
