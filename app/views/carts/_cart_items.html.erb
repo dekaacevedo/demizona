@@ -24,7 +24,13 @@
                 </div>
               </div>
             </td>
-            <td class="text-center">$<%= item.product.price %></td>
+            <td class="text-center">
+              <% if item.product.discount %>
+                $ <%= item.product.discount_price %>
+              <% else %>
+                $<%= item.product.price %>
+              <% end -%>
+            </td>
             <td class="text-center">
               <%= simple_form_for item, url: cart_item_path(item.id), remote: true do |f| %>
                 <%= f.hidden_field :product_id, value: item.product.id %>

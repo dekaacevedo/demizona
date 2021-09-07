@@ -9,7 +9,11 @@ class CartItem < ApplicationRecord
     if persisted?
       self[:item_price]
     else
-      product.price
+      if product.discount
+        product.discount_price
+      else
+        product.price
+      end
     end
   end
 

@@ -18,7 +18,7 @@ class StoresController < ApplicationController
   end
 
   def show
-
+    @cart_item = current_cart.cart_items.new
     admin
     @review = Review.new
     if @store.reviews.blank?
