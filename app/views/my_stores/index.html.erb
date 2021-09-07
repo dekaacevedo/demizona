@@ -1,13 +1,21 @@
-<h1>Mis tiendas</h1>
-
-
-<div class="index-stores">
+<div class="container-fluid">
+      <h2>Mis tiendas</h2>
+      <div class="index-stores m-5">
         <% @stores.each do |store| %>
           <%= link_to(store_path(store)) do %>
-            <div class="store">
+          <% if store.photos.attached? %>
+            <% store.photos.each do |photo| %>
+            <div class="store"style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path photo.key,crop: :fill %>)">
               <h3> <%= store.name %> </h3>
               <p><%= store.address %></p>
             </div>
+            <% end %>
+          <% else %>
+          <div class="default-image mb-5">
+            <h3> <%= store.name %> </h3>
+            <p><%= store.address %></p>
+          </div>
+          <% end %>
           <% end %>
         <% end %>
-      </div>
+</div>
