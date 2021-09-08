@@ -1,43 +1,63 @@
 <div class="container">
 
-<h2>Sign up</h2>
+  <h2 class = "my-3 text-center">Regístrate en Demizona 🥕</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :name,
-                required: true,
-                input_html: { autocomplete: "name" } %>
-    <%= f.input :last_name,
-                required: true,
-                input_html: { autocomplete: "last-name" } %>
-    <%= f.input :address,
-                required: true,
-                input_html: { autocomplete: "address" } %>
-    <%= f.input :phone,
-                required: true,
-                input_html: { autocomplete: "phone" } %>
-    <%= f.input :seller,
-                as: :radio_buttons %>
+    <div class="d-flex flex-column align-items-center">
+      <div class="d-flex justify-content-center">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email", class: "inputs input-email mr-4" }%>
+      </div>
 
-  </div>
+      <div class="d-flex justify-content-center">
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} caracteres mínimo" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password", class: "inputs inputs-perfil mr-4" },
+                    label: "Contraseña" %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password", class: "inputs inputs-perfil mr-4" },
+                    label: "Confirmar contraseña" %>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+      <div class="d-flex justify-content-center">
+      <%= f.input :name,
+                  required: true,
+                  input_html: { autocomplete: "name", class: "inputs inputs-perfil mr-4" },
+                  label: "Nombre" %>
+      <%= f.input :last_name,
+                  required: true,
+                  input_html: { autocomplete: "last-name", class: "inputs inputs-perfil mr-4" },
+                  label: "Apellidos" %>
+      </div>
 
-<%= render "devise/shared/links" %>
+      <div class="d-flex justify-content-center">
+      <%= f.input :address,
+                  required: true,
+                  input_html: { autocomplete: "address", class: "inputs inputs-perfil mr-4" },
+                  label: "Dirección"  %>
+      <%= f.input :phone,
+                  required: true,
+                  input_html: { autocomplete: "phone", class: "inputs inputs-perfil mr-4" },
+                  label: "Teléfono" %>
+      </div>
+    </div>
+
+    <div class="form-actions d-flex justify-content-center my-3" >
+      <%= f.button :submit, "Registrarme", class: "boton-primario" %>
+    <% end %>
+    </div>
+
+    <div class="dropdown-divider"></div>
+    <div class="before-form my-4 d-flex flex-column align-items-center">
+      <p class="text-small">Ya tienes cuenta en Demizona?</p>
+      <%- if controller_name != 'sessions' %>
+        <%= link_to "Inicia Sesion", new_session_path(resource_name) %>
+      <% end %>
+    </div>
 </div>

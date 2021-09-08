@@ -1,69 +1,70 @@
 <div class="container">
 
-<h2 class = "title-cart text-center">Editar Perfil</h2>
+  <h2 class = "title-cart text-center">Editar Perfil</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="d-flex flex-column align-items-center">
-    <div class="user-name-complete d-flex justify-content-center">
-        <%= f.input :name,
-                    required: true,
-                    input_html: { autocomplete: "name", class: "inputs inputs-perfil mr-4" },
-                    label: "Nombre" %>
-        <%= f.input :last_name,
-                    required: true,
-                    input_html: { autocomplete: "last-name",class: "inputs inputs-perfil mr-4" },
-                    label: "Apellidos" %>
+    <div class="d-flex flex-column align-items-center">
+      <div class="user-name-complete d-flex justify-content-center">
+          <%= f.input :name,
+                      required: true,
+                      input_html: { autocomplete: "name", class: "inputs inputs-perfil mr-4" },
+                      label: "Nombre" %>
+          <%= f.input :last_name,
+                      required: true,
+                      input_html: { autocomplete: "last-name",class: "inputs inputs-perfil mr-4" },
+                      label: "Apellidos" %>
+      </div>
+
+      <div class="user-email-password d-flex justify-content-center">
+
+          <%= f.input :email, required: true, autofocus: true, input_html: {class: "inputs inputs-perfil mr-4"} %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <%= f.input :current_password,
+                    hint: "Escribe tu contraseña actual para confirmar tus cambios",
+                      required: true,
+                      input_html: { autocomplete: "current-password",class: "inputs inputs-perfil mr-4" },
+                      label:"Contraseña actual" %>
+      </div>
+
+      <div class="user-new-password d-flex justify-content-center">
+          <%= f.input :password,
+                      hint: "Déjalo en blanco si no quieres cambiarla",
+                      required: false,
+                      input_html: { autocomplete: "new-password",class: "inputs inputs-perfil mr-4" },
+                      label: "Nueva contraseña" %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password",class: "inputs inputs-perfil mr-4" },
+                      label: "Confirmar nueva contraseña" %>
+      </div>
+
+      <div class="user-address-phone d-flex justify-content-center">
+          <%= f.input :address,
+                      required: true,
+                      input_html: { autocomplete: "address",class: "inputs inputs-perfil mr-4" },
+                      label: "Dirección"%>
+          <%= f.input :phone,
+                      required: true,
+                      input_html: { autocomplete: "phone",class: "inputs inputs-perfil mr-4" },
+                      label: "Teléfono" %>
+      </div>
+          <!--<%= f.input :seller,
+                      as: :radio_buttons %>-->
+
+    </div>
+    <div class="form-actions d-flex justify-content-center" >
+          <%= f.button :submit, "Guardar", class: "boton-primario" %>
+          <!--<%= link_to "Volver", :back, class: "boton-secundario ml-5" %> -->
+      <% end %>
     </div>
 
-    <div class="user-email-password d-flex justify-content-center">
-    
-        <%= f.input :email, required: true, autofocus: true, input_html: {class: "inputs inputs-perfil mr-4"} %>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-        <% end %>
-        <%= f.input :current_password,
-                  hint: "Escribe tu contraseña actual para confirmar tus cambios",
-                    required: true,
-                    input_html: { autocomplete: "current-password",class: "inputs inputs-perfil mr-4" },
-                    label:"Contraseña actual" %>
+    <div class="dropdown-divider"></div>
+    <div class="before-form my-4 d-flex flex-column align-items-center">
+      <p class="text-small">No estás contento?</p>
+      <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "bold text-small" %>
     </div>
-
-    <div class="user-new-password d-flex justify-content-center">
-        <%= f.input :password,
-                    hint: "Déjalo en blanco si no quieres cambiarla",
-                    required: false,
-                    input_html: { autocomplete: "new-password",class: "inputs inputs-perfil mr-4" },
-                    label: "Nueva contraseña" %>
-        <%= f.input :password_confirmation,
-                    required: false,
-                    input_html: { autocomplete: "new-password",class: "inputs inputs-perfil mr-4" },
-                    label: "Confirmar nueva contraseña" %>
-    </div>
-
-    <div class="user-address-phone d-flex justify-content-center">
-        <%= f.input :address,
-                    required: true,
-                    input_html: { autocomplete: "address",class: "inputs inputs-perfil mr-4" },
-                    label: "Dirección"%>
-        <%= f.input :phone,
-                    required: true,
-                    input_html: { autocomplete: "phone",class: "inputs inputs-perfil mr-4" },
-                    label: "Teléfono" %>
-    </div>
-        <!--<%= f.input :seller,
-                    as: :radio_buttons %>-->
-
-  </div>
-  <div class="form-actions d-flex justify-content-center" >
-    <%= f.button :submit, "Guardar", class: "boton-primario" %>
-    <!--<%= link_to "Volver", :back, class: "boton-secundario ml-5" %> -->
-  </div>
-  <div class="dropdown-divider"></div>
-  <div class="before-form my-4 d-flex flex-column align-items-center">
-    <p class="text-small">No estás contento?</p>
-    <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "bold text-small" %>
-  </div>
 </div>
-<% end %>
