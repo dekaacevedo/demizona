@@ -57,7 +57,7 @@
     <div class="before-form my-4 d-flex flex-column align-items-center">
       <p class="text-small">Ya tienes cuenta en Demizona?</p>
       <%- if controller_name != 'sessions' %>
-        <%= link_to "Inicia Sesion", new_session_path(resource_name) %>
+        <%= link_to "Inicia Sesion", new_session_path(resource_name), class: "text-medium bold" %>
       <% end %>
     </div>
 </div>
