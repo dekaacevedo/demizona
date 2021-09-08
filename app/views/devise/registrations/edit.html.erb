@@ -5,7 +5,7 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="">
+  <div class="d-flex flex-column align-items-center">
     <div class="user-name-complete d-flex justify-content-center">
         <%= f.input :name,
                     required: true,
@@ -19,14 +19,14 @@
 
     <div class="user-email-password d-flex justify-content-center">
     
-        <%= f.input :email, required: true, autofocus: true, input_html: {class: "inputs mr-5"} %>
+        <%= f.input :email, required: true, autofocus: true, input_html: {class: "inputs"} %>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
         <%= f.input :current_password,
                   hint: "we need your current password to confirm your changes",
                     required: true,
-                    input_html: { autocomplete: "current-password",class: "inputs mr-5" },
+                    input_html: { autocomplete: "current-password",class: "inputs" },
                     label:"Contraseña actual" %>
     </div>
 
@@ -34,36 +34,36 @@
         <%= f.input :password,
                     hint: "leave it blank if you don't want to change it",
                     required: false,
-                    input_html: { autocomplete: "new-password",class: "inputs mr-5" },
+                    input_html: { autocomplete: "new-password",class: "inputs mx-5" },
                     label: "Nueva contraseña" %>
         <%= f.input :password_confirmation,
                     required: false,
-                    input_html: { autocomplete: "new-password",class: "inputs mr-5" },
+                    input_html: { autocomplete: "new-password",class: "inputs mx-5" },
                     label: "Confirmar nueva contraseña" %>
     </div>
 
     <div class="user-address-phone d-flex justify-content-center">
         <%= f.input :address,
                     required: true,
-                    input_html: { autocomplete: "address",class: "inputs mr-5" },
+                    input_html: { autocomplete: "address",class: "inputs mx-5" },
                     label: "Dirección"%>
         <%= f.input :phone,
                     required: true,
-                    input_html: { autocomplete: "phone",class: "inputs mr-5" },
+                    input_html: { autocomplete: "phone",class: "inputs mx-5" },
                     label: "Teléfono" %>
     </div>
         <!--<%= f.input :seller,
                     as: :radio_buttons %>-->
 
   </div>
-  <div class="dropdown-divider"></div>
-  <div class="form-actions" style="width: 180px; margin: 0 auto;" >
+  <div class="form-actions d-flex justify-content-center" >
     <%= f.button :submit, "Guardar", class: "boton-primario" %>
     <!--<%= link_to "Volver", :back, class: "boton-secundario ml-5" %> -->
   </div>
   <div class="dropdown-divider"></div>
-  <div class="before-form mb-3"  style="width: 180px; margin: 0 auto;">
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <div class="before-form my-3 d-flex flex-column align-items-center">
+    <p>Unhappy?</p>
+    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
   </div>
 </div>
 <% end %>
