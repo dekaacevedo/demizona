@@ -44,6 +44,7 @@
         <% if product.active %>
         <div class="">
             <div class="product-card">
+
               <%= link_to(product_path(product)) do %>
                     <% if product.photos.attached? %>
                       <% product.photos.first(1).each do |photo| %>
