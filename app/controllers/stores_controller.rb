@@ -2,10 +2,8 @@ require_relative "../models/user"
 class StoresController < ApplicationController
 
   # before_action :set_user, only: [:new, :create]
-  before_action :set_store, only: [:show, :edit, :update, :destroy, :admin, :display_reviews]
+  before_action :set_store, only: [:show, :edit, :update, :destroy, :admin]
   
-  REVIEW_PER_PAGE = 3
-
   def index
     @pagy, stores = pagy(policy_scope(Store), items: 6)
     @stores = stores.geocoded # trae stores´s que tengan latitude y longitude obtenidas con la gema
@@ -39,10 +37,6 @@ class StoresController < ApplicationController
       }
     ]
     
-  end
-
-  def display_reviews
-
   end
 
   def new
