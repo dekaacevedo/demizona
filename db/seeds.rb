@@ -1,4 +1,5 @@
 require 'faker'
+load_images = false
 
 User.destroy_all
 Store.destroy_all
@@ -59,27 +60,47 @@ alcohol = Category.create(name: "Bebidas Alcohólicas")
 puts "Populating stores with fruits and vegetables"
 i = 1
 while i <= 4
-  10.times do
-    fruits = Product.create(
+  rand(8..15).times do
+    price = rand(50..250) * 10
+    discount_price = rand(1..100) > 80 ? price * rand(70..95) / 100 : price
+    discount = discount_price < price ? true : false
+    fruits = Product.new(
       name: Faker::Food.fruits,
-      price: rand(50..250) * 10,
+      price: price,
+      discount_price: discount_price,
+      discount: discount,
       description: Faker::Lorem.sentence(word_count: 4, supplemental: true, random_words_to_add: 10),
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
       store: stores[i]
     )
-  product_category = ProductCategory.create(category: fruit_category, product: fruits)
+    if load_images
+      file = URI.open("https://source.unsplash.com/featured/400x300/?#{fruits.name},fruits")
+      fruits.photos.attach(io: file, filename: "#{fruits.id}.png", content_type: 'image/png')
+    end
+    fruits.save
+    product_category = ProductCategory.create(category: fruit_category, product: fruits)
   end
-  10.times do
-    vegetables = Product.create(
+  rand(8..15).times do
+    price = rand(50..250) * 10
+    discount_price = rand(1..100) > 80 ? price * rand(70..95) / 100 : price
+    discount = discount_price < price ? true : false
+    vegetables = Product.new(
       name: Faker::Food.vegetables,
-      price: rand(50..250) * 10,
+      price: price,
+      discount_price: discount_price,
+      discount: discount,
       description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
       store: stores[i]
     )
-  product_category = ProductCategory.create(category: vegetables_category, product: vegetables)
+    if load_images
+      file = URI.open("https://source.unsplash.com/featured/400x300/?#{vegetables.name},vegetables")
+      vegetables.photos.attach(io: file, filename: "#{vegetables.id}.png", content_type: 'image/png')
+    end
+    vegetables.save
+    product_category = ProductCategory.create(category: vegetables_category, product: vegetables)
   end
   i += 1
 end

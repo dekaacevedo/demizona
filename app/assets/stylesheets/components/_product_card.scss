@@ -9,8 +9,6 @@
   flex-wrap: wrap;
 }
 
-
-
 .product-card{
   position: relative;
   flex: 30%;
@@ -48,6 +46,11 @@
   }
 
 .product-store-name {
+  color: #AAA;
+  font-weight: 400;
+}
+
+.product-description {
   color: #AAA;
   font-weight: 400;
 }
