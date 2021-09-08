@@ -52,6 +52,10 @@
   width: 300px;
 }
 
+.inputs-perfil{
+  width: 330px;
+}
+
 .login-inputs{
   width: 405px;
 }
@@ -95,9 +99,11 @@
 }
 
 .form-actions{
-   margin: 0;
-
+  margin: 0;
   top: 50%;
   left: 50%;
+}
 
+.text-small{
+  font-size: 0.7em;
 }

@@ -9,47 +9,47 @@
     <div class="user-name-complete d-flex justify-content-center">
         <%= f.input :name,
                     required: true,
-                    input_html: { autocomplete: "name", class: "inputs mr-5" },
+                    input_html: { autocomplete: "name", class: "inputs inputs-perfil mr-4" },
                     label: "Nombre" %>
         <%= f.input :last_name,
                     required: true,
-                    input_html: { autocomplete: "last-name",class: "inputs mr-5" },
+                    input_html: { autocomplete: "last-name",class: "inputs inputs-perfil mr-4" },
                     label: "Apellidos" %>
     </div>
 
     <div class="user-email-password d-flex justify-content-center">
     
-        <%= f.input :email, required: true, autofocus: true, input_html: {class: "inputs"} %>
+        <%= f.input :email, required: true, autofocus: true, input_html: {class: "inputs inputs-perfil mr-4"} %>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
         <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
+                  hint: "Escribe tu contraseña actual para confirmar tus cambios",
                     required: true,
-                    input_html: { autocomplete: "current-password",class: "inputs" },
+                    input_html: { autocomplete: "current-password",class: "inputs inputs-perfil mr-4" },
                     label:"Contraseña actual" %>
     </div>
 
     <div class="user-new-password d-flex justify-content-center">
         <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
+                    hint: "Déjalo en blanco si no quieres cambiarla",
                     required: false,
-                    input_html: { autocomplete: "new-password",class: "inputs mx-5" },
+                    input_html: { autocomplete: "new-password",class: "inputs inputs-perfil mr-4" },
                     label: "Nueva contraseña" %>
         <%= f.input :password_confirmation,
                     required: false,
-                    input_html: { autocomplete: "new-password",class: "inputs mx-5" },
+                    input_html: { autocomplete: "new-password",class: "inputs inputs-perfil mr-4" },
                     label: "Confirmar nueva contraseña" %>
     </div>
 
     <div class="user-address-phone d-flex justify-content-center">
         <%= f.input :address,
                     required: true,
-                    input_html: { autocomplete: "address",class: "inputs mx-5" },
+                    input_html: { autocomplete: "address",class: "inputs inputs-perfil mr-4" },
                     label: "Dirección"%>
         <%= f.input :phone,
                     required: true,
-                    input_html: { autocomplete: "phone",class: "inputs mx-5" },
+                    input_html: { autocomplete: "phone",class: "inputs inputs-perfil mr-4" },
                     label: "Teléfono" %>
     </div>
         <!--<%= f.input :seller,
@@ -61,9 +61,9 @@
     <!--<%= link_to "Volver", :back, class: "boton-secundario ml-5" %> -->
   </div>
   <div class="dropdown-divider"></div>
-  <div class="before-form my-3 d-flex flex-column align-items-center">
-    <p>Unhappy?</p>
-    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+  <div class="before-form my-4 d-flex flex-column align-items-center">
+    <p class="text-small">No estás contento?</p>
+    <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "bold text-small" %>
   </div>
 </div>
 <% end %>
