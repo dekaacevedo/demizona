@@ -5,16 +5,16 @@
       label: "Nombre de la tienda" %>
       <%= f.input :address, input_html: { class: "inputs-store" },
       label:"Dirección" %>
-      <!--<%= f.input :city%>-->
+      <%= f.input :city, input_html: { class: "inputs-store" } %>
       <%= f.input :email, input_html: { class: "inputs-store" } %>
       <%= f.input :phone, input_html: { class: "inputs-store" },
       label: "Teléfono"%>
       <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Foto de la tienda", class: "w-100" %>
-      <!--<%= link_to  "Volver", request.referrer, class: "btn btn-warning" %> -->
     </div>
     <div class="dropdown-divider"></div>
-    <div class="text-center ">
-      <%= f.button :submit, "Guardar", class: "boton-primario mb-5" %>
+    <div class="text-center">
+      <%= f.button :submit, "Guardar", class: "btn boton-primario mb-5" %>
+      <%= link_to  "Volver", request.referrer, class: "btn boton-primario mb-5" %>
     </div>
   <% end %>
 </div>
