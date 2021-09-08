@@ -2,7 +2,9 @@ require_relative "../models/user"
 class StoresController < ApplicationController
 
   # before_action :set_user, only: [:new, :create]
-  before_action :set_store, only: [:show, :edit, :update, :destroy, :admin]
+  before_action :set_store, only: [:show, :edit, :update, :destroy, :admin, :display_reviews]
+  
+  REVIEW_PER_PAGE = 3
 
   def index
     @pagy, stores = pagy(policy_scope(Store), items: 6)
@@ -21,6 +23,7 @@ class StoresController < ApplicationController
     @cart_item = current_cart.cart_items.new
     admin
     @review = Review.new
+
     if @store.reviews.blank?
       @average_review = 0
     else
@@ -35,6 +38,11 @@ class StoresController < ApplicationController
         locals: { store: @store })
       }
     ]
+    
+  end
+
+  def display_reviews
+
   end
 
   def new
