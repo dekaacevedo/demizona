@@ -1,14 +1,88 @@
-<div>
-<h1><%= @product.name %><h1>
-<p><%= @product.description %></p> 
-<p>SKU: <%= @product.sku %></p>
-<p>$<%= @product.price %> / <%= @product.unit_type %></p>
-<p>$<%= @product.discount_price %></p>
-<% @product.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
-<% end %>
-<% unless @product.active %>
-  <p><%= "Producto no disponible" %></p>
-<% end %>
-<p><%= @product.store.name %></p>
+<div class="product-background d-flex align-items-center">
+  <div class="container">
+    <div class="product-show-card my-4 d-flex align-items-center py-5 px-4">
+      <%= image_tag "pera.png", alt: "alttext", class: "product-image-show mr-5 grow-1" %>
+      <div class="grow-2">
+        <p class="product-store-show"><%= @product.store.name %> </p>
+        <p class="product-name-show"><%= @product.name %></p>
+        <p class="sku">SKU: <%= @product.sku %></p>
+
+        <% if @product.discount %>
+          <div class="discount-tag-show">
+            <p><%= ((@product.price - @product.discount_price) * 100) / @product.price %>% Ahorro</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <p class="product-price discount mr-2">$<%= @product.discount_price %></p>
+            <p class="product-price-discount">$<%= @product.price %></p>
+            <p class="ml-1 product-price-type">/<%= @product.unit_type %></p>
+          </div>
+        <% else %>
+          <p class="product-price mt-2">$<%= @product.price %> / <%= @product.unit_type %></p>
+        <% end -%>
+        <p class="sku mt-3">Cantidad:</p>
+          <%= simple_form_for(@cart_item, remote: true) do |f| %>
+        <div class="d-flex align-items-center">
+            <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.button :button, "-", class: "signo-btn minus",onclick: "document.getElementById('#{@product.id}').value = parseInt(document.getElementById('#{@product.id}').value) - 1; return false " %>
+              <%= f.number_field :quantity, label: false, value: 1,id: @product.id, class: "my-2 text-center input-quantity-show"%>
+              <%= f.button :button, "+", class: "signo-btn plus", onclick: "document.getElementById('#{@product.id}').value = parseInt(document.getElementById('#{@product.id}').value) + 1; return false" %>
+            <%= f.submit "Añadir al carrito", class: "btn boton-primario my-2 ml-3" %>
+        </div>
+          <% end %>
+
+        <div class="order-divider mt-3"></div>
+        <div class="d-flex mt-4">
+          <p class="sku mr-1 categories">Categorías:</p>
+          <% @product.categories.each do |category| %>
+            <p class="sku"><%= category.name %></p>
+          <% end -%>
+        </div>
+      </div>
+
+      <div class="feature-background-show grow-1 ml-5 py-2 pl-4">
+        <div class="feature my-4">
+          <%= image_tag "rocket.png", alt: "Cohete", class: "img-feature mr-2" %>
+          <div class="">
+            <p class="feature-title show">Envíos gratis</p>
+            <p class="feature-subtitle show-subtitle">En compras mayores a $50.000</p>
+          </div>
+        </div>
+
+        <div class="feature my-4">
+          <%= image_tag "devolucion.png", alt: "Devolución", class: "img-feature mr-2" %>
+          <div>
+            <p class="feature-title show">Devoluciones</p>
+            <p class="feature-subtitle show-subtitle">Antes de las 24 horas</p>
+          </div>
+        </div>
+
+        <div class="feature my-4">
+          <%= image_tag "seguridad.png", alt: "Seguridad", class: "img-feature mr-2" %>
+          <div>
+            <p class="feature-title show">Pagos 100% Seguros</p>
+            <p class="feature-subtitle show-subtitle">Pagos seguros garantizados</p>
+          </div>
+        </div>
+
+      </div>
+
+      <% @product.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+      <% end %>
+    </div>
+
+  </div>
 </div>
+
+  <div class="container d-flex mt-5 mb-5 ">
+
+    <div class="feature-background-show p-4 width">
+      <p>Descripción</p>
+      <div class="order-divider my-3"></div>
+      <p>Comentarios de la tienda</p>
+      <div class="order-divider my-3"></div>
+      <p>Información del vendedor</p>
+    </div>
+      <p class="mt-3 pl-5"><%= @product.description %></p>
+  </div>
+
