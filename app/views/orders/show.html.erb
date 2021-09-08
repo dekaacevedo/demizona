@@ -1,3 +1,7 @@
-<h1>Hola mundo</h1>
-
-<%= @order.payment_id %>
+<div class="container">
+  <div class="dropdown-divider"></div>
+  <h1 class= "card-title"><strong>Comprobante de Pago</strong></h1>
+  <div class="dropdown-divider"></div>
+  <h5><strong><%= current_user.name %> <%= current_user.last_name %></strong></h5>
+  <%= @order.payment_id %>
+</div>
