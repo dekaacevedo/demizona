@@ -1,11 +1,11 @@
-#map{
-  top: 0!important;
+#block-right{
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  height: 100vh;
+  position: sticky!important;
+  top: 0px;
 }
 
-.map-review{
-  position: fixed!important;
-  z-index: 1;
-}
 .mapboxgl-popup {
   max-width: 10rem!important;
 }
