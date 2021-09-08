@@ -9,13 +9,11 @@
   flex-wrap: wrap;
 }
 
-
-
 .product-card{
   position: relative;
   flex: 30%;
   width: 200px;
-  height: 350px;
+  height: 370px;
   border-radius: 5px;
   background-color: #fff;
   // box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -39,7 +37,8 @@
   background-color: #fff;
   border: 0.5px solid #E8E8E8;
   border-radius: 2px;
-  width: 94%;
+  width: 105px;
+  height: 40px;
 }
 .image-card{
   width: 100%;
@@ -48,6 +47,11 @@
   }
 
 .product-store-name {
+  color: #AAA;
+  font-weight: 400;
+}
+
+.product-description {
   color: #AAA;
   font-weight: 400;
 }
@@ -64,6 +68,10 @@
   font-weight: 700;
 }
 
+.product-price-type{
+  color: #AAAAAA;
+}
+
 .product-price-discount{
   font-size: 1em;
   color: #AAAAAA;
@@ -75,6 +83,7 @@
 }
 
 .discount-tag{
+  font-size: 0.6em;
   position: absolute;
   top: 0.8em;
   left: 1em;

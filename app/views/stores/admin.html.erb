@@ -11,52 +11,52 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container p-1">
     <% @products.order(id: :asc).each do |product| %>
-      <div class="row p-3">
-        <div class="col-md-3">
+      <div class="d-flex align-items-center">
+        <div class="col-md-3 m-1">
           <% if product.photos.attached? %>
             <% product.photos.first(1).each do |photo| %>
               <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
             <% end %>
           <% else %>
-            <%= image_tag "no_image.png", height: 150, width: 200, crop: :fill %>          
+            <%= image_tag "no_image.png", height: 150, width: 200, crop: :fill %>
           <% end %>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-5 m-1">
           <%= link_to(product_path(product)) do%>
-            <h3><%= product.name %></h3>
+            <p class="product-name"><%= product.name %></h3>
           <% end %>
-          <p class="lead"><%= product.description%></p>
+          <p class="product-description"><%= product.description%></p>
         </div>
-        <div class="col-md-2">
-          <div class="containter">
-            <p class="">Precio normal <%= "(Activo)" unless product.discount %></p>
-            <p class="fs-2">$<%= product.price%></p>
-            <p class="fs-3">Precio oferta <%= "(Activo)" if product.discount %></p>
-            <p class="fs-4">$<%= product.discount_price%></p>
+        <div class="col-md-2 m-1">
+            <% unless product.discount %>
+              <p class="">Precio normal</p>
+              <p class="product-price">$<%= product.price%></p>
+            <% else %>
+              <p class="product-price-discount">Precio normal</p>
+              <p class="product-price-discount">$<%= product.price%></p>
+              <p class="">Precio oferta</p>
+              <p class="product-price discount">$<%= product.discount_price%></p>
+            <% end %>
             <% unless product.active %>
               <p><%= "Producto no disponible" %></p>
             <% end %>
-          </div>
-          <div class="container">
+        </div>
+        <div class="col-md-2 m-1">
             <%= link_to edit_product_path(product.id), class: "" do %>
               <i class="fas fa-pen danger"></i>
             <% end %>
             <%= link_to product_path(product.id), method: :delete, data: { confirm: "Estás seguro?" } do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
-          </div>
         </div>
       </div>
     <% end %>
     <% if policy(@store).edit? %>
-      <%= link_to  "Editar tienda", edit_store_path(@store), class:"btn btn-primary" %>
+      <%= link_to  "Volver", store_path(@store), class:"btn btn-primary" %>
     <% end %>
-    <% if policy(@store).destroy? %>
-      <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger", method: :delete %>
-    <% end %>
-    <div class="pagination m-2 p-2">
+    <div class="pagination m-1 p-2">
       <%== pagy_bootstrap_nav(@pagy) %>
     </div>
   </div>
