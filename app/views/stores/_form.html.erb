@@ -1,12 +1,20 @@
-<div class="container mt-5 p-5">
+<div class="container ">
   <%= simple_form_for @store do |f| %>
-    <%= f.input :name %>
-    <%= f.input :address%>
-    <%= f.input :city%>
-    <%= f.input :email%>
-    <%= f.input :phone%>
-    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Foto de su tienda" %>
-    <%= f.button :submit, "Guardar", class: "btn btn-primary" %>
-    <%= link_to  "Volver", request.referrer, class: "btn btn-primary" %>
+    <div class="new-store-form">
+      <%= f.input :name, input_html: { class: "inputs-store mr-5" },
+      label: "Nombre" %>
+      <%= f.input :address, input_html: { class: "inputs-store mr-5" },
+      label:"Dirección" %>
+      <!--<%= f.input :city%>-->
+      <%= f.input :email, input_html: { class: "inputs-store mr-5" } %>
+      <%= f.input :phone, input_html: { class: "inputs-store mr-5" },
+      label: "Teléfono"%>
+      <%= f.input :photos, as: :file, input_html: { multiple: true}, label: "Foto de su tienda" %>
+      <!--<%= link_to  "Volver", request.referrer, class: "btn btn-warning" %> -->
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="text-center ">
+      <%= f.button :submit, "Guardar", class: "boton-primario mb-5" %>
+    </div>
   <% end %>
 </div>
