@@ -10,11 +10,11 @@
       <%= f.input :phone, input_html: { class: "inputs-store mr-5" },
       label: "Teléfono"%>
       <%= f.input :photos, as: :file, input_html: { multiple: true}, label: "Foto de su tienda" %>
-      <!--<%= link_to  "Volver", root_path, class: "btn btn-warning" %> -->
+      <!--<%= link_to  "Volver", request.referrer, class: "btn btn-warning" %> -->
     </div>
     <div class="dropdown-divider"></div>
     <div class="text-center ">
-      <%= f.button :submit, "Crear tienda", class: "boton-primario mb-5" %>
+      <%= f.button :submit, "Guardar", class: "boton-primario mb-5" %>
     </div>
   <% end %>
 </div>
