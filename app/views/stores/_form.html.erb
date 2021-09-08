@@ -1,15 +1,15 @@
-<div class="container ">
+<div class="container d-flex flex-column align-items-center">
   <%= simple_form_for @store do |f| %>
-    <div class="new-store-form">
-      <%= f.input :name, input_html: { class: "inputs-store mr-5" },
-      label: "Nombre" %>
-      <%= f.input :address, input_html: { class: "inputs-store mr-5" },
+    <div class="new-store-form d-flex flex-column align-items-start">
+      <%= f.input :name, input_html: { class: "inputs-store" },
+      label: "Nombre de la tienda" %>
+      <%= f.input :address, input_html: { class: "inputs-store" },
       label:"Dirección" %>
       <!--<%= f.input :city%>-->
-      <%= f.input :email, input_html: { class: "inputs-store mr-5" } %>
-      <%= f.input :phone, input_html: { class: "inputs-store mr-5" },
+      <%= f.input :email, input_html: { class: "inputs-store" } %>
+      <%= f.input :phone, input_html: { class: "inputs-store" },
       label: "Teléfono"%>
-      <%= f.input :photos, as: :file, input_html: { multiple: true}, label: "Foto de su tienda" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Foto de la tienda", class: "w-100" %>
       <!--<%= link_to  "Volver", request.referrer, class: "btn btn-warning" %> -->
     </div>
     <div class="dropdown-divider"></div>
