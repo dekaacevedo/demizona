@@ -83,14 +83,30 @@
         <% end -%>
         <% end %>
       </div>
+
       <div class="pagination m-2 p-2">
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
     </div>
-      <div class="reviews-average">
-      <h1 class = "mt-4">Comentarios</h1>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+
+    <section id="reviews-section-th">
+      <ol id="reviews">
+        <%= render @store.reviews.last(3) %>
+      </ol>
+    </section>
+
+    <section id="reviews-section">
+      <ol id="reviews">
         <%= render @store.reviews %>
-      </div>
+      </ol>
+    </section>
+    <button id="btn-review" class="btn btn-primary">Mostrar todas las reseñas</button>
+
+
       <div class="action-stores">
         <!--<%= link_to "Añadir Reseña", new_store_review_path(@store) %> -->
         <%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>
@@ -105,9 +121,12 @@
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
         <div class="create-review mt-3">
-          <h3>Reseña</h3>
-          <%= render "reviews/form" %>
+          <div id="new-review">
+            <h3>Reseña</h3>
+            <%= render "reviews/form" %>
+          </div>          
         </div>
+
       </div>
     </div>
   </div>

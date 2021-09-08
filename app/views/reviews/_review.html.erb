@@ -1,7 +1,6 @@
 
 
 <div class="reviews">
-  <%= review.rating %>
   <div class="d-flex">
     <input
         class="rating"
@@ -14,10 +13,8 @@
     </label>
   </div>
 
-
-
-
-  <p class="review review-comment"><%= review.comment %></p>
+  <p class="reviews review review-comment"><%= review.comment %></p>
+  <em class="reviews review-time-ago"><%= time_ago_in_words_es(review.created_at) %></em>
 
  <% if user_signed_in? %>
   <!-- add if user_signed_in? -->

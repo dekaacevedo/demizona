@@ -87,3 +87,6 @@ gem 'turbolinks_render'
 
 # Gema para crear paginación
 gem 'pagy', '~> 4.11'
+
+# Gema para agregar descripción tiempo de creación
+gem 'time_ago_in_words_es', '~> 0.1.0'
