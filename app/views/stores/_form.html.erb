@@ -6,7 +6,7 @@
     <%= f.input :email%>
     <%= f.input :phone%>
     <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Foto de su tienda" %>
-    <%= f.button :submit, "Crear tienda", class: "boton-primario" %>
-    <%= link_to  "Volver", root_path, class: "btn btn-warning" %>
+    <%= f.button :submit, "Guardar", class: "btn btn-primary" %>
+    <%= link_to  "Volver", request.referrer, class: "btn btn-primary" %>
   <% end %>
 </div>
