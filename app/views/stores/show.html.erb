@@ -22,20 +22,14 @@
           <p><%= @store.email %> </p>
         
           <% if @average_review != 0 %>
-            <label class="rating-label"><strong>El rating promedio de la tienda es <%= @average_review %>
+            <label class="rating-label"><strong>El rating promedio de la tienda es <%= @average_review %></strong>
               <div class="stars-content d-flex">
-                <input
-                  class="rating_avg"
-                  max="5"
-                  readonly
-                  step="0.01"
-                  style="--fill:orange;--value:<%= (@store.reviews.sum(:rating) / @store.reviews.count).round(2) %>"
-                  type="range"
-                  value=<%= (@store.reviews.sum(:rating) / @store.reviews.count).round(2) %>>
+                <input class="rating_avg" max="5" readonly step="0.01" style="--fill:orange;--value:<%= (@store.reviews.sum(:rating) / @store.reviews.count).round(2) %>" type="range" value=<%= (@store.reviews.sum(:rating) / @store.reviews.count).round(2) %>>
+              </div>
             </label>
             <span id="base-comment">(Basado en <%= @store.reviews.count %> comentarios)</span>
           <% else %>
-            <br></br
+            <br></br>
           <% end %>
     
 
