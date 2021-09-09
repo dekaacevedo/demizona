@@ -1,21 +1,26 @@
 <div class="container-fluid">
   <div class="row m-5">
-
-    <div class="col-md-8">
-
+    <div class="col-9 d-flex flex-column justify-content-center">
       <div class="card-store d-flex weight: vw100;">
-        <div class="image-store">
-          <% @store.photos.each do |photo| %>
-             <%= cl_image_tag photo.key, height: 400, width: 400, crop: :fill %>
-          <% end %>
-        </div>
-        <div class="content-store">
-          <h1>Nombre de tienda: <%= @store.name %> </h1>
-          <h3>Dirección: <%= @store.address %> </h3>
-          <h3>Ciudad: <%= @store.city %> </h3>
-          <h3>Email: <%= @store.email %> </h3>
-          <h3>Teléfono: <%= @store.phone%> </h3>
+        <% if @store.photos.count > 0 %>
+          <div class="image-store">
+            <% @store.photos.each do |photo| %>
+               <%= cl_image_tag photo.key, height: 250, width: 250, crop: :fill %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="logo-store-image d-flex justify-content-center align-items-center align-self-center text-center bold px-2">
+            <p> <%= @store.name %> </p>
+          </div>
+        <% end -%>
 
+        <div class="content-store py-4 pl-4">
+          <h1 class="store-name bold"><%= @store.name %></h1>
+          <p><%= @store.address %> </p>
+          <p><%= @store.city %> </p>
+          <p><%= @store.phone%> </p>
+          <p><%= @store.email %> </p>
+        
           <% if @average_review != 0 %>
             <label class="rating-label"><strong>El rating promedio de la tienda es <%= @average_review %>
               <div class="stars-content d-flex">
@@ -32,26 +37,35 @@
           <% else %>
             <br></br
           <% end %>
-         </div>
+    
 
           <% if policy(@store).edit? %>
-            <%= link_to  "Editar tienda", edit_store_path, class: "btn btn-primary" %>
-            <%= link_to  "Mis productos", admin_store_path, class: "btn btn-primary" %>
             <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger", method: :delete , data: { confirm: "Estás seguro?" } %>
           <% else %>
             <%= link_to  "Contactar al Productor", "https://wa.me/56#{@store.phone}?text=Hola,%20ví%20tu%20tienda%20en%20Demizona%20y%20quisiera%20hacerte%20una%20pregunta", target: "_blank", class: "btn btn-primary"%>
           <% end %>
-          </div>
         </div>
 
-<div class="d-flex flex-column align-items-center">
-      <div class="products-store mt-5 justify-content-start mx-4">
-        <% @products.order(id: :asc).each do |product| %>
-        <% if product.active %>
-        <div class="">
-            <div class="product-card">
+        <div class="py-4">
+          <% if policy(@store).edit? %>
+            <%= link_to  "Editar tienda", edit_store_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
 
-              <%= link_to(product_path(product)) do %>
+      <div class="d-flex flex-column mt-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="bold"> <%= @store.products.count %> Productos</p>
+          <% if policy(@store).edit? %>
+            <%= link_to "Administrar mis productos", admin_store_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="products-store mt-5 justify-content-start mx-4">
+          <% @products.order(id: :asc).each do |product| %>
+            <% if product.active %>
+              <div class="">
+                <div class="product-card">
+                  <%= link_to(product_path(product)) do %>
                     <% if product.photos.attached? %>
                       <% product.photos.first(1).each do |photo| %>
                         <%= cl_image_tag photo.key, alt: "alttext", class: "image-card" %>
@@ -61,61 +75,60 @@
                     <% end %>
                     <p class="product-store-name pl-2 pt-2 pb-1"><%= product.store.name %></p>
                     <p class="product-name pl-2 pb-1"><%= product.name %></p>
-                    <% if product.discount %>
-                    <div class="discount-tag">
-                      <p><%= ((product.price - product.discount_price) * 100) / product.price %>% Ahorro</p>
+                      <% if product.discount %>
+                        <div class="discount-tag">
+                          <p><%= ((product.price - product.discount_price) * 100) / product.price %>% Ahorro</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <p class="product-price discount pl-2">$<%= product.discount_price %></p>
+                          <p class="product-price-discount pl-2">$<%= product.price %></p>
+                        </div>
+                      <% else %>
+                        <p class="product-price pl-2">$<%= product.price %></p>
+                      <% end -%>
+                    <% end %>
+                    <div class="form-quantity-product pl-2">
+                      <%= simple_form_for(@cart_item, remote: true) do |f| %>
+                        <%= f.hidden_field :product_id, value: product.id %>
+                        <div class="d-flex align-items-center">
+                          <%= f.button :button, "-", class: "signo-btn minus", onclick: "document.getElementById('#{product.id}').value = parseInt(document.getElementById('#{product.id}').value) - 1; return false " %>
+                          <%= f.number_field :quantity, value: 1, label: false, class: "quantity-product my-2 text-center", id: product.id %>
+                          <%= f.button :button, "+", class: "signo-btn plus", onclick: "document.getElementById('#{product.id}').value = parseInt(document.getElementById('#{product.id}').value) + 1; return false" %>
+                        </div>
+                        <%= f.submit "Añadir al carrito", class: "btn boton-primario my-2" %>
+                      <% end %>
                     </div>
-                    <div class="d-flex align-items-center">
-                      <p class="product-price discount pl-2">$<%= product.discount_price %></p>
-                      <p class="product-price-discount pl-2">$<%= product.price %></p>
-                    </div>
-                    <% else %>
-                      <p class="product-price pl-2">$<%= product.price %></p>
-                    <% end -%>
-              <% end %>
-              <div class="form-quantity-product pl-2">
-                <%= simple_form_for(@cart_item, remote: true) do |f| %>
-                  <%= f.hidden_field :product_id, value: product.id %>
-                  <div class="d-flex align-items-center">
-                    <%= f.button :button, "-", class: "signo-btn minus", onclick: "document.getElementById('#{product.id}').value = parseInt(document.getElementById('#{product.id}').value) - 1; return false " %>
-                    <%= f.number_field :quantity, value: 1, label: false, class: "quantity-product my-2 text-center", id: product.id %>
-                    <%= f.button :button, "+", class: "signo-btn plus", onclick: "document.getElementById('#{product.id}').value = parseInt(document.getElementById('#{product.id}').value) + 1; return false" %>
-                  </div>
-                    <%= f.submit "Añadir al carrito", class: "btn boton-primario my-2" %>
-                <% end %>
+                </div>
               </div>
-            </div>
+            <% end -%>
+          <% end %>
         </div>
-        <% end -%>
-        <% end %>
       </div>
 
-      <div class="pagination m-2 p-2">
+      <div class="pagination m-2 p-2 align-self-center ">
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+      <div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <section id="reviews-section-th">
+          <ol id="reviews">
+            <%= render @store.reviews.last(3) %>
+          </ol>
+        </section>
 
-    <section id="reviews-section-th">
-      <ol id="reviews">
-        <%= render @store.reviews.last(3) %>
-      </ol>
-    </section>
-
-    <section id="reviews-section">
-      <ol id="reviews">
-        <%= render @store.reviews %>
-      </ol>
-    </section>
-    <button id="btn-review" class="btn btn-primary">Mostrar todas las reseñas</button>
-
-
-      <div class="action-stores">
-        <!--<%= link_to "Añadir Reseña", new_store_review_path(@store) %> -->
-        <%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>
+        <section id="reviews-section">
+          <ol id="reviews">
+            <%= render @store.reviews %>
+          </ol>
+        </section>
+        <button id="btn-review" class="btn btn-primary">Mostrar todas las reseñas</button>
+        <div class="action-stores">
+          <!--<%= link_to "Añadir Reseña", new_store_review_path(@store) %> -->
+          <!--<%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>-->
+        </div>
       </div>
+      
     </div>
 
     <div class="col-3 d-grid" id="block-right">
