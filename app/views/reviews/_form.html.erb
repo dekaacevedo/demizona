@@ -1,17 +1,7 @@
-
-
- <div class="row" id="block-right">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <%= simple_form_for([@store, @review], remote: true)do |f| %>
-              <%= f.input :rating, collection: (1..5).to_a, label: false %>
-              <div style="width: 276px;">
-                <%= f.input :comment, label: "Comentario" %>
-              </div>
-              <%= f.button :submit,"Crear reseña", class:"boton-primario" %>  
-          <% end %>
-        </div>
-      </div>
-    </form>
+<%= simple_form_for([@store, @review], remote: true)do |f| %>
+  <%= f.input :rating, collection: (1..5).to_a, label: false %>
+  <div style="width: 250px;"
+    <%= f.input :comment, label: "Comentario" %>
   </div>
+  <%= f.button :submit,"Crear reseña", class:"boton-primario" %>  
+<% end %>
