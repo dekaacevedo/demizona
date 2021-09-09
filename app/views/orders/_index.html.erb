@@ -1,0 +1,27 @@
+  <div class="order-card d-flex flex-column justify-content-center my-3">
+    <div class="d-flex justify-content-between py-3 px-1 ">
+      <div class="d-flex ">
+        <p class="ml-3 mr-2 bold">Pedido Nº</p>
+        <p class="mr-2 bold"><%=@order.id %></p>
+      </div>
+      <p class="mx-3 bold"><%= @order.created_at.strftime("%d de %b del %Y") %></p>
+    </div>
+    <div class="order-divider"></div>
+    <% @order.cart.cart_items.each do |item| %>
+    <div class="d-flex justify-content-between align-items-center py-2">
+      <div class="d-flex align-items-center">
+        <%= image_tag "pear.jpg", alt: "alttext", class: "order-img" %>
+        <div>
+          <p class="product-store-name order pl-2 pt-2 pb-1"><%= item.product.store.name %></p>
+          <p class="product-name pl-2 pb-1"><%= item.product.name %></p>
+        </div>
+      </div>
+      <p class="product-name px-3 pb-1">$<%= item.item_price %></p>
+    </div>
+    <div class="order-divider"></div>
+    <% end -%>
+    <div class="d-flex justify-content-end align-items-center py-3 px-1 table-header">
+      <p class="mx-4 total-cart-title">TOTAL DE LA COMPRA</p>
+      <p class="mr-2 price-cart">$<%= @order.cart.total_price %></p>
+    </div>
+  </div>
