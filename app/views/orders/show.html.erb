@@ -1,49 +1,54 @@
 <div class="container mt-5">
 
     <h1 class= "card-title text-center">Tu pago ha sido aceptado 🎉</h1>
-                    <div class="order-divider"></div>
+    <div class="order-divider"></div>
     <div class="container mb-5 ">
-    
+
       <div class="head-payed mt-5">
         <h3><strong>Comprobante de Pago</strong></h3>
         <br>
         <h5>Estimado (a) <strong><%= current_user.name %> <%= current_user.last_name %></strong></h5>
         <p>Le informamos que usted ha realizado el pago de sus productos Demizona.</p>
       </div>
+      <br>
 
-        <div class="row justify-content-between" >
-          <div class="col-md-8" id= "cards-show-order">
-              <div>
-                <%= render "index", collection: @order.cart %>
+      <div class=" justify-content-between" >
+
+        <div class="d-grid" id= "card-content">
+              <div class="payed-details">
+                <div class="info-order ml-2">
+                    <h6>Información de Envío: </h6>
+                    <p><strong>Nombre del cliente: </strong><%= current_user.name %> <%= current_user.last_name %></p>
+                    <p><strong>Dirreción: </strong><%= current_user.address%></p>
+                    <p ><strong>Monto Pagado</strong>: $<%= @order.cart.total_price %></p>
+                    <p><strong>Fecha de Transacción</strong>: <%=  @order.created_at.strftime("%d de %b del %Y")  %></p> <!--- 
+                    También puede ser remplazado por :   <%= Time.new %>-->
+                    <p><strong>Código de Transacción</strong> : <%= @order.payment_id %></p>
+                    <p><strong>Medio de Pago</strong>: Khipu</p>
+                  </div>
+
+                  <div class="order-divider"></div>
+                  <div class="back-color">
+                      <%= image_tag "khipu.png", alt: "logo-khipu", class: "khipi_image ml-1 mb-3 align-items-center", style:"height:5rem"%>
+                  </div>
+                </div>
               </div>
           </div>
 
-          <div class="col-md-4 d-grid" id= "card-content">
-            <div class="payed-details ml-2">
-              <div class="info-order ml-2">
-                  <h6>Información de Envío: </h6>
-                  <p><strong>Nombre del cliente: </strong><%= current_user.name %> <%= current_user.last_name %></p>
-                  <p><strong>Dirreción: </strong><%= current_user.address%></p>
-                  <p ><strong>Monto Pagado</strong>: $<%= @order.cart.total_price %></p>
-                  <p><strong>Fecha de Transacción</strong>: <%=  @order.created_at.strftime("%d de %b del %Y")  %></p> <!--- 
-                  También puede ser remplazado por :   <%= Time.new %>-->
-                  <p><strong>Código de Transacción</strong> : <%= @order.payment_id %></p>
-                  <p><strong>Medio de Pago</strong>: Khipu</p>
+
+            <div class="" id= "cards-show-order">
+                <div>
+                  <%= render "index", collection: @order.cart %>
                 </div>
-                <div class="order-divider"></div>
-                <div class="back-color">
-                    <%= image_tag "khipu.png", alt: "logo-khipu", class: "khipi_image ml-1 mb-3 align-items-center", style:"height:5rem"%>
-                </div>
-              </div>
             </div>
-        </div>
 
-        <div class="my-3 text-center mb-5">
-          <%= link_to root_path, class: "align-items-center" do %>
-            <%= image_tag "compra-verificada.png" , class: "" , style:"height:8rem"%>
-            <p class="logo-title">Compra Verificada Demizona</p>
-          <% end %>
-        </div>
+          <div class="my-3 text-center mb-5">
+            <%= link_to root_path, class: "align-items-center" do %>
+              <%= image_tag "compra-verificada.png" , class: "" , style:"height:8rem"%>
+              <p class="logo-title">Compra Verificada Demizona</p>
+            <% end %>
+          </div>
 
+    </div>
   </div>
 </div>
