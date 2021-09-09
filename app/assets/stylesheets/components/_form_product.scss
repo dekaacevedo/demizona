@@ -1,0 +1,23 @@
+
+.inputs-product {
+  padding: 0.3em 0.4em;
+  font-weight: 400;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8em;
+  background-color: #F0F0F0;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  transition: none;
+  width: 500px;
+}
+
+.new-product-form{
+  display: grid;
+  place-items: center;
+}
+
+.edit-product-form{
+  margin-top: -2rem !important;
+}

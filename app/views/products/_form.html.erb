@@ -1,18 +1,35 @@
-<div class="container mt-5 p-1">
+<div class="container d-flex flex-column align-items-center">
   <%= simple_form_for [@store, @product] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :sku %>
-    <%= f.input :price %>
-    <%= f.input :discount_price %>
-    <%= f.input :discount %>
-    <%= f.input :unit_type %>
-    <%= f.input :quantity_stock %>
-    <%= f.input :featured %>
-    <%= f.input :active %>
-    <%= f.association :categories, as: :check_boxes %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <div class="new-product-form d-flex flex-column align-items-start">
+    <%= f.input :name, input_html: { class: "inputs-product" },
+    label: "Nombre del producto" %>
+    <%= f.input :description, input_html: { class: "inputs-product" },
+    label: "Descripción" %>
+    <%= f.input :sku, input_html: { class: "inputs-product" },
+    label: "SKU" %>
+    <%= f.input :price, input_html: { class: "inputs-product" },
+    label: "Precio normal" %>
+    <%= f.input :discount_price, input_html: { class: "inputs-product" },
+    label: "Precio oferta" %>
+    <%= f.input :discount, input_html: { class: "inputs-product" },
+    label: "Aplicar precio oferta" %>
+    <%= f.input :unit_type, input_html: { class: "inputs-product" },
+    label: "Tipo de unidad (unidad, kilo, etc.)" %>
+    <%= f.input :quantity_stock, input_html: { class: "inputs-product" },
+    label: "Stock disponible" %>
+    <%= f.input :featured, input_html: { class: "inputs-product" },
+    label: "Producto destacado" %>
+    <%= f.input :active, input_html: { class: "inputs-product" },
+    label: "Producto activo" %>
+    <%= f.association :categories, as: :check_boxes, input_html: { class: "inputs-product" },
+    label: "Categorías" %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, input_html: { class: "inputs-product" },
+    label: "Fotografías" %>
+  </div>
+  <div class="dropdown-divider"></div>
+  <div class="text-center">
     <%= f.button :submit, "Guardar", class: "btn btn-primary" %>
     <%= link_to  "Volver", request.referrer, class: "btn btn-warning" %>
+  </div>
   <% end %>
 </div>
