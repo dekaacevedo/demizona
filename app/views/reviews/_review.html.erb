@@ -1,10 +1,10 @@
 <div class="reviews">
-  <div class="d-flex">
+  <div class="d-flex align-items-center">
     <input class="rating" max="5" readonly step="0.01" style="--fill:orange;--value:<%= review.rating %>" type="range" value=<%= review.rating %>>
+    <em class="reviews review-time-ago ml-2 pb-2"><%= time_ago_in_words_es(review.created_at) %></em>
   </div>
 
   <p class="reviews review review-comment"><%= review.comment %></p>
-  <em class="reviews review-time-ago"><%= time_ago_in_words_es(review.created_at) %></em>
 
   <% if user_signed_in? %>
     <% if review.user_id == current_user.id %>
