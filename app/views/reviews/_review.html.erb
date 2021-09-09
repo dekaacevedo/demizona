@@ -1,28 +1,15 @@
-
-
 <div class="reviews">
   <div class="d-flex">
-    <input
-        class="rating"
-        max="5"
-        readonly
-        step="0.01"
-        style="--fill:orange;--value:<%= review.rating %>"
-        type="range"
-        value=<%= review.rating %>>
-    </label>
+    <input class="rating" max="5" readonly step="0.01" style="--fill:orange;--value:<%= review.rating %>" type="range" value=<%= review.rating %>>
   </div>
 
   <p class="reviews review review-comment"><%= review.comment %></p>
   <em class="reviews review-time-ago"><%= time_ago_in_words_es(review.created_at) %></em>
 
- <% if user_signed_in? %>
-  <!-- add if user_signed_in? -->
-  <% if review.user_id == current_user.id %>
-    <!-- add current_user.id -->
-
+  <% if user_signed_in? %>
+    <% if review.user_id == current_user.id %>
       <%= link_to "Edit", edit_store_review_path(review.store, review), class: "boton-secundario-pequeño" %>
       <%= link_to "Delete", store_review_path(review.store, review), method: :delete, data: { confirm: "Are you sure?" }, class: "boton-secundario-pequeño" %>
+    <% end %>
   <% end %>
-<% end %>
 </div>
