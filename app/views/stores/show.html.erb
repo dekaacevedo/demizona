@@ -117,20 +117,15 @@
       </div>
     </div>
 
-    <div class="col-md-4  d-grid" id="block-right">
+    <div class="col-3 d-grid" id="block-right">
       <div class="map-review">
-        <div id="map"
-        style="width: 25vw; height: 40vh;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div id="map" style="width: 20vw; height: 40vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        <div class="create-review mt-5">
+          <div id="new-review">
+            <h3>Valora nuestra Tienda</h3>
+            <%= render "reviews/form" %>
+          </div>
         </div>
-      </div>
-    
-      <div class="create-review col-md-4  d-grid">
-        <div id="new-review">
-          <h3>Reseña</h3>
-          <%= render "reviews/form" %>
-        </div>          
       </div>
     </div>
   </div>
