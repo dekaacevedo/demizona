@@ -23,19 +23,20 @@
 .payed-details{
   border-radius: 5px;
   border: 1px solid #D5D5D5;
-  width: 400px;
-  height: 238px;
-  
+  height: 100%;
+  width: 55vw;
 }
 
 .back-color{
   background-color:#F5F5F5;
-  border-radius: 4px;
-  height: 64px;
+  border-radius: 0 0 5px 5px;
+  height: 4em;
 }
 
 
-#card-content{
-align-self: flex-end;
-margin-bottom: 15px;
+
+.order-card-show{
+  width: 55vw;
+  border-radius: 5px;
+  border: 1px solid #D5D5D5;
 }
