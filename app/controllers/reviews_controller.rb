@@ -9,12 +9,15 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.store = @store
+    @store = Store.find(params[:store_id])
+    @review = @store.reviews.new(review_params)
     @review.user = current_user
 
     if @review.save
-      redirect_to store_path(@review.store)
+      respond_to do |format|
+        format.html { redirect_to @store }
+        format.js
+      end
     else
       flash[:alert] = "Something went wrong."
       render :new

@@ -37,9 +37,14 @@ document.addEventListener("turbolinks:load", () => {
 });
 
 
-$(document).on('click','#btn-review',function(){
+$(document).on('click','#btn-review',function() {
   $('#reviews-section').toggle();
   $('#reviews-section-th').toggle();
+});
+
+$(document).on('click','#btn-review-save',function() {
+  $('#new-review').toggle();
+  $('#new-review-save').toggle();
 });
 
 
