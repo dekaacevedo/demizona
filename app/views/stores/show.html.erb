@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row m-5">
-    <div class="col-9 d-flex flex-column justify-content-center">
+    <div class="col-9 d-flex flex-column justify-content-start">
       <div class="card-store d-flex weight: vw100;">
         <% if @store.photos.count > 0 %>
           <div class="image-store">
@@ -100,9 +100,11 @@
         </div>
       </div>
 
-      <div class="pagination m-2 p-2 align-self-center ">
-        <%== pagy_bootstrap_nav(@pagy) %>
-      </div>
+      <% if @products.size > 0 %>
+        <div class="pagination m-2 p-2 align-self-center ">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+      <% end -%>
 
       <div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
