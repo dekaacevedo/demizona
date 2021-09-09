@@ -13,6 +13,9 @@
           <h1>Nombre de tienda: <%= @store.name %> </h1>
           <h3>Dirección: <%= @store.address %> </h3>
           <h3>Ciudad: <%= @store.city %> </h3>
+          <h3>Email: <%= @store.email %> </h3>
+          <h3>Teléfono: <%= @store.phone%> </h3>
+
           <% if @average_review != 0 %>
             <label class="rating-label"><strong>El rating promedio de la tienda es <%= @average_review %>
               <div class="stars-content d-flex">
@@ -30,8 +33,7 @@
             <br></br
           <% end %>
          </div>
-          <h3>Email: <%= @store.email %> </h3>
-          <h3>Teléfono: <%= @store.phone%> </h3>
+
           <% if policy(@store).edit? %>
             <%= link_to  "Editar tienda", edit_store_path, class: "btn btn-primary" %>
             <%= link_to  "Mis productos", admin_store_path, class: "btn btn-primary" %>
@@ -92,7 +94,6 @@
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
     </div>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
