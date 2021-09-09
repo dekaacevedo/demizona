@@ -2,15 +2,17 @@
   <div class="row m-5">
     <div class="col-9 d-flex flex-column justify-content-center">
       <div class="card-store d-flex weight: vw100;">
-        <div class="image-store">
-          <% @store.photos.each do |photo| %>
-             <%= cl_image_tag photo.key, height: 400, width: 400, crop: :fill %>
-          <% end %>
-        </div>
-
-        <div class="logo-store-image d-flex justify-content-center align-items-center align-self-center text-center bold px-2">
-          <p> <%= @store.name %> </p>
-        </div>
+        <% if @store.photos.count > 0 %>
+          <div class="image-store">
+            <% @store.photos.each do |photo| %>
+               <%= cl_image_tag photo.key, height: 250, width: 250, crop: :fill %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="logo-store-image d-flex justify-content-center align-items-center align-self-center text-center bold px-2">
+            <p> <%= @store.name %> </p>
+          </div>
+        <% end -%>
 
         <div class="content-store py-4 pl-4">
           <h1 class="store-name bold"><%= @store.name %></h1>

@@ -2,26 +2,44 @@
   <h1 class ="title-cart text-center">Tiendas</h1>
   <div class="row m-5">
 
-    <div class="col-md-8">
-      <div class="index-stores">
+    <div class="col-md-8 d-flex flex-column justify-content-center">
+      <div class="index-stores mb-4">
         <% @stores.each do |store| %>
           <%= link_to(store_path(store)) do %>
-          <% if store.photos.attached? %>
-            <% store.photos.each do |photo| %>
-            <div class="store"style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path photo.key,crop: :fill %>)">
-              <h3> <%= store.name %> </h3>
-              <p><%= store.address %></p>
-            </div>
+            <% if store.photos.attached? %>
+              <% store.photos.each do |photo| %>
+              <div class="store py-5 pl-4"style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(<%= cl_image_path photo.key,crop: :fill %>)">
+                <h3 class="store-name"><%= store.name %> </h3>
+                <label class="rating-label"><!-- <strong>El rating promedio de la tienda es <%= (store.reviews.sum(:rating) / store.reviews.count).round(2) %></strong> -->
+                  <div class="stars-content d-flex">
+                    <input class="rating" max="5" readonly step="0.01" style="--fill:orange;--value:<%= (store.reviews.sum(:rating) / store.reviews.count).round(2) %>" type="range" value=<%= (store.reviews.sum(:rating) / store.reviews.count).round(2) %>>
+                  </div>
+                </label>
+                <p><%= store.address %></p>
+                <p> <i class="fas fa-phone-alt call-icon mr-2"></i> <%= store.phone %> </p>
+              </div>
+              <% end %>
+            <% else %>
+              <div class="store default-image py-5 pl-4">
+                <h3 class="store-name"> <%= store.name %> </h3>
+                <label class="rating-label"><!-- <strong>El rating promedio de la tienda es <%= (store.reviews.sum(:rating) / store.reviews.count).round(2) %></strong> -->
+                  <div class="stars-content d-flex">
+                    <input class="rating" max="5" readonly step="0.01" style="--fill:orange;--value:<%= (store.reviews.sum(:rating) / store.reviews.count).round(2) %>" type="range" value=<%= (store.reviews.sum(:rating) / store.reviews.count).round(2) %>>
+                  </div>
+                </label>
+                <p><%= store.address %></p>
+                <p><i class="fas fa-phone-alt call-icon mr-2"></i> <%= store.phone %> </p>
+              </div>
             <% end %>
-          <% else %>
-          <div class="default-image">
-            <h3> <%= store.name %> </h3>
-            <p><%= store.address %></p>
-          </div>
-          <% end %>
           <% end %>
         <% end %>
       </div>
+
+      <% if @stores.count > 6 %>
+        <div class="pagination m-2 p-2 align-self-center">
+          <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+      <% end -%>
     </div>
 
     <div class="col-md-4">
@@ -31,9 +49,7 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
-    <div class="pagination m-2 p-2">
-      <%== pagy_bootstrap_nav(@pagy) %>
-    </div>
+
   </div>
 </div>
 
