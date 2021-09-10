@@ -1,9 +1,9 @@
 require 'faker'
 load_images = true
 
-frutas = %w[Arándano Caqui Cereza Chirimoya Ciruela Coco Frambuesa Frutilla Grosella Mandarina Mango Manzana Mora Naranjas Níspero Pera Banana Pomelo Uva Almendras Nueces]
+frutas = %w[Arándano Cereza Chirimoya Ciruela Coco Frambuesa Frutilla Grosella Mandarina Mango Manzana Mora Naranja Pera Banana Pomelo Uva Almendra Nueces]
 
-verduras = %w[Acelga Ají Alcachofa Brócoli Calabacín Calabaza Cebolla Espinaca Guisante Jengibre Lechuga Maíz Pepino Perejil Pimiento Puerro Rábano Remolacha Tomate Yuca Zanahorias Zapallo Limón]
+verduras = %w[Acelga Ají Alcachofa Brócoli Calabacín Calabaza Cebolla Espinaca Guisante Jengibre Lechuga Maíz Pepino Perejil Pimiento Puerro Rábano Remolacha Tomate Yuca Zanahoria Zapallo Limón]
 
 descripciones_frutas = ["Sabroso fruto, conocido y apetecido por muchos", "Directo desde el huerto a su mesa, siempre fresco y apetitoso", "Infaltable en sus preparaciones, siempre encontrará este producto con calidad de exportación en nuestra tienda", "Uno de nuestros nuevos productos, que destaca por su frescura y calidad", "Con sello local, producto 100% de agricultores de la zona", "Producidos de manera 100% organica"]
 descripciones_verduras = ["Directo desde el huerto a su mesa, siempre frescas y apetitosas", "Infaltable en sus preparaciones, por eso siempre la encontrará en nuestra tienda", "Nuestro producto estrella, siempre fresca y con la mejor calidad", "Uno de nuestros nuevos productos, que destaca por su frescura y calidad", "Con sello local, producto 100% de agricultores de la zona", "Producto organico, fresco y envasado en empaque reciclable"]
@@ -101,7 +101,7 @@ while i <= 4
       store: stores[i]
     )
     if load_images
-      file = URI.open("https://source.unsplash.com/300x300/?#{ERB::Util.url_encode(fruits.name)}")
+      file = URI.open("https://source.unsplash.com/300x300/?#{ERB::Util.url_encode(fruits.name)}s")
       unless file.base_uri.to_s.include?("404")
         fruits.photos.attach(io: file, filename: "#{fruits.id}.png", content_type: 'image/png')
       end
@@ -124,7 +124,7 @@ while i <= 4
       store: stores[i]
     )
     if load_images
-      file = URI.open("https://source.unsplash.com/400x300/?#{ERB::Util.url_encode(vegetables.name)}")
+      file = URI.open("https://source.unsplash.com/400x300/?#{ERB::Util.url_encode(vegetables.name)}s")
       unless file.base_uri.to_s.include?("404")
         vegetables.photos.attach(io: file, filename: "#{vegetables.id}.png", content_type: 'image/png')
       end
