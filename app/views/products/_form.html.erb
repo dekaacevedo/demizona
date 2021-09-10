@@ -23,7 +23,7 @@
     label: "Producto activo" %>
     <%= f.association :categories, as: :check_boxes, input_html: { class: "inputs-product" },
     label: "Categorías" %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true }, input_html: { class: "inputs-product" },
+    <%= f.input :photos, as: :file, input_html: { multiple: true,class: "inputs-product" },
     label: "Fotografías" %>
   </div>
   <div class="dropdown-divider"></div>
