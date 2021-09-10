@@ -1,7 +1,8 @@
-<h1>Edit Review</h1>
-
-<%= simple_form_for([@store, @review]) do |f| %>
-  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-  <%= f.input :comment %>
-  <%= f.button :submit %>
-<% end %>
+<h1 class ="title-cart text-center">Edit Review</h1>
+<div class="edit-store-form">
+  <%= simple_form_for([@store, @review]) do |f| %>
+    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", default: '1' %>
+    <%= f.input :comment %>
+    <%= f.button :submit,"Actualizar tu experiencia", class:"boton-primario", id:"btn-review-save"%>
+  <% end %>
+</div>

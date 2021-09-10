@@ -18,11 +18,10 @@ class ReviewsController < ApplicationController
         format.html { redirect_to @store }
         format.js
       end
+      authorize @review
     else
       flash[:alert] = "Algo no funcionó correctamente."
-      render :new
-    end
-    authorize @review
+    end  
   end
 
   def edit
