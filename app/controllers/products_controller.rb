@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
   before_action :find_store, only: [:new, :create]
 
   def index
-     @pagy,products = pagy(policy_scope(Product),items: 9)
     if params[:q]
       @q = Product.ransack(params[:q])
       @products = @q.result(distinct: true)
@@ -11,6 +10,7 @@ class ProductsController < ApplicationController
       @products = products
     end
     @cart_item = current_cart.cart_items.new
+    @pagy, @products = pagy(policy_scope(Product), items: 9)
   end
 
   def show

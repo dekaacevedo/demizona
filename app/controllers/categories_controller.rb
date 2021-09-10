@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category , only: :show
   def show
-    @pagy,products = pagy(policy_scope(Product),items: 9)
     @products = @category.products
     @cart_item = current_cart.cart_items.new
   end

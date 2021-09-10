@@ -47,7 +47,7 @@ stores[2] = Store.create(name: "Verdulería Donde Pablo",
   city: "Chillán",
   email: "verdurasdondepablo@gmail.com",
   phone: rand(912345678..992345678),
-  user: users[2]
+  user_id: 2
 )
 file = URI.open("https://source.unsplash.com/ISPiuu_g6s8/400x400")
 stores[2].photos.attach(io: file, filename: "store.png", content_type: 'image/png')
@@ -57,7 +57,7 @@ stores[3] = Store.create(name: "Minimarket de Marco",
   city: "Chillán",
   email: "contacto@minimarketdemarco.cl",
   phone: rand(912345678..992345678),
-  user: users[3]
+  user_id: 3
   )
 file = URI.open("https://source.unsplash.com/stpjHJGqZyw/400x400")
 stores[3].photos.attach(io: file, filename: "store.png", content_type: 'image/png')
@@ -67,7 +67,7 @@ stores[4] = Store.create(name: "La huerta de Jorge",
   city: "Chillán",
   email: "lahuertadejorge@gmail.com",
   phone: rand(912345678..992345678),
-  user: users[4]
+  user_id: 4
 )
 file = URI.open("https://source.unsplash.com/mOy3K9pixSk/400x400")
 stores[4].photos.attach(io: file, filename: "store.png", content_type: 'image/png')
@@ -98,7 +98,7 @@ while i <= 4
       description: descripciones_frutas[rand(0..descripciones_frutas.size-1)],
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
-      store: stores[i]
+      store_id: i
     )
     if load_images
       file = URI.open("https://source.unsplash.com/300x300/?#{ERB::Util.url_encode(fruits.name)}s")
@@ -121,7 +121,7 @@ while i <= 4
       description: descripciones_verduras[rand(0..descripciones_verduras.size-1)],
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
-      store: stores[i]
+      store_id: i
     )
     if load_images
       file = URI.open("https://source.unsplash.com/400x300/?#{ERB::Util.url_encode(vegetables.name)}s")
