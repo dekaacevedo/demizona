@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to admin_store_path(@product.store)
     else
-      flash[:alert] = "Something went wrong."
+      flash[:alert] = "Algo no funcionó correctamente."
       render :new
     end
     authorize @product
@@ -41,9 +41,9 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
       redirect_to admin_store_path(@product.store)
-      flash[:alert] = "Product updated succesfully"
+      flash[:notice] = "El producto ha sido actualizado con éxito."
     else
-      flash[:alert] = "Something went wrong"
+      flash[:alert] = "Algo no funcionó correctamente."
       render :edit
     end
   end
@@ -51,10 +51,10 @@ class ProductsController < ApplicationController
   def destroy
     if @product.destroy
       redirect_to admin_store_path(@product.store)
-      flash[:alert] = "Product deleted"
+      flash[:notice] = "El producto ha sido eliminado."
     else
       redirect_to admin_store_path(@product.store)
-      flash[:alert] = "Something went wrong"
+      flash[:alert] = "Algo no funcionó correctamente."
     end
   end
 

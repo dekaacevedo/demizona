@@ -60,6 +60,12 @@
             <p class="sku"><%= category.name %></p>
           <% end -%>
         </div>
+
+        <% if policy(@product.store).edit? %>
+            <%= link_to edit_product_path(@product.id), class: "" do %>
+              <i class="fas fa-pen danger"></i>
+            <% end %>
+        <% end %>
       </div>
 
       <div class="feature-background-show grow-1 ml-5 py-2 pl-4">

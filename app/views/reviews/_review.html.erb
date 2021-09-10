@@ -2,14 +2,21 @@
   <div class="d-flex align-items-center">
     <input class="rating" max="5" readonly step="0.01" style="--fill:orange;--value:<%= review.rating %>" type="range" value=<%= review.rating %>>
     <em class="reviews review-time-ago ml-2 pb-2"><%= time_ago_in_words_es(review.created_at) %></em>
+    <% if user_signed_in? %>
+      <% if review.user_id == current_user.id %>
+        <%= link_to edit_store_review_path(review.store, review) do  %>
+            <i class="fas fa-pen danger mx-2"></i>
+        <% end -%>
+        <%= link_to store_review_path(review.store, review), method: :delete, data: { confirm: "Estás seguro?" } do  %>
+          <i class="fas fa-trash mx-2"></i>
+        <% end -%>
+      <% end %>
+    <% end %>
   </div>
+
 
   <p class="reviews review review-comment"><%= review.comment %></p>
 
-  <% if user_signed_in? %>
-    <% if review.user_id == current_user.id %>
-      <%= link_to "Edit", edit_store_review_path(review.store, review), class: "boton-secundario-pequeño" %>
-      <%= link_to "Delete", store_review_path(review.store, review), method: :delete, data: { confirm: "Are you sure?" }, class: "boton-secundario-pequeño" %>
-    <% end %>
-  <% end %>
 </div>
+
+

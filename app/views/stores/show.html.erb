@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row m-5">
     <div class="col-9 d-flex flex-column justify-content-start">
-      <div class="card-store d-flex weight: vw100;">
+      <div class="card-store d-flex">
         <% if @store.photos.count > 0 %>
           <div class="image-store">
             <% @store.photos.each do |photo| %>
@@ -20,7 +20,7 @@
           <p><%= @store.city %> </p>
           <p><%= @store.phone%> </p>
           <p><%= @store.email %> </p>
-        
+
           <% if @average_review != 0 %>
             <label class="rating-label mt-2">
               <div class="stars-content d-flex align-items-center">
@@ -30,9 +30,9 @@
               </div>
             </label>
           <% else %>
-            <br></br>
+            <br>
           <% end %>
-    
+
 
           <% if policy(@store).edit? %>
             <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger", method: :delete , data: { confirm: "Estás seguro?" } %>
@@ -125,7 +125,7 @@
           <!--<%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>-->
         </div>
       </div>
-      
+
     </div>
 
     <div class="col-3 d-grid" id="block-right">
