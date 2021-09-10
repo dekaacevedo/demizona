@@ -4,7 +4,13 @@ class CartItemsController < ApplicationController
 
   def create
     @cart_items = @cart.cart_items.new(cart_items_params)
-    @cart.save
+    match = @cart.cart_items.where(product_id: @cart_items[:product_id])
+    if match.size == 0
+      @cart.save
+    else
+      match.first.update(quantity: match.first.quantity + @cart_items[:quantity])
+    end
+    
     session[:cart_id] = @cart.id
     authorize @cart_items
     respond_to do |format|
@@ -18,6 +24,7 @@ class CartItemsController < ApplicationController
     @cart_item.update_attributes(cart_items_params)
     @cart_items = current_cart.cart_items
     authorize @cart_items
+    redirect_to request.referrer
   end
 
   def destroy

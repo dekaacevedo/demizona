@@ -13,7 +13,7 @@
             <th class="px-5 py-2 title-header">Total</th>
             <th class="px-4 py-2 title-header"></th>
           </tr>
-        <% @cart_items.each do |item| %>
+        <% @cart_items.order(id: :desc).each do |item| %>
           <tr class="table-divider">
             <td class="py-5">
               <div class="d-flex align-items-center px-3">
@@ -41,15 +41,15 @@
               <%= simple_form_for item, url: cart_item_path(item.id), remote: true do |f| %>
                 <div class="d-flex align-items-center">
                   <%= f.hidden_field :product_id, value: item.product.id %>
-                  <%= f.button :button, "-", class: "signo-btn minus",onclick: "document.getElementById('#{item.product.id}').value = parseInt(document.getElementById('#{item.product.id}').value) - 1; return false " %>
+                  <%= f.button :button, "-", class: "signo-btn minus", onclick: "document.getElementById('#{item.product.id}').value = parseInt(document.getElementById('#{item.product.id}').value) - 1; return false" %>
                   <%= f.number_field :quantity, value: item.quantity.to_i, class: "text-center quantity-product-cart", id: item.product.id %>
                   <%= f.button :button, "+", class: "signo-btn plus", onclick: "document.getElementById('#{item.product.id}').value = parseInt(document.getElementById('#{item.product.id}').value) + 1; return false" %>
                 </div>
             </td>
             <td>
-                <%= button_tag type: 'submit', class: "btn" do %>
+                <%= button_tag type: 'submit', class: "btn", onclick: 'submit()' do %>
                   <i class="fas fa-sync-alt"></i>
-                <% end -%>
+                <% end %>
               <% end %>
             </td>
             <td class="text-center">$<%= item.total %></td>
