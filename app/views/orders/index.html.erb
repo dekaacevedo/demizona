@@ -1,7 +1,7 @@
 <div class="container d-flex flex-column align-items-center mb-5">
   <h1 class="text-center title-cart">Mis pedidos</h1>
 
-  <% @orders.each do |order| %>
+  <% @orders.order(id: :desc).each do |order| %>
   <div class="order-card d-flex flex-column justify-content-center my-3">
     <div class="d-flex justify-content-between py-3 px-1 ">
       <div class="d-flex ">
