@@ -50,6 +50,12 @@
               <%= f.number_field :quantity, label: false, value: 1,id: @product.id, class: "my-2 text-center input-quantity-show"%>
               <%= f.button :button, "+", class: "signo-btn plus", onclick: "document.getElementById('#{@product.id}').value = parseInt(document.getElementById('#{@product.id}').value) + 1; return false" %>
             <%= f.submit "Añadir al carrito", class: "btn boton-primario my-2 ml-3" %>
+
+            <% if policy(@product.store).edit? %>
+                <%= link_to edit_product_path(@product.id), class: "ml-4" do %>
+                  <i class="fas fa-pen danger"></i>
+                <% end %>
+            <% end %>
         </div>
           <% end %>
 
@@ -60,6 +66,7 @@
             <p class="sku"><%= category.name %></p>
           <% end -%>
         </div>
+
       </div>
 
       <div class="feature-background-show grow-1 ml-5 py-2 pl-4">

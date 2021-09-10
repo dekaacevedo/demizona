@@ -5,7 +5,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    user_owner
   end
 
   def create?
@@ -16,5 +16,11 @@ class ProductPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
+
+  private
+
+  def user_owner
+    user == record.store.user
   end
 end
