@@ -56,8 +56,9 @@
     <% if policy(@store).edit? %>
       <%= link_to  "Volver", store_path(@store), class:"btn btn-primary" %>
     <% end %>
-    <div class="pagination m-1 p-2">
-      <%== pagy_bootstrap_nav(@pagy) %>
+    <div class="pagination m-2 p-2 align-self-center ">
+      <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
     </div>
+
   </div>
 </div>
