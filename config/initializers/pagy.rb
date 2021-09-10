@@ -17,7 +17,7 @@
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
   #Página de inicio en pagination
  Pagy::VARS[:page]   = 1                                  # default
-# Pagy::VARS[:items]  = 2                                 # default
+# Pagy::VARS[:items]  = 9                                 # default
 # Pagy::VARS[:outset] = 0                                  # default
 
 
