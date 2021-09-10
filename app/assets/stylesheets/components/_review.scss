@@ -212,3 +212,11 @@ ol#reviews {
   display: none;
 }
 
+.border-class {
+  border: thin black solid;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #F0F0F0;
+  box-shadow: 10px;
+}
