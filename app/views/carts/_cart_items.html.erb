@@ -17,7 +17,13 @@
           <tr class="table-divider">
             <td class="py-5">
               <div class="d-flex align-items-center px-3">
-                <%= image_tag "pear.jpg", alt: "Pera", class: "item-img" %>
+                <% if item.product.photos.attached? %>
+                  <% item.product.photos.first(1).each do |photo| %>
+                    <%= cl_image_tag photo.key, alt: "item.product.name", class: "item-img" %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag "no_product_image.png", alt: "item.product.name", class: "item-img" %>
+                <% end %>
                 <div class="d-flex flex-column">
                   <p class="item-name"><%= item.product.name %></p>
                   <p class="detail-item">Vendido por <span><%= item.product.store.name %></span></p>

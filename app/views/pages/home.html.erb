@@ -93,7 +93,7 @@
     <% end %>
   </div>
   <div class="d-flex flex-wrap justify-content-between mb-5">
-    <% @stores.last(3).each do |store| %>
+    <% @stores.sample(3).each do |store| %>
       <%= link_to store_path(store) do %>
         <div class="d-flex flex-column mt-3">
           <% if store.photos.attached? %>
