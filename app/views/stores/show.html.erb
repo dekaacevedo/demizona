@@ -55,11 +55,10 @@
         </div>
       </div>
 
-      <% if @products.size > 0 %>
-        <div class="pagination m-2 p-2 align-self-center ">
-          <%== pagy_bootstrap_nav(@pagy) %>
-        </div>
-      <% end -%>
+  <div class="pagination m-2 p-2 align-self-center ">
+    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+
 
       <div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
