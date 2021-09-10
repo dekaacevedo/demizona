@@ -39,7 +39,11 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to store_path(@store) # SOLUCIONAR = Queremos redireccionar a la tienda
+    respond_to do |format|
+      format.js
+      format.html { redirect_to store_path(@store), notice: "Reseña fue eliminada satisfactoriamente¡" }
+      format.json { head :no_content }
+    end
     authorize @review
   end
 
