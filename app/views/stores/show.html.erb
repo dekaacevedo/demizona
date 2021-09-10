@@ -35,15 +35,10 @@
 
 
           <% if policy(@store).edit? %>
-            <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger", method: :delete , data: { confirm: "Estás seguro?" } %>
+            <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger mr-2", method: :delete , data: { confirm: "Estás seguro?" } %>
+            <%= link_to  "Editar tienda", edit_store_path, class: "btn btn-primary" %>
           <% else %>
             <%= link_to  "Contactar al Productor", "https://wa.me/56#{@store.phone}?text=Hola,%20ví%20tu%20tienda%20en%20Demizona%20y%20quisiera%20hacerte%20una%20pregunta", target: "_blank", class: "btn btn-primary"%>
-          <% end %>
-        </div>
-
-        <div class="py-4">
-          <% if policy(@store).edit? %>
-            <%= link_to  "Editar tienda", edit_store_path, class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>

@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
         format.js
       end
     else
-      flash[:alert] = "Something went wrong."
+      flash[:alert] = "Algo no funcionó correctamente."
       render :new
     end
     authorize @review
