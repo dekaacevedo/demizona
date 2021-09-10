@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @products = @q.result(distinct: true)
     @stores = Store.all
     # @categories = Category.all
-
+    @cart_item = current_cart.cart_items.new
+    @featured_products = Product.where(featured: true).sample(5)
   end
 end

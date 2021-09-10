@@ -90,6 +90,7 @@ while i <= 4
     price = rand(50..250) * 10
     discount_price = rand(1..100) > 80 ? price * rand(70..95) / 100 : price
     discount = discount_price < price ? true : false
+    featured = rand(1..10) > 8
     fruits = Product.new(
       name: fruits_list[j],
       price: price,
@@ -98,7 +99,8 @@ while i <= 4
       description: descripciones_frutas[rand(0..descripciones_frutas.size-1)],
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
-      store: stores[i]
+      store: stores[i],
+      featured: featured
     )
     if load_images
       file = URI.open("https://source.unsplash.com/300x300/?#{ERB::Util.url_encode(fruits.name)}s")
@@ -113,6 +115,7 @@ while i <= 4
     price = rand(50..250) * 10
     discount_price = rand(1..100) > 80 ? price * rand(70..95) / 100 : price
     discount = discount_price < price ? true : false
+    featured = rand(1..10) > 8
     vegetables = Product.new(
       name: vegetables_list[k],
       price: price,
@@ -121,7 +124,8 @@ while i <= 4
       description: descripciones_verduras[rand(0..descripciones_verduras.size-1)],
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
-      store: stores[i]
+      store: stores[i],
+      featured: featured
     )
     if load_images
       file = URI.open("https://source.unsplash.com/400x300/?#{ERB::Util.url_encode(vegetables.name)}s")

@@ -14,7 +14,13 @@
     <% order.cart.cart_items.each do |item| %>
     <div class="d-flex justify-content-between align-items-center py-2">
       <div class="d-flex align-items-center">
-        <%= image_tag "pear.jpg", alt: "alttext", class: "order-img" %>
+        <% if item.product.photos.attached? %>
+          <% item.product.photos.first(1).each do |photo| %>
+            <%= cl_image_tag photo.key, alt: "item.name", class: "order-img" %>
+          <% end %>
+        <% else %>
+          <%= image_tag "no_product_image.png", alt: "item.name", class: "order-img" %>
+        <% end %>
         <div>
           <p class="product-store-name order pl-2 pt-2 pb-1"><%= item.product.store.name %></p>
           <p class="product-name pl-2 pb-1"><%= item.product.name %></p>
