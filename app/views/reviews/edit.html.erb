@@ -1,10 +1,12 @@
 <div class="container mb-10">
   <div class="col-md-10 border-class">
-    <h1 class ="title-cart text-center">Edit Review</h1>
+    <h1 class ="title-cart text-center">Edita tu reseña</h1>
     <%= simple_form_for([@store, @review]) do |f| %>
-      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", default: '1' %>
-      <%= f.input :comment %>
-      <%= f.button :submit,"Actualizar tu experiencia", class:"boton-primario", id:"btn-review-save"%>
+      <%= f.input :rating, collection: (1..5).to_a, label: "Valora tu experiencia", default: '1' %>
+      <%= f.input :comment , label: "Comentario"%>
+      <div class="form-actions d-flex justify-content-center my-3" >
+        <%= f.button :submit,"Actualizar tu experiencia", class:"boton-primario", id:"btn-review-save"%>
+      </div>
     <% end %>
   </div>
 </div>
