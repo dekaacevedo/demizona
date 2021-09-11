@@ -116,7 +116,7 @@
       <% @featured_products.each do |product| %>
         <% if product.active %>
           <div class="">
-            <div class="product-card">
+            <div class="featured-product-card">
               <%= link_to(product_path(product)) do %>
                 <% if product.photos.attached? %>
                   <% product.photos.first(1).each do |photo| %>
@@ -132,28 +132,15 @@
               <div class="discount-tag">
                 <p><%= ((product.price - product.discount_price) * 100) / product.price %>% Ahorro</p>
               </div>
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center pb-2">
                 <p class="product-price discount pl-2">$<%= product.discount_price %></p>
                 <p class="product-price-discount pl-2">$<%= product.price %></p>
               </div>
 
               <% else %>
-                <p class="product-price pl-2">$<%= product.price %></p>
+                <p class="product-price pl-2 pb-2">$<%= product.price %></p>
                 <% end %>
               <% end %>
-              <!--
-              <div class="form-quantity-product pl-2">
-                <%= simple_form_for(@cart_item, remote: true) do |f| %>
-                  <%= f.hidden_field :product_id, value: product.id %>
-                  <div class="d-flex align-items-center">
-                    <%= f.button :button, "-", class: "signo-btn minus", onclick: "document.getElementById('#{product.id}').value = parseInt(document.getElementById('#{product.id}').value) - 1; return false " %>
-                    <%= f.number_field :quantity, value: 1, label: false, class: "quantity-product my-2 text-center", id: product.id %>
-                    <%= f.button :button, "+", class: "signo-btn plus", onclick: "document.getElementById('#{product.id}').value = parseInt(document.getElementById('#{product.id}').value) + 1; return false" %>
-                  </div>
-                    <%= f.submit "Añadir al carrito", class: "btn boton-primario my-2" %>
-                <% end %>
-              </div>
-              -->
             </div>
           </div>
         <% end %>
