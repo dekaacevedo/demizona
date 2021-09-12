@@ -14,15 +14,36 @@
   position: relative;
   flex: 30%;
   width: 200px;
-  height: 370px;
+  height: 100%;
   border-radius: 5px;
   background-color: #fff;
   // box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  padding: 0.5em;
   &:hover{
     border: 0.5px solid rgba(209, 209, 209, 0.5);
+
+    .image-card {
+      border-radius: 5px 5px 0 0;
+    }
   }
 }
+
+.featured-product-card{
+  width: 200px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #fff;
+  transition-property: transform 0.2s ease-in-out;
+  transition-duration: 500ms;
+  // box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  &:hover{
+    box-shadow: -4px -4px 20px rgba(0, 0, 0, 0.02), 4px 4px 20px rgba(0, 0, 0, 0.02);
+    transform: scale(1.03);
+    .image-card {
+      border-radius: 5px 5px 0 0;
+    }
+  }
+}
+
 
 .form-quantity-product{
   opacity: 0;
@@ -45,6 +66,7 @@
   width: 100%;
   height: 150px;
   object-fit: contain;
+
   }
 
 .product-store-name {
