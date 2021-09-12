@@ -17,7 +17,7 @@ class StorePolicy < ApplicationPolicy
   end
 
   def admin?
-    true
+    user_owner
   end
 
   class Scope < Scope
@@ -31,5 +31,4 @@ class StorePolicy < ApplicationPolicy
   def user_owner
     user == record.user
   end
-
 end
