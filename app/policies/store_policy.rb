@@ -5,7 +5,7 @@ class StorePolicy < ApplicationPolicy
   end
 
   def create?
-    seller_user
+    true
   end
 
   def destroy?
@@ -31,11 +31,4 @@ class StorePolicy < ApplicationPolicy
   def user_owner
     user == record.user
   end
-
-  def seller_user
-    if record.user.seller?
-      user == record.user
-    end
-  end
-
 end
