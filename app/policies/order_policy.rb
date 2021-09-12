@@ -5,12 +5,19 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user_owner
   end
 
   class Scope < Scope
     def resolve
       scope.all
     end
+  end
+
+  
+  private
+
+  def user_owner
+    user == record.user
   end
 end

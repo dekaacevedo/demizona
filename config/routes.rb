@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'my_stores', to: 'my_stores#index'
 
-
+  get 'questions', to: 'infos#questions'
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
