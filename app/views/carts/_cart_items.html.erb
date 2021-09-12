@@ -19,7 +19,7 @@
               <div class="d-flex align-items-center px-3">
                 <% if item.product.photos.attached? %>
                   <% item.product.photos.first(1).each do |photo| %>
-                    <%= cl_image_tag photo.key, alt: "item.product.name", class: "item-img" %>
+                    <%= cl_image_tag photo.key, alt: item.product.name, class: "item-img" %>
                   <% end %>
                 <% else %>
                   <%= image_tag "no_product_image.png", alt: "item.product.name", class: "item-img" %>
