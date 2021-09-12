@@ -1,11 +1,8 @@
-require_relative "../models/store"
+
 class InfosController < ApplicationController
 
-
+ skip_before_action :authenticate_user!
   def questions
-    stores = policy_scope(Store)
-    @stores = current_user.stores
-    authorize  @stores
   end
 
 end

@@ -36,11 +36,6 @@ class ApplicationPolicy
     false
   end
 
-
-  def questions?
-    true
-  end
-
   class Scope
     def initialize(user, scope)
       @user = user
