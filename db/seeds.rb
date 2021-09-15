@@ -1,15 +1,11 @@
 # Settings
-load_images = true
+$load_images = true
 
 # Libraries
 require 'faker'
 
 #Load lists
 require_relative 'lists'
-fruit_list = $fruit_list
-vegetable_list = $vegetable_list
-description_list = $description_list
-review_list = $review_list
 
 # Metodos para facilitar el proceso
 def filename(name)
@@ -45,26 +41,26 @@ def attach_images(product)
   end
 end
 
-def populate(store, list, category, descriptions, load_images)
+def populate(store, list, category)
   puts "Populating store #{store.id} with #{category.name}"
   list.shuffle!
   rand(8..15).times do |x|
+    name = list[x]
     price = rand(50..250) * 10
     discount_price = rand(1..100) > 80 ? price * rand(70..95) / 100 : price
-    discount = discount_price < price ? true : false
-    featured = rand(1..100) > 80
     product = Product.new(
-      name: list[x],
+      name: name,
       price: price,
       discount_price: discount_price,
-      discount: discount,
-      description: descriptions[rand(0..descriptions.size-1)],
+      discount: discount_price < price ? true : false,
+      description: $description_list[rand(0..$description_list.size-1)],
       active: true,
       sku: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 2, min_numeric: 4).upcase,
       store: store,
-      featured: featured
+      featured: rand(1..100) > 80,
+      unit_type: $sold_by_unit.include?(name) ? "Unidad" : "Kilo"
     )
-    if load_images
+    if $load_images
       attach_images(product)
     end
     product.save
@@ -142,21 +138,21 @@ organicos = Category.create(name: "Productos Orgánicos")
 alcohol = Category.create(name: "Bebidas Alcohólicas")
 
 puts "Cargando productos en tiendas"
-populate(stores[1], fruit_list, frutas, description_list, load_images)
-populate(stores[1], vegetable_list, verduras, description_list, load_images)
-populate(stores[2], fruit_list, frutas, description_list, load_images)
-populate(stores[2], vegetable_list, verduras, description_list, load_images)
-populate(stores[3], fruit_list, frutas, description_list, load_images)
-populate(stores[3], vegetable_list, verduras, description_list, load_images)
-populate(stores[4], fruit_list, frutas, description_list, load_images)
-populate(stores[4], vegetable_list, verduras, description_list, load_images)
+populate(stores[1], $fruit_list, frutas)
+populate(stores[1], $vegetable_list, verduras)
+populate(stores[2], $fruit_list, frutas)
+populate(stores[2], $vegetable_list, verduras)
+populate(stores[3], $fruit_list, frutas)
+populate(stores[3], $vegetable_list, verduras)
+populate(stores[4], $fruit_list, frutas)
+populate(stores[4], $vegetable_list, verduras)
 
 puts "Cargando reseñas"
 l = 1
 while l <= 4
-  review_list.shuffle
+  $review_list.shuffle
   rand(3..10).times do |m|
-    review = Review.new(rating: rand(4..5), comment: review_list[m], user_id: users[rand(1..6)].id, store_id: stores[l].id, created_at: Faker::Time.backward(days: 90))
+    review = Review.new(rating: rand(4..5), comment: $review_list[m], user_id: users[rand(1..6)].id, store_id: stores[l].id, created_at: Faker::Time.backward(days: 90))
     review.save!
   end
 l += 1
