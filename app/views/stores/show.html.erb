@@ -36,9 +36,9 @@
 
           <% if policy(@store).edit? %>
             <%= link_to  "Eliminar tienda", store_path, class: "btn btn-danger mr-2", method: :delete , data: { confirm: "Estás seguro?" } %>
-            <%= link_to  "Editar tienda", edit_store_path, class: "btn btn-primary" %>
+            <%= link_to  "Editar tienda", edit_store_path, class: "btn boton-primario" %>
           <% else %>
-            <%= link_to  "Contactar al Productor", "https://wa.me/56#{@store.phone}?text=Hola,%20ví%20tu%20tienda%20en%20Demizona%20y%20quisiera%20hacerte%20una%20pregunta", target: "_blank", class: "btn btn-primary"%>
+            <%= link_to  "Contactar al Productor", "https://wa.me/56#{@store.phone}?text=Hola,%20ví%20tu%20tienda%20en%20Demizona%20y%20quisiera%20hacerte%20una%20pregunta", target: "_blank", class: "btn boton-primario"%>
           <% end %>
         </div>
       </div>
@@ -47,7 +47,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <p class="bold"> <%= @store.products.count %> Productos</p>
           <% if policy(@store).edit? %>
-            <%= link_to "Administrar mis productos", admin_store_path, class: "btn btn-primary" %>
+            <%= link_to "Administrar mis productos", admin_store_path, class: "btn boton-primario" %>
           <% end %>
         </div>
         <div class="products-store mt-5 justify-content-start mx-4">
@@ -73,7 +73,7 @@
             <%= render @store.reviews %>
           </ol>
         </section>
-        <button id="btn-review" class="btn btn-primary">Mostrar todas las reseñas</button>
+        <button id="btn-review" class="btn boton-primario">Mostrar todas las reseñas</button>
         <div class="action-stores">
           <!--<%= link_to "Añadir Reseña", new_store_review_path(@store) %> -->
           <!--<%= link_to  "Todas las tiendas", stores_path, class: "btn btn-success" %>-->
