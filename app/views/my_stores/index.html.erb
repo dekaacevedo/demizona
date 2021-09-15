@@ -1,11 +1,12 @@
+<% if @stores.size > 0 %>
 <div class="container">
   <h1 class ="title-cart text-center">Mis tiendas</h1>
-    <div class="index-stores mb-4">
+    <div class="index-stores mb-5">
       <% @stores.each do |store| %>
         <%= link_to(store_path(store)) do %>
           <% if store.photos.attached? %>
             <% store.photos.each do |photo| %>
-              <div class="store py-5 pl-4"style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(<%= cl_image_path photo.key,crop: :fill %>)">
+              <div class="store py-5 pl-4 mb-3"style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(<%= cl_image_path photo.key,crop: :fill %>)">
                 <h3 class="store-name"><%= store.name %> </h3>
                 <label class="rating-label"><!-- <strong>El rating promedio de la tienda es <%= (store.reviews.sum(:rating) / store.reviews.count).round(2) %></strong> -->
                   <div class="stars-content d-flex">
@@ -32,3 +33,11 @@
       <% end %>
     </div>
 </div>
+<% else %>
+  <div class="empty-cart d-flex flex-column align-items-center justify-content-center">
+    <%= image_tag "carrito.png", alt: "Carrito de compras", class: "img-carrito" %>
+    <h2>¡Aún no tienes tiendas!</h2>
+    <p class="continuar-compra">Crea ahora tu tienda</p>
+    <%= link_to  "Crear tienda", new_store_path(@store), class: "btn boton-primario" %>
+  </div>
+<% end -%>
