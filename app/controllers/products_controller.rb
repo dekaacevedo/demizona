@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      @product.category_ids = params[:product][:category_ids]
       redirect_to admin_store_path(@product.store)
       flash[:notice] = "El producto ha sido actualizado con éxito."
     else
