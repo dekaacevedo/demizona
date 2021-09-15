@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.store = @store
+    @product.category_ids = params[:product][:category_ids]
 
     if @product.save
       redirect_to admin_store_path(@product.store)
@@ -66,7 +67,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :sku, :price, :discount_price, :active, :featured, :unit_type, :quantity_stock, :discount, :description, photos: [])
+    params.require(:product).permit(:name, :description, :sku, :price, :discount_price, :active, :featured, :unit_type, :quantity_stock, :discount, :category_ids, photos: [])
   end
 
   def find_store
