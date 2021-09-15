@@ -19,7 +19,7 @@
     label: "Stock disponible" %>
     <%= f.input :featured, input_html: { class: "inputs-product" },
     label: "Producto destacado" %>
-    <%= f.input :active, input_html: { class: "inputs-product" },
+    <%= f.input :active, default: true, input_html: { class: "inputs-product" },
     label: "Producto activo" %>
     <%= f.association :categories, as: :check_boxes, input_html: { class: "inputs-product" },
     label: "Categorías" %>
