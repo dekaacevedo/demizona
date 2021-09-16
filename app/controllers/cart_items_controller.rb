@@ -24,6 +24,9 @@ class CartItemsController < ApplicationController
     @cart_item.update_attributes(cart_items_params)
     @cart_items = current_cart.cart_items
     authorize @cart_items
+    if @cart_item.quantity == 0
+      @cart_item.destroy
+    end
     redirect_to request.referrer
   end
 
