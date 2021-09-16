@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def make_it_a_seller!
     self.seller = true
   end
+
+  def make_it_a_not_seller!
+    self.seller = false
+  end
 end
