@@ -1,4 +1,5 @@
 require_relative "../models/user"
+require_relative "../models/store"
 class StoresController < ApplicationController
 
   # before_action :set_user, only: [:new, :create]
@@ -74,6 +75,11 @@ class StoresController < ApplicationController
   def destroy
     # Si la tienda se elimina, el usuario será redireccionado a su perfil.
     @store.destroy
+    @stores_number = current_user.stores.size
+    if @stores_number == 0
+      current_user.make_it_a_not_seller!
+      current_user.save
+    end
     # LA RUTA ESTABLECIDA ES PROVISORIA,SE RECOMIENDA redirect_to user_path(@user).
     redirect_to stores_path
   end
